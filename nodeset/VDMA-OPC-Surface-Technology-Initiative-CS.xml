@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='utf-8'?>
+<UANodeSet xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <NamespaceUris>
+    <Uri>http://vdma-opc-st-initiative-cs/ua</Uri>
+  </NamespaceUris>
+  <Aliases>
+    <Alias Alias="HasModellingRule">i=37</Alias>
+    <Alias Alias="Int16">i=4</Alias>
+    <Alias Alias="Float">i=10</Alias>
+    <Alias Alias="String">i=12</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+    <Alias Alias="HasSubtype">i=45</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+  </Aliases>
+  <UAObjectType BrowseName="1:VesselObjectType" NodeId="ns=1;i=1">
+    <DisplayName>VesselObjectType</DisplayName>
+    <Description>VesselObjectType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=3</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=4</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=5</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable BrowseName="1:Name" DataType="String" NodeId="ns=1;i=2" ParentNodeId="ns=1;i=1">
+    <DisplayName>Name</DisplayName>
+    <Description>Name</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:String>BehälterName</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Location" DataType="String" NodeId="ns=1;i=3" ParentNodeId="ns=1;i=1">
+    <DisplayName>Location</DisplayName>
+    <Description>Location</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:String>BehälterLocation</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:State" DataType="Int16" NodeId="ns=1;i=4" ParentNodeId="ns=1;i=1">
+    <DisplayName>State</DisplayName>
+    <Description>State</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Level" DataType="Float" NodeId="ns=1;i=5" ParentNodeId="ns=1;i=1">
+    <DisplayName>Level</DisplayName>
+    <Description>Level</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAObjectType BrowseName="1:AgitatorObjectType" NodeId="ns=1;i=6">
+    <DisplayName>AgitatorObjectType</DisplayName>
+    <Description>AgitatorObjectType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=7</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=8</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=9</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable BrowseName="1:Name" DataType="String" NodeId="ns=1;i=7" ParentNodeId="ns=1;i=6">
+    <DisplayName>Name</DisplayName>
+    <Description>Name</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:String>RührwerkName</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Location" DataType="String" NodeId="ns=1;i=8" ParentNodeId="ns=1;i=6">
+    <DisplayName>Location</DisplayName>
+    <Description>Location</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:String>RührwerkLocation</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Speed" DataType="Float" NodeId="ns=1;i=9" ParentNodeId="ns=1;i=6">
+    <DisplayName>Speed</DisplayName>
+    <Description>Speed</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAObjectType BrowseName="1:ValveObjectType" NodeId="ns=1;i=10">
+    <DisplayName>ValveObjectType</DisplayName>
+    <Description>ValveObjectType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=11</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=12</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=13</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable BrowseName="1:Name" DataType="String" NodeId="ns=1;i=11" ParentNodeId="ns=1;i=10">
+    <DisplayName>Name</DisplayName>
+    <Description>Name</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:String>VentilName</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Type" DataType="String" NodeId="ns=1;i=12" ParentNodeId="ns=1;i=10">
+    <DisplayName>Type</DisplayName>
+    <Description>Type</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:String>VentilTyp</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:State" DataType="Int16" NodeId="ns=1;i=13" ParentNodeId="ns=1;i=10">
+    <DisplayName>State</DisplayName>
+    <Description>State</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+</UANodeSet>
