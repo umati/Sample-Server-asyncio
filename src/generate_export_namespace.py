@@ -20,6 +20,7 @@ async def main():
     '''
     vessel_object_type = await base_object_type.add_object_type(ns_idx, "VesselObjectType")
 
+    #mandatory:
     vessel_name = await vessel_object_type.add_variable(ns_idx, "Name", "BehälterName", ua.VariantType.String)
     await vessel_name.set_writable(False) # True = writable
     await vessel_name.set_modelling_rule(True) # True = mandatory
@@ -36,11 +37,16 @@ async def main():
     await vessel_level.set_writable(False) # True = writable
     await vessel_level.set_modelling_rule(True) # True = mandatory
 
+    #optional:
+    # ... WIP!
+    
+    
     '''
     Rührwerk:
     '''
     agitator_object_type = await base_object_type.add_object_type(ns_idx, "AgitatorObjectType")
 
+    #mandatory:
     agitator_name = await agitator_object_type.add_variable(ns_idx, "Name", "RührwerkName", ua.VariantType.String)
     await agitator_name.set_writable(False) # True = writable
     await agitator_name.set_modelling_rule(True) # True = mandatory
@@ -53,11 +59,16 @@ async def main():
     await agitator_speed.set_writable(False) # True = writable
     await agitator_speed.set_modelling_rule(True) # True = mandatory
 
+    
+    #optional:
+    # ... WIP!
+    
     '''
     Ventil:
     '''
     valve_object_type = await base_object_type.add_object_type(ns_idx, "ValveObjectType")
 
+    #mandatory:
     valve_name = await valve_object_type.add_variable(ns_idx, "Name", "VentilName", ua.VariantType.String)
     await valve_name.set_writable(False) # True = writable
     await valve_name.set_modelling_rule(True) # True = mandatory
@@ -70,6 +81,8 @@ async def main():
     await valve_state.set_writable(False) # True = writable
     await valve_state.set_modelling_rule(True) # True = mandatory
 
+    #optional:
+    valve_hub = await valve_object_type.add_variable(ns_idx, "Hub", 0.0, ua.VariantType.Float)
 
     # Export Namespace as xml
     try:

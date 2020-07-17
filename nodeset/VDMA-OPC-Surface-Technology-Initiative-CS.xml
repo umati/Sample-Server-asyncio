@@ -125,6 +125,7 @@
       <Reference ReferenceType="HasComponent">ns=1;i=11</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=12</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=13</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=14</Reference>
     </References>
   </UAObjectType>
   <UAVariable BrowseName="1:Name" DataType="String" NodeId="ns=1;i=11" ParentNodeId="ns=1;i=10">
@@ -161,6 +162,17 @@
     </References>
     <Value>
       <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Hub" DataType="Float" NodeId="ns=1;i=14" ParentNodeId="ns=1;i=10">
+    <DisplayName>Hub</DisplayName>
+    <Description>Hub</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
     </Value>
   </UAVariable>
 </UANodeSet>
