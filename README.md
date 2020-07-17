@@ -7,8 +7,9 @@ Anlagenschema "Materialbereitstellung":
 Use Case 1:  
 Qualitätssicherung/Rückverfolgbarkeit  
 -Bereitstellung der Rohdaten aller qualitätsrelevanten Parameter mit Zeitstempel an übergeordnetes System 
-
-
+  
+  
+  
 Endpoint-Url: opc.tcp://127.0.0.1:4840  
 src <- python quellcode  
 dst <- server.exe (generiert aus dem quellcode)  

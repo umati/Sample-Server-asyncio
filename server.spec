@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['src\\server.py'],
-             pathex=['C:\\Users\\HeineAn\\Desktop\\Prototype1'],
+             pathex=['P:\\Andreas Heine\\Dev\\VDMA OPC Surface Technology Initiative\\Prototype1'],
              binaries=[],
              datas=[],
              hiddenimports=[],
