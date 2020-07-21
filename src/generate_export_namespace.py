@@ -1,5 +1,6 @@
 # Imports
 from asyncua import ua, uamethod, Server
+from asyncua.common.instantiate_util import instantiate
 import os, asyncio, datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,27 +46,32 @@ async def main():
     await vessel_state_poweronhours.set_modelling_rule(True) # Mandatory ?
 
     '''
-    Behälter Prozessdaten
+    Parameter (Soll/Ist)
     '''
-    vessel_processdata_object_type = await base_object_type.add_object_type(ns_idx, "VesselProcessDataObjectType")
+    vessel_parameter_object_type = await base_object_type.add_object_type(ns_idx, "VesselParameterObjectType")
 
-    vessel_processdata_speed = await vessel_processdata_object_type.add_variable(ns_idx, "Speed", 0.0, ua.VariantType.Float) # Datentyp?
-    await vessel_processdata_speed.set_modelling_rule(True) # Mandatory ?
+    vessel_parameter_setpoint = await vessel_parameter_object_type.add_variable(ns_idx, "Sollwert", 0, ua.VariantType.Float)
+    await vessel_parameter_setpoint.set_modelling_rule(True) # Mandatory ?
 
-    '''
-    Behälter:
-    '''
-    vessel_object_type = await base_object_type.add_object_type(ns_idx, "VesselObjectType")
+    vessel_parameter_act_val = await vessel_parameter_object_type.add_variable(ns_idx, "Istwert", 0, ua.VariantType.Float)
+    await vessel_parameter_act_val.set_modelling_rule(True) # Mandatory ?
 
-    #meta
-    vessel_object_meta = await vessel_object_type.add_object(ns_idx, "Metadaten", objecttype=vessel_meta_object_type) # <--------------------- wird nicht richtig instanziert!
-    await vessel_object_meta.set_modelling_rule(True)
-    #state
-    vessel_object_state = await vessel_object_type.add_object(ns_idx, "State", objecttype=vessel_state_object_type) # <--------------------- wird nicht richtig instanziert!
-    await vessel_object_state.set_modelling_rule(True)
-    #prozessdaten
-    vessel_object_processdata = await vessel_object_type.add_object(ns_idx, "Prozessdaten", objecttype=vessel_processdata_object_type) # <--------------------- wird nicht richtig instanziert!
-    await vessel_object_processdata.set_modelling_rule(True)
+
+    # '''
+    # Behälter:
+    # '''
+    # vessel_object_type = await base_object_type.add_object_type(ns_idx, "VesselObjectType")
+
+    # #meta
+    # # await instantiate(vessel_object_type, vessel_meta_object_type, idx=ns_idx ,instantiate_optional=True)
+    # vessel_object_meta = await vessel_object_type.add_object(ns_idx, "Metadaten", objecttype=vessel_meta_object_type) # <--------------------- wird nicht richtig instanziert!
+    # await vessel_object_meta.set_modelling_rule(True)
+    # #state
+    # vessel_object_state = await vessel_object_type.add_object(ns_idx, "State", objecttype=vessel_state_object_type) # <--------------------- wird nicht richtig instanziert!
+    # await vessel_object_state.set_modelling_rule(True)
+    # #prozessdaten
+    # vessel_object_processdata = await vessel_object_type.add_object(ns_idx, "Prozessdaten", objecttype=vessel_processdata_object_type) # <--------------------- wird nicht richtig instanziert!
+    # await vessel_object_processdata.set_modelling_rule(True)
 
     # '''
     # Behälter:
