@@ -15,7 +15,7 @@ async def main():
     # Serversetup
     server = Server()
     await server.init()
-    server.set_endpoint("opc.tcp://127.0.0.1:4840")
+    server.set_endpoint("opc.tcp://0.0.0.0:4840")
     idx = await server.register_namespace(NAMESPACE)
 
     # Import nodes.xml
@@ -31,10 +31,23 @@ async def main():
     objects = server.get_objects_node()
     idx_cs = await server.get_namespace_index(NAMESPACE_CS)
 
+    base_object_type = server.get_node("ns=0;i=58")
+    vessel_object_type = await base_object_type.get_child([f"{idx_cs}:VesselObjectType"])
+    valve_object_type = await base_object_type.get_child([f"{idx_cs}:ValveObjectType"])
+
+    await objects.add_object(idx, "Test_Behälter_1", objecttype=vessel_object_type)
+    await objects.add_object(idx, "Test_Ventil_1", objecttype=valve_object_type)
+
     '''
     Beispiel 1:
     '''
-    await objects.add_object(idx, "Behälter_1", f"ns={idx_cs};i=1")
+    example1 = await objects.add_object(idx, "Dürr Farbmischraum", objecttype=ua.ObjectIds.BaseObjectType)
+    example1_ansatzbehälter = await example1.add_object(idx, "FG01_Ansatzbehälter", objecttype=vessel_object_type)
+    auslassventil = await example1.add_object(idx, "FG01_Auslassventil", objecttype=valve_object_type)
+
+    example1_versorgungsbehälter = await example1.add_object(idx, "FG02_Versorgungsbehälter", objecttype=vessel_object_type)
+    einlassventil = await example1.add_object(idx, "FG02_Einlassventil", objecttype=valve_object_type)
+    auslassventil = await example1.add_object(idx, "FG02_Auslassventil", objecttype=valve_object_type)
 
     async with server:
         while 1:
