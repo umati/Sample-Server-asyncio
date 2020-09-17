@@ -213,6 +213,32 @@ async def main():
     valve_process_object = await valve_object_type.add_object(ns_idx, "ProcessData")
     await valve_process_object.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)
 
+    valve_process_opening_degree = await valve_process_object.add_object(ns_idx, "OpeningDegree")
+    await valve_process_opening_degree.set_modelling_rule(True) # Mandatory ?
+
+    valve_process_opening_degree_max = await valve_process_opening_degree.add_object(ns_idx, "OpeningDegreeMax") # wenn in machinery -> monitored parameter type!
+    await valve_process_opening_degree_max.set_modelling_rule(True) # Mandatory ?
+    valve_process_opening_degree_max_setpoint = await valve_process_opening_degree_max.add_variable(ns_idx, "SetpointValue", 0, ua.VariantType.Float) # Datentyp? A.Heine: Laut Parameterliste ...?
+    await valve_process_opening_degree_max_setpoint.set_modelling_rule(True) # Mandatory ?
+    await valve_process_opening_degree_max_setpoint.set_writable(True)
+    valve_process_opening_degree_max_act_val = await valve_process_opening_degree_max.add_variable(ns_idx, "ActualValue", 0, ua.VariantType.Float) # Datentyp? A.Heine: Laut Parameterliste ...?
+    await valve_process_opening_degree_max_act_val.set_modelling_rule(True) # Mandatory ?
+    await valve_process_opening_degree_max_act_val.set_writable(False)
+
+    valve_process_opening_degree_min = await valve_process_opening_degree.add_object(ns_idx, "OpeningDegreeMin") # wenn in machinery -> monitored parameter type!
+    await valve_process_opening_degree_min.set_modelling_rule(True) # Mandatory ?
+    valve_process_opening_degree_min_setpoint = await valve_process_opening_degree_min.add_variable(ns_idx, "SetpointValue", 0, ua.VariantType.Float) # Datentyp? A.Heine: Laut Parameterliste ...?
+    await valve_process_opening_degree_min_setpoint.set_modelling_rule(True) # Mandatory ?
+    await valve_process_opening_degree_min_setpoint.set_writable(True)
+    valve_process_opening_degree_min_act_val = await valve_process_opening_degree_min.add_variable(ns_idx, "ActualValue", 0, ua.VariantType.Float) # Datentyp? A.Heine: Laut Parameterliste ...?
+    await valve_process_opening_degree_min_act_val.set_modelling_rule(True) # Mandatory ?
+    await valve_process_opening_degree_min_act_val.set_writable(False)
+
+    valve_process_cylcles = await valve_process_object.add_variable(ns_idx, "Cycles", 0, ua.VariantType.Int64) # A.Heine was für ein Int ? 16, 32, 64 und warum nicht UInt ?
+    await valve_process_cylcles.set_modelling_rule(True) # Mandatory 
+
+    valve_process_open_time = await valve_process_object.add_variable(ns_idx, "OpenTime", 0, ua.VariantType.Float)
+    await valve_process_open_time.set_modelling_rule(True) # Mandatory 
 
 
 

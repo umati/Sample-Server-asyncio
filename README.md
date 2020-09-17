@@ -8,28 +8,27 @@ Use Case 1:
 Qualitätssicherung/Rückverfolgbarkeit  
 -Bereitstellung der Rohdaten aller qualitätsrelevanten Parameter mit Zeitstempel an übergeordnetes System 
   
-
 ### TO DO:  
 -Ergänzung fehlender Elemente der Objekthierarchie  
 -Abgleich DatenTypen mit Parameterliste  
 -Abgleich Modeling-Rule Mandatory/Optional  
 -Abgleich UserAccsess Read/Write  
--Definition der States: Id+Text (z.B. 0 NotDefined, 1 Run, 2 Error ...)  
--Anlegen der "State's" als Enumeration (DataTypes -> BaseDataType -> Enumeration)  
+-Definition der States  
+-Anlegen der "State's" als Statemaschine-Type  
+   
+### Endpoint-Url: 
+> opc.tcp://127.0.0.1:4840  
+
+### Ordner:   
+> src <- python quellcode  
+> dst <- server.exe (generiert aus dem quellcode)  
+> nodeset <- generiertes nodeset  
   
-  
-  
-  
-Endpoint-Url: opc.tcp://127.0.0.1:4840  
-src <- python quellcode  
-dst <- server.exe (generiert aus dem quellcode)  
-  
-Generierung der server.exe mit pyinstaller:  
+### Generierung der server.exe mit pyinstaller:  
 > pyinstaller --onefile src/server.py  
   
+### Docker: 
+> docker build . -t opcuaserver  
+> docker run -d -p 4840:4840 opcuaserver  
 
-
-Run in a Docker-Container  
-1. "docker build . -t opcuaserver"  
-2. "docker run -p 4840:4840 opcuaserver"  
-3. EndpointURL: "opc.tcp://localhost:4840"  
+EndpointURL: "opc.tcp://localhost:4840" or "opc.tcp://{hostip}:4840"
