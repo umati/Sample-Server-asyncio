@@ -654,6 +654,114 @@
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=29</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=55</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=62</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=63</Reference>
     </References>
   </UAObject>
+  <UAObject BrowseName="1:OpeningDegree" NodeId="ns=1;i=55" ParentNodeId="ns=1;i=54">
+    <DisplayName>OpeningDegree</DisplayName>
+    <Description>OpeningDegree</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=54</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=56</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=59</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:OpeningDegreeMax" NodeId="ns=1;i=56" ParentNodeId="ns=1;i=55">
+    <DisplayName>OpeningDegreeMax</DisplayName>
+    <Description>OpeningDegreeMax</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=55</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=57</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=58</Reference>
+    </References>
+  </UAObject>
+  <UAVariable AccessLevel="3" BrowseName="1:SetpointValue" DataType="Float" NodeId="ns=1;i=57" ParentNodeId="ns=1;i=56" UserAccessLevel="3">
+    <DisplayName>SetpointValue</DisplayName>
+    <Description>SetpointValue</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=56</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:ActualValue" DataType="Float" NodeId="ns=1;i=58" ParentNodeId="ns=1;i=56">
+    <DisplayName>ActualValue</DisplayName>
+    <Description>ActualValue</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=56</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:OpeningDegreeMin" NodeId="ns=1;i=59" ParentNodeId="ns=1;i=55">
+    <DisplayName>OpeningDegreeMin</DisplayName>
+    <Description>OpeningDegreeMin</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=55</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=60</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=61</Reference>
+    </References>
+  </UAObject>
+  <UAVariable AccessLevel="3" BrowseName="1:SetpointValue" DataType="Float" NodeId="ns=1;i=60" ParentNodeId="ns=1;i=59" UserAccessLevel="3">
+    <DisplayName>SetpointValue</DisplayName>
+    <Description>SetpointValue</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=59</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:ActualValue" DataType="Float" NodeId="ns=1;i=61" ParentNodeId="ns=1;i=59">
+    <DisplayName>ActualValue</DisplayName>
+    <Description>ActualValue</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=59</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Cycles" DataType="Int64" NodeId="ns=1;i=62" ParentNodeId="ns=1;i=54">
+    <DisplayName>Cycles</DisplayName>
+    <Description>Cycles</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=54</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Int64>0</uax:Int64>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:OpenTime" DataType="Float" NodeId="ns=1;i=63" ParentNodeId="ns=1;i=54">
+    <DisplayName>OpenTime</DisplayName>
+    <Description>OpenTime</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=54</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
 </UANodeSet>
