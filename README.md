@@ -26,3 +26,10 @@ dst <- server.exe (generiert aus dem quellcode)
   
 Generierung der server.exe mit pyinstaller:  
 > pyinstaller --onefile src/server.py  
+  
+
+
+Run in a Docker-Container  
+1. "docker build . -t opcuaserver"  
+2. "docker run -p 4840:4840 opcuaserver"  
+3. EndpointURL: "opc.tcp://localhost:4840"  
