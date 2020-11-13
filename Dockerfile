@@ -1,6 +1,6 @@
 FROM python:3.8
 
-RUN pip install asyncua==0.8.4
+RUN pip install asyncua
 WORKDIR /opcua
 COPY . /
 

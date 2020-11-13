@@ -19,15 +19,15 @@
     <Alias Alias="Range">i=884</Alias>
     <Alias Alias="EUInformation">i=887</Alias>
   </Aliases>
-  <UAVariableType BrowseName="1:SurfaceTechnologieParameterType" DataType="Float" NodeId="ns=1;i=1" ValueRank="0">
+  <UAObjectType BrowseName="1:SurfaceTechnologieParameterType" NodeId="ns=1;i=1">
     <DisplayName>SurfaceTechnologieParameterType</DisplayName>
     <Description>SurfaceTechnologieParameterType</Description>
     <References>
-      <Reference IsForward="false" ReferenceType="HasSubtype">i=63</Reference>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=2</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=8</Reference>
     </References>
-  </UAVariableType>
+  </UAObjectType>
   <UAVariable BrowseName="1:ActualValue" DataType="Number" NodeId="ns=1;i=2" ParentNodeId="ns=1;i=1" ValueRank="-2">
     <DisplayName>ActualValue</DisplayName>
     <References>
@@ -38,6 +38,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=5</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=6</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=7</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAVariable>
   <UAVariable BrowseName="0:EURange" DataType="Range" NodeId="ns=1;i=3" ParentNodeId="ns=1;i=2">
@@ -85,6 +86,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=11</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=12</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=13</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAVariable>
   <UAVariable BrowseName="0:EURange" DataType="Range" NodeId="ns=1;i=9" ParentNodeId="ns=1;i=8">
@@ -875,4 +877,97 @@
       <uax:Float>0</uax:Float>
     </Value>
   </UAVariable>
+  <UAObjectType BrowseName="1:PumpObjectType" NodeId="ns=1;i=78">
+    <DisplayName>PumpObjectType</DisplayName>
+    <Description>PumpObjectType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=79</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=80</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=81</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject BrowseName="1:Meta" NodeId="ns=1;i=79" ParentNodeId="ns=1;i=78">
+    <DisplayName>Meta</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=78</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:State" NodeId="ns=1;i=80" ParentNodeId="ns=1;i=78">
+    <DisplayName>State</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=78</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:ProcessData" NodeId="ns=1;i=81" ParentNodeId="ns=1;i=78">
+    <DisplayName>ProcessData</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=78</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObjectType BrowseName="1:MaterialObjectType" NodeId="ns=1;i=82">
+    <DisplayName>MaterialObjectType</DisplayName>
+    <Description>MaterialObjectType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=83</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=84</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=85</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject BrowseName="1:Meta" NodeId="ns=1;i=83" ParentNodeId="ns=1;i=82">
+    <DisplayName>Meta</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=82</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:State" NodeId="ns=1;i=84" ParentNodeId="ns=1;i=82">
+    <DisplayName>State</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=82</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:ProcessData" NodeId="ns=1;i=85" ParentNodeId="ns=1;i=82">
+    <DisplayName>ProcessData</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=82</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObjectType BrowseName="1:PipeObjectType" NodeId="ns=1;i=86">
+    <DisplayName>PipeObjectType</DisplayName>
+    <Description>PipeObjectType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=87</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=88</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=89</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject BrowseName="1:Meta" NodeId="ns=1;i=87" ParentNodeId="ns=1;i=86">
+    <DisplayName>Meta</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=86</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:State" NodeId="ns=1;i=88" ParentNodeId="ns=1;i=86">
+    <DisplayName>State</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=86</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:ProcessData" NodeId="ns=1;i=89" ParentNodeId="ns=1;i=86">
+    <DisplayName>ProcessData</DisplayName>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=86</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
 </UANodeSet>
