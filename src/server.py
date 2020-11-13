@@ -16,8 +16,19 @@ NAMESPACE = "http://vdma-opc-st-initiative-cs/ua/Prototyp1"
 async def main():
     # Serversetup
     server = Server()
+    server.name = "VDMA-OPC-ST-Prototype"
     await server.init()
+    await server.set_build_info(
+        product_uri="https://github.com/orgs/VDMA-OPC-Surface-Technology-Initiative",
+        product_name="VDMA-OPC-ST-Prototype",
+        manufacturer_name="VDMA-OPC-Surface-Technology-Initiative",
+        software_version="beta",
+        build_number="---",
+        build_date="---",
+    )
+
     server.set_endpoint("opc.tcp://0.0.0.0:4840")
+
     idx = await server.register_namespace(NAMESPACE)
 
     # Import nodes.xml
@@ -78,12 +89,53 @@ async def main():
     Workbench
     '''
     workbench = await objects.add_folder(idx, "Workbench")
-    speed = await workbench.add_object(idx, "Speed", objecttype=ua.NodeId(2368, 0)) # AnalogItemType
+
+    # Instance of AnalogItemType
+    speed = await workbench.add_object(idx, "AnalogItemType", objecttype=ua.NodeId(2368, 0))
+
+    # writing the AnalogItemType:
     await speed.set_value(ua.Variant(50.0, varianttype=ua.VariantType.Float))
+    speed_Definition = await speed.get_child("Definition")
+    await speed_Definition.set_value(ua.Variant("AnalogMesswertXY", ua.VariantType.String))
 
-    # exclusive_deviation_alarm = await workbench.add_object(idx, "MyExclusiveDeviationAlarm", objecttype=ua.NodeId(9764, 0))
-    await instantiate(workbench, server.get_node("ns=0;i=9764"), instantiate_optional=False)
+    speed_EURange = await speed.get_child("EURange")
+    speed_range = ua.uaprotocol_auto.Range()
+    speed_range.High = 100.0
+    speed_range.Low = 0.0
+    await speed_EURange.set_value(ua.Variant(speed_range , ua.VariantType.ExtensionObject))
 
+    speed_EngineeringUnits = await speed.get_child("EngineeringUnits")
+    speed_units = ua.uaprotocol_auto.EUInformation()
+    await speed_EngineeringUnits.set_value(ua.Variant(speed_units , ua.VariantType.ExtensionObject))
+
+    speed_InstrumentRange = await speed.get_child("InstrumentRange")
+    speed_irange = ua.uaprotocol_auto.Range()
+    speed_irange.High = 100.0
+    speed_irange.Low = 0.0
+    await speed_InstrumentRange.set_value(ua.Variant(speed_irange , ua.VariantType.ExtensionObject))
+
+    speed_ValuePrecision = await speed.get_child("ValuePrecision")
+    await speed_ValuePrecision.set_value(2.0)
+
+    # Instance of SurfaceTechnologieParameterType
+    surface_technologie_parameter_type = await base_object_type.get_child([f"{st_idx}:SurfaceTechnologieParameterType"])
+    st_p_type = await workbench.add_object(idx, "SurfaceTechnologieParameterType", objecttype=surface_technologie_parameter_type)
+
+    alarm_folder = await workbench.add_folder(idx, "Alarms")
+    await instantiate(alarm_folder, server.get_node("ns=0;i=2955"), instantiate_optional=False)
+
+    await instantiate(alarm_folder, server.get_node("ns=0;i=9341"), instantiate_optional=False)
+    await instantiate(alarm_folder, server.get_node("ns=0;i=9482"), instantiate_optional=False)
+    await instantiate(alarm_folder, server.get_node("ns=0;i=9764"), instantiate_optional=False)
+
+    await instantiate(alarm_folder, server.get_node("ns=0;i=9906"), instantiate_optional=False)
+    await instantiate(alarm_folder, server.get_node("ns=0;i=10368"), instantiate_optional=False)
+    await instantiate(alarm_folder, server.get_node("ns=0;i=10060"), instantiate_optional=False)
+
+
+
+    
+    
     async with server:
         while 1:
             await asyncio.sleep(1)

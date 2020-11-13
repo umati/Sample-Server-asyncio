@@ -6,6 +6,9 @@ import os, asyncio, datetime
 from VesselObjectType import VesselObjectTypeClass
 from ValveObjectType import ValveObjectTypeClass
 from SurfaceTechnologieParameterType import SurfaceTechnologieParameterTypeClass
+from PumpObjectType import PumpObjectTypeClass
+from PipeObjectType import PipeObjectTypeClass
+from MaterialObjectType import MaterialObjectTypeClass
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAME = "VDMA-OPC-Surface-Technology-Initiative-CS"
@@ -45,10 +48,9 @@ async def main():
     # Build ObjectTypes
     await VesselObjectTypeClass(server, ns_idx).build()
     await ValveObjectTypeClass(server, ns_idx).build()
-
-
-    # !!! FIXME !!! add missing types
-
+    await PumpObjectTypeClass(server, ns_idx).build()
+    await MaterialObjectTypeClass(server, ns_idx).build()
+    await PipeObjectTypeClass(server, ns_idx).build()
 
     # Export Namespace as xml
     try:
