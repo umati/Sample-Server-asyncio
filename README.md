@@ -1,20 +1,13 @@
+![Build Docker image](https://github.com/VDMA-OPC-Surface-Technology-Initiative/Prototype1/workflows/Build%20Docker%20image/badge.svg?branch=master&event=push)  
+
 ### VDMA OPC Surface Technology Initiative
 
 Anlagenschema "Materialbereitstellung":  
 1. Step Materialversorgungsraum DÜRR  
 2. Step Materialaufbereitung & -bereitstellung WIWA  
-
-Use Case 1:  
-Qualitätssicherung/Rückverfolgbarkeit  
--Bereitstellung der Rohdaten aller qualitätsrelevanten Parameter mit Zeitstempel an übergeordnetes System 
   
 ### TO DO:  
--Ergänzung fehlender Elemente der Objekthierarchie  
--Abgleich DatenTypen mit Parameterliste  
--Abgleich Modeling-Rule Mandatory/Optional  
--Abgleich UserAccsess Read/Write  
--Definition der States  
--Anlegen der "State's" als Statemaschine-Type  
+https://github.com/VDMA-OPC-Surface-Technology-Initiative/Prototype1/projects/1
    
 ### Endpoint-Url: 
 > opc.tcp://127.0.0.1:4840  
