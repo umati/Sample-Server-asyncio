@@ -6,4 +6,4 @@ COPY . /
 
 EXPOSE 4840
 
-CMD python /src/server.py
+ENTRYPOINT ["python", "/src/server.py"]
