@@ -1,7 +1,9 @@
 # Imports
-import os, asyncio, logging
+import os, asyncio, logging, time
 from asyncua import Server, ua, uamethod
 from asyncua.common.instantiate_util import instantiate
+
+from examples import DemoBeschichtungsanlage
 
 logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger('asyncua')
@@ -38,14 +40,18 @@ async def main():
         print(e)
 
     di_idx = await server.get_namespace_index("http://opcfoundation.org/UA/DI/")
+    print(await server.get_namespace_array())
 
     # Import nodes.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset","Opc.Ua.Machinery.NodeSet2.xml"))
+        # await server.import_xml(os.path.join(BASE_DIR, "nodeset","Opc.Ua.Machinery.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "unofficial","machinery.xml"))
     except Exception as e:
         print(e)
 
     ma_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Machinery/")
+    
+    print(await server.get_namespace_array())
 
     # Import nodes.xml
     try:
@@ -59,86 +65,69 @@ async def main():
 
     objects = server.get_objects_node()
     deviceset = await objects.get_child([f"{di_idx}:DeviceSet"])
-
     base_object_type = server.get_node("ns=0;i=58")
     vessel_object_type = await base_object_type.get_child([f"{st_idx}:VesselObjectType"])
     valve_object_type = await base_object_type.get_child([f"{st_idx}:ValveObjectType"])
-
     machines_folder = await objects.get_child([f"{ma_idx}:Machines"])
-    base_interface_type = server.get_node("ns=0;i=17602")
-    vendor_nameplate_type = await base_interface_type.get_child([f"{di_idx}:IVendorNameplateType"])
 
     '''
     Beispiel 1:
     '''
-    example1 = await deviceset.add_object(idx, "Dürr Farbmischraum", objecttype=ua.ObjectIds.BaseObjectType) # WIP: device_type
+    await DemoBeschichtungsanlage(server, idx).install()
 
-    example1_fg01  = await example1.add_folder(idx, "FG01")
-    example1_ansatzbehälter = await example1_fg01.add_object(idx, "FG01_Ansatzbehälter", objecttype=vessel_object_type)
-    auslassventil = await example1_fg01.add_object(idx, "FG01_Auslassventil", objecttype=valve_object_type)
+    # '''
+    # Workbench
+    # '''
+    # workbench = await objects.add_folder(idx, "Workbench")
 
-    await machines_folder.add_reference(example1, ua.ObjectIds.Organizes)
+    # # Instance of AnalogItemType
+    # speed = await workbench.add_object(idx, "AnalogItemType", objecttype=ua.NodeId(2368, 0))
 
-    example1_fg02  = await example1.add_folder(idx, "FG02")
-    example1_versorgungsbehälter = await example1_fg02.add_object(idx, "FG02_Versorgungsbehälter", objecttype=vessel_object_type)
-    einlassventil = await example1_fg02.add_object(idx, "FG02_Einlassventil", objecttype=valve_object_type)
-    auslassventil = await example1_fg02.add_object(idx, "FG02_Auslassventil", objecttype=valve_object_type)
+    # # writing the AnalogItemType:
+    # await speed.set_value(ua.Variant(50.0, varianttype=ua.VariantType.Float))
+    # speed_Definition = await speed.get_child("Definition")
+    # await speed_Definition.set_value(ua.Variant("AnalogMesswertXY", ua.VariantType.String))
 
+    # speed_EURange = await speed.get_child("EURange")
+    # speed_range = ua.uaprotocol_auto.Range()
+    # speed_range.High = 100.0
+    # speed_range.Low = 0.0
+    # await speed_EURange.set_value(ua.Variant(speed_range , ua.VariantType.ExtensionObject))
 
-    '''
-    Workbench
-    '''
-    workbench = await objects.add_folder(idx, "Workbench")
+    # speed_EngineeringUnits = await speed.get_child("EngineeringUnits")
+    # speed_units = ua.uaprotocol_auto.EUInformation()
+    # await speed_EngineeringUnits.set_value(ua.Variant(speed_units , ua.VariantType.ExtensionObject))
 
-    # Instance of AnalogItemType
-    speed = await workbench.add_object(idx, "AnalogItemType", objecttype=ua.NodeId(2368, 0))
+    # speed_InstrumentRange = await speed.get_child("InstrumentRange")
+    # speed_irange = ua.uaprotocol_auto.Range()
+    # speed_irange.High = 100.0
+    # speed_irange.Low = 0.0
+    # await speed_InstrumentRange.set_value(ua.Variant(speed_irange , ua.VariantType.ExtensionObject))
 
-    # writing the AnalogItemType:
-    await speed.set_value(ua.Variant(50.0, varianttype=ua.VariantType.Float))
-    speed_Definition = await speed.get_child("Definition")
-    await speed_Definition.set_value(ua.Variant("AnalogMesswertXY", ua.VariantType.String))
+    # speed_ValuePrecision = await speed.get_child("ValuePrecision")
+    # await speed_ValuePrecision.set_value(2.0)
 
-    speed_EURange = await speed.get_child("EURange")
-    speed_range = ua.uaprotocol_auto.Range()
-    speed_range.High = 100.0
-    speed_range.Low = 0.0
-    await speed_EURange.set_value(ua.Variant(speed_range , ua.VariantType.ExtensionObject))
-
-    speed_EngineeringUnits = await speed.get_child("EngineeringUnits")
-    speed_units = ua.uaprotocol_auto.EUInformation()
-    await speed_EngineeringUnits.set_value(ua.Variant(speed_units , ua.VariantType.ExtensionObject))
-
-    speed_InstrumentRange = await speed.get_child("InstrumentRange")
-    speed_irange = ua.uaprotocol_auto.Range()
-    speed_irange.High = 100.0
-    speed_irange.Low = 0.0
-    await speed_InstrumentRange.set_value(ua.Variant(speed_irange , ua.VariantType.ExtensionObject))
-
-    speed_ValuePrecision = await speed.get_child("ValuePrecision")
-    await speed_ValuePrecision.set_value(2.0)
-
-    # Instance of SurfaceTechnologieParameterType
-    surface_technologie_parameter_type = await base_object_type.get_child([f"{st_idx}:SurfaceTechnologieParameterType"])
-    st_p_type = await workbench.add_object(idx, "SurfaceTechnologieParameterType", objecttype=surface_technologie_parameter_type)
-
-    alarm_folder = await workbench.add_folder(idx, "Alarms")
-    await instantiate(alarm_folder, server.get_node("ns=0;i=2955"), instantiate_optional=False)
-
-    await instantiate(alarm_folder, server.get_node("ns=0;i=9341"), instantiate_optional=False)
-    await instantiate(alarm_folder, server.get_node("ns=0;i=9482"), instantiate_optional=False)
-    await instantiate(alarm_folder, server.get_node("ns=0;i=9764"), instantiate_optional=False)
-
-    await instantiate(alarm_folder, server.get_node("ns=0;i=9906"), instantiate_optional=False)
-    await instantiate(alarm_folder, server.get_node("ns=0;i=10368"), instantiate_optional=False)
-    await instantiate(alarm_folder, server.get_node("ns=0;i=10060"), instantiate_optional=False)
+    # # Instance of SurfaceTechnologieParameterType
+    # surface_technologie_parameter_type = await base_object_type.get_child([f"{st_idx}:SurfaceTechnologieParameterType"])
+    # st_p_type = await workbench.add_object(idx, "SurfaceTechnologieParameterType", objecttype=surface_technologie_parameter_type, instantiate_optional=True)
+    # # st_p_type_alarm = await instantiate(st_p_type, server.get_node("ns=0;i=9764"), instantiate_optional=False)
 
 
+    # alarm_folder = await workbench.add_folder(idx, "Alarms")
+    # await instantiate(alarm_folder, server.get_node("ns=0;i=2955"), instantiate_optional=False)
 
-    
-    
+    # await instantiate(alarm_folder, server.get_node("ns=0;i=9341"), instantiate_optional=False)
+    # await instantiate(alarm_folder, server.get_node("ns=0;i=9482"), instantiate_optional=False)
+    # await instantiate(alarm_folder, server.get_node("ns=0;i=9764"), instantiate_optional=False)
+
+    # await instantiate(alarm_folder, server.get_node("ns=0;i=9906"), instantiate_optional=False)
+    # await instantiate(alarm_folder, server.get_node("ns=0;i=10368"), instantiate_optional=False)
+    # await instantiate(alarm_folder, server.get_node("ns=0;i=10060"), instantiate_optional=False)
+
     async with server:
         while 1:
             await asyncio.sleep(1)
+
 
 # Start Server
 if __name__ == "__main__":

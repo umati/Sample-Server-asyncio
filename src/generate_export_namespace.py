@@ -3,12 +3,12 @@ from asyncua import ua, uamethod, Server
 from asyncua.common.instantiate_util import instantiate
 import os, asyncio, datetime
 
-from VesselObjectType import VesselObjectTypeClass
-from ValveObjectType import ValveObjectTypeClass
-from SurfaceTechnologieParameterType import SurfaceTechnologieParameterTypeClass
-from PumpObjectType import PumpObjectTypeClass
-from PipeObjectType import PipeObjectTypeClass
-from MaterialObjectType import MaterialObjectTypeClass
+from models.VesselObjectType import VesselObjectTypeClass
+from models.ValveObjectType import ValveObjectTypeClass
+from models.SurfaceTechnologieParameterType import SurfaceTechnologieParameterTypeClass
+from models.PumpObjectType import PumpObjectTypeClass
+from models.PipeObjectType import PipeObjectTypeClass
+from models.MaterialObjectType import MaterialObjectTypeClass
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAME = "VDMA-OPC-Surface-Technology-Initiative-CS"
@@ -31,7 +31,8 @@ async def main():
 
     # Import nodes.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset","Opc.Ua.Machinery.NodeSet2.xml"))
+        # await server.import_xml(os.path.join(BASE_DIR, "nodeset","Opc.Ua.Machinery.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "unofficial","machinery.xml"))
     except Exception as e:
         print(e)
 
