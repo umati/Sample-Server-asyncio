@@ -1,5 +1,5 @@
 # Imports
-import os, asyncio, logging, time
+import os, asyncio, logging, time, datetime
 from asyncua import Server, ua, uamethod
 from asyncua.common.instantiate_util import instantiate
 
@@ -26,7 +26,7 @@ async def main():
         manufacturer_name="VDMA-OPC-Surface-Technology-Initiative",
         software_version="beta",
         build_number="---",
-        build_date="---",
+        build_date=datetime.datetime.utcnow(),
     )
 
     server.set_endpoint("opc.tcp://0.0.0.0:4840")
