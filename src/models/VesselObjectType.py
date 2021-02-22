@@ -83,19 +83,19 @@ class VesselObjectTypeClass(object):
 
         vessel_process_level_volume = await vessel_process_level.add_object(self.namespace, "Volume")
         await vessel_process_level_volume.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)
-        vessel_process_level_volume_measured = await vessel_process_level_volume.add_variable(self.namespace, "Measured", 0, ua.VariantType.Float) # Datentyp?
+        vessel_process_level_volume_measured = await vessel_process_level_volume.add_variable(self.namespace, "Measured", 0.0, ua.VariantType.Float) # Datentyp?
         await vessel_process_level_volume_measured.set_modelling_rule(False)
         await vessel_process_level_volume_measured.set_writable(False) # Write ? A.Heine: Laut Parameterliste ...?
-        vessel_process_level_volume_calculated = await vessel_process_level_volume.add_variable(self.namespace, "Calculated", 0, ua.VariantType.Float) # Datentyp?
+        vessel_process_level_volume_calculated = await vessel_process_level_volume.add_variable(self.namespace, "Calculated", 0.0, ua.VariantType.Float) # Datentyp?
         await vessel_process_level_volume_calculated.set_modelling_rule(True)
         await vessel_process_level_volume_calculated.set_writable(False) # Write ? A.Heine: Laut Parameterliste ...?
 
         vessel_process_level_weight = await vessel_process_level.add_object(self.namespace, "Weight")
         await vessel_process_level_weight.add_reference(ua.ObjectIds.ModellingRule_Optional, ua.ObjectIds.HasModellingRule, True, False)
-        vessel_process_level_weight_measured = await vessel_process_level_weight.add_variable(self.namespace, "Measured", 0, ua.VariantType.Float) # Datentyp?
+        vessel_process_level_weight_measured = await vessel_process_level_weight.add_variable(self.namespace, "Measured", 0.0, ua.VariantType.Float) # Datentyp?
         await vessel_process_level_weight_measured.set_modelling_rule(False)
         await vessel_process_level_weight_measured.set_writable(False) # Write ? A.Heine: Laut Parameterliste ...?
-        vessel_process_level_weight_calculated = await vessel_process_level_weight.add_variable(self.namespace, "Calculated", 0, ua.VariantType.Float) # Datentyp?
+        vessel_process_level_weight_calculated = await vessel_process_level_weight.add_variable(self.namespace, "Calculated", 0.0, ua.VariantType.Float) # Datentyp?
         await vessel_process_level_weight_calculated.set_modelling_rule(False)
         await vessel_process_level_weight_calculated.set_writable(False) # Write ? A.Heine: Laut Parameterliste ...?
 

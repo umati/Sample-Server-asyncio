@@ -50,7 +50,7 @@ class ValveObjectTypeClass(object):
         await valve_meta_range_rotat.set_modelling_rule(False)
         await valve_meta_range_rotat.set_writable(False)
 
-        valve_meta_cycles = await valve_meta_object.add_property(self.namespace, "Cycles", "", ua.VariantType.UInt64)
+        valve_meta_cycles = await valve_meta_object.add_property(self.namespace, "Cycles", 0, ua.VariantType.UInt64)
         await valve_meta_cycles.set_modelling_rule(False)
         await valve_meta_cycles.set_writable(False)
 
@@ -64,7 +64,7 @@ class ValveObjectTypeClass(object):
         # await valve_meta_switch_open_time_max.set_modelling_rule(True) # Mandatory ?
         # await valve_meta_switch_open_time_max.set_writable(False)
 
-        valve_meta_max_pressure = await valve_meta_object.add_property(self.namespace, "MaxPressure", "", ua.VariantType.Float)
+        valve_meta_max_pressure = await valve_meta_object.add_property(self.namespace, "MaxPressure", 0.0, ua.VariantType.Float)
         await valve_meta_max_pressure.set_modelling_rule(False)
         await valve_meta_max_pressure.set_writable(True)
 
@@ -82,7 +82,7 @@ class ValveObjectTypeClass(object):
         await valve_meta_control_type.set_modelling_rule(False)
         await valve_meta_control_type.set_writable(True)
 
-        valve_meta_flwo_rate = await valve_meta_object.add_property(self.namespace, "MaxFlowRate", "", ua.VariantType.Float)
+        valve_meta_flwo_rate = await valve_meta_object.add_property(self.namespace, "MaxFlowRate", 0.0, ua.VariantType.Float)
         await valve_meta_flwo_rate.set_modelling_rule(False)
         await valve_meta_flwo_rate.set_writable(True)
 

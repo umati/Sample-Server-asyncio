@@ -510,7 +510,7 @@
       <Reference ReferenceType="HasModellingRule">i=80</Reference>
     </References>
     <Value>
-      <uax:Float>0</uax:Float>
+      <uax:Float>0.0</uax:Float>
     </Value>
   </UAVariable>
   <UAVariable BrowseName="1:Calculated" DataType="Float" NodeId="ns=1;i=54" ParentNodeId="ns=1;i=52">
@@ -522,7 +522,7 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
     <Value>
-      <uax:Float>0</uax:Float>
+      <uax:Float>0.0</uax:Float>
     </Value>
   </UAVariable>
   <UAObject BrowseName="1:Weight" NodeId="ns=1;i=55" ParentNodeId="ns=1;i=51">
@@ -545,7 +545,7 @@
       <Reference ReferenceType="HasModellingRule">i=80</Reference>
     </References>
     <Value>
-      <uax:Float>0</uax:Float>
+      <uax:Float>0.0</uax:Float>
     </Value>
   </UAVariable>
   <UAVariable BrowseName="1:Calculated" DataType="Float" NodeId="ns=1;i=57" ParentNodeId="ns=1;i=55">
@@ -557,7 +557,7 @@
       <Reference ReferenceType="HasModellingRule">i=80</Reference>
     </References>
     <Value>
-      <uax:Float>0</uax:Float>
+      <uax:Float>0.0</uax:Float>
     </Value>
   </UAVariable>
   <UAObject BrowseName="1:Container" NodeId="ns=1;i=58" ParentNodeId="ns=1;i=24">
@@ -740,7 +740,7 @@
       <Reference ReferenceType="HasModellingRule">i=80</Reference>
     </References>
     <Value>
-      <uax:UInt64 />
+      <uax:UInt64>0</uax:UInt64>
     </Value>
   </UAVariable>
   <UAVariable BrowseName="1:OpeningTime" DataType="Range" NodeId="ns=1;i=73" ParentNodeId="ns=1;i=63">
@@ -774,7 +774,7 @@
       <Reference ReferenceType="HasModellingRule">i=80</Reference>
     </References>
     <Value>
-      <uax:Float />
+      <uax:Float>0.0</uax:Float>
     </Value>
   </UAVariable>
   <UAVariable BrowseName="1:ClosingTime" DataType="Range" NodeId="ns=1;i=75" ParentNodeId="ns=1;i=63">
@@ -820,7 +820,7 @@
       <Reference ReferenceType="HasModellingRule">i=80</Reference>
     </References>
     <Value>
-      <uax:Float />
+      <uax:Float>0.0</uax:Float>
     </Value>
   </UAVariable>
   <UAVariable AccessLevel="3" BrowseName="1:OutputTpye" DataType="String" NodeId="ns=1;i=78" ParentNodeId="ns=1;i=63" UserAccessLevel="3">
