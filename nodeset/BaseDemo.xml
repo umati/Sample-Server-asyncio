@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UANodeSet LastModified="2021-03-02T09:25:09.817Z" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:si="http://www.siemens.com/OPCUA/2017/SimaticNodeSetExtensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <NamespaceUris>
+        <Uri>http://opcfoundation.org/UA/DI/</Uri>
+        <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
+        <Uri>http://vdma-opc-st-initiative-cs/ua/demo</Uri>
+    </NamespaceUris>
+    <Models>
+        <Model ModelUri="http://vdma-opc-st-initiative-cs/ua/demo" PublicationDate="2021-03-02T00:00:00Z" Version="1.00">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2019-05-01T00:00:00Z" Version="1.04"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2020-09-25T00:00:00Z" Version="1.0.0"/>
+        </Model>
+    </Models>
+    <Aliases>
+        <Alias Alias="Boolean">i=1</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
+        <Alias Alias="String">i=12</Alias>
+        <Alias Alias="LocalizedText">i=21</Alias>
+        <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="HasProperty">i=46</Alias>
+        <Alias Alias="Organizes">i=35</Alias>
+        <Alias Alias="HasTypeDefinition">i=40</Alias>
+        <Alias Alias="IdType">i=256</Alias>
+        <Alias Alias="NumericRange">i=291</Alias>
+        <Alias Alias="HasInterface">i=17603</Alias>
+    </Aliases>
+    <Extensions>
+        <Extension>
+            <si:Generator Product="SiOME" Edition="Standard" Version="2.0.4"/>
+        </Extension>
+    </Extensions>
+    <UAObject SymbolicName="http___vdma_opc_st_initiative_cs_ua_demo" NodeId="ns=3;i=1000" BrowseName="3:http://vdma-opc-st-initiative-cs/ua/demo">
+        <DisplayName>http://vdma-opc-st-initiative-cs/ua/demo</DisplayName>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" NodeId="ns=3;i=1001" BrowseName="IsNamespaceSubset" ParentNodeId="ns=3;i=1000">
+        <DisplayName>IsNamespaceSubset</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="DateTime" NodeId="ns=3;i=1002" BrowseName="NamespacePublicationDate" ParentNodeId="ns=3;i=1000">
+        <DisplayName>NamespacePublicationDate</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2021-03-02T00:00:00Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=3;i=1003" BrowseName="NamespaceUri" ParentNodeId="ns=3;i=1000">
+        <DisplayName>NamespaceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>http://vdma-opc-st-initiative-cs/ua/demo</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=3;i=1004" BrowseName="NamespaceVersion" ParentNodeId="ns=3;i=1000">
+        <DisplayName>NamespaceVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>1.00</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="IdType" ValueRank="1" NodeId="ns=3;i=1005" ArrayDimensions="0" BrowseName="StaticNodeIdTypes" ParentNodeId="ns=3;i=1000">
+        <DisplayName>StaticNodeIdTypes</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="NumericRange" ValueRank="1" NodeId="ns=3;i=1006" ArrayDimensions="0" BrowseName="StaticNumericNodeIdRange" ParentNodeId="ns=3;i=1000">
+        <DisplayName>StaticNumericNodeIdRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=3;i=1007" BrowseName="StaticStringNodeIdPattern" ParentNodeId="ns=3;i=1000">
+        <DisplayName>StaticStringNodeIdPattern</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="i=96" ValueRank="1" NodeId="ns=3;i=1008" ArrayDimensions="0" BrowseName="DefaultRolePermissions">
+        <DisplayName>DefaultRolePermissions</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1000</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAObject NodeId="ns=3;i=1009" BrowseName="3:Beschichtungsanlage">
+        <DisplayName>Beschichtungsanlage</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=1001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=3;i=1010" BrowseName="3:Pretreatment">
+        <DisplayName>Pretreatment</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=1009</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=3;i=1011" BrowseName="3:Components">
+        <DisplayName>Components</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=1010</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=3;i=1012" BrowseName="3:Identification">
+        <DisplayName>Identification</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=1010</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1012</Reference>
+            <Reference ReferenceType="HasInterface">ns=2;i=1011</Reference>
+            <Reference ReferenceType="HasInterface">ns=2;i=1010</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="LocalizedText" NodeId="ns=3;i=1013" BrowseName="1:Manufacturer" ParentNodeId="ns=3;i=1012">
+        <DisplayName>Manufacturer</DisplayName>
+        <Description>A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1012</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=3;i=1014" BrowseName="1:SerialNumber" ParentNodeId="ns=3;i=1012">
+        <DisplayName>SerialNumber</DisplayName>
+        <Description>A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1012</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=3;i=1015" BrowseName="1:ProductInstanceUri" ParentNodeId="ns=3;i=1012">
+        <DisplayName>ProductInstanceUri</DisplayName>
+        <Description>A globally unique resource identifier provided by the manufacturer of the machine</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=3;i=1012</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAObject NodeId="ns=3;i=1016" BrowseName="3:FG01">
+        <DisplayName>FG01</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=1010</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=1;i=1005</Reference>
+        </References>
+    </UAObject>
+</UANodeSet>
