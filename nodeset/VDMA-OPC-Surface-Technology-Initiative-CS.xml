@@ -1171,6 +1171,7 @@
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=115</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
   <UAObject BrowseName="1:State" NodeId="ns=1;i=117" ParentNodeId="ns=1;i=115">
@@ -1178,13 +1179,15 @@
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=115</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
-  <UAObject BrowseName="1:ProcessData" NodeId="ns=1;i=118" ParentNodeId="ns=1;i=115">
-    <DisplayName>ProcessData</DisplayName>
+  <UAObject BrowseName="1:Process" NodeId="ns=1;i=118" ParentNodeId="ns=1;i=115">
+    <DisplayName>Process</DisplayName>
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=115</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
   <UAObjectType BrowseName="1:MaterialObjectType" NodeId="ns=1;i=119">
@@ -1202,6 +1205,7 @@
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=119</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
   <UAObject BrowseName="1:State" NodeId="ns=1;i=121" ParentNodeId="ns=1;i=119">
@@ -1209,13 +1213,15 @@
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=119</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
-  <UAObject BrowseName="1:ProcessData" NodeId="ns=1;i=122" ParentNodeId="ns=1;i=119">
-    <DisplayName>ProcessData</DisplayName>
+  <UAObject BrowseName="1:Process" NodeId="ns=1;i=122" ParentNodeId="ns=1;i=119">
+    <DisplayName>Process</DisplayName>
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=119</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
   <UAObjectType BrowseName="1:PipeObjectType" NodeId="ns=1;i=123">
@@ -1233,6 +1239,7 @@
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=123</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
   <UAObject BrowseName="1:State" NodeId="ns=1;i=125" ParentNodeId="ns=1;i=123">
@@ -1240,13 +1247,15 @@
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=123</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
-  <UAObject BrowseName="1:ProcessData" NodeId="ns=1;i=126" ParentNodeId="ns=1;i=123">
-    <DisplayName>ProcessData</DisplayName>
+  <UAObject BrowseName="1:Process" NodeId="ns=1;i=126" ParentNodeId="ns=1;i=123">
+    <DisplayName>Process</DisplayName>
     <References>
       <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=123</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
     </References>
   </UAObject>
 </UANodeSet>

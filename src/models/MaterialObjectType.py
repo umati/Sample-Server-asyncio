@@ -13,5 +13,8 @@ class MaterialObjectTypeClass(object):
         material_object_type = await self.base_object_type.add_object_type(self.namespace, "MaterialObjectType")
 
         material_meta_object = await material_object_type.add_object(self.namespace, "Meta", self.folder_object_type)
+        await material_meta_object.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)
         material_state_object = await material_object_type.add_object(self.namespace, "State", self.folder_object_type)
-        material_process_object = await material_object_type.add_object(self.namespace, "ProcessData", self.folder_object_type)
+        await material_state_object.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)
+        material_process_object = await material_object_type.add_object(self.namespace, "Process", self.folder_object_type)
+        await material_process_object.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)

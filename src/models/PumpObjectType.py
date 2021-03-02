@@ -13,5 +13,8 @@ class PumpObjectTypeClass(object):
         pump_object_type = await self.base_object_type.add_object_type(self.namespace, "PumpObjectType")
 
         pump_meta_object = await pump_object_type.add_object(self.namespace, "Meta", self.folder_object_type)
+        await pump_meta_object.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)
         pump_state_object = await pump_object_type.add_object(self.namespace, "State", self.folder_object_type)
-        pump_process_object = await pump_object_type.add_object(self.namespace, "ProcessData", self.folder_object_type)
+        await pump_state_object.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)
+        pump_process_object = await pump_object_type.add_object(self.namespace, "Process", self.folder_object_type)
+        await pump_process_object.add_reference(ua.ObjectIds.ModellingRule_Mandatory, ua.ObjectIds.HasModellingRule, True, False)
