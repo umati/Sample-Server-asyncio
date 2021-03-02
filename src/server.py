@@ -11,11 +11,6 @@ _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-NAME = "VDMA-OPC-Surface-Technology-Initiative-CS"
-XML_FILENAME = os.path.join(NAME + ".xml")
-
-NAMESPACE = "http://vdma-opc-st-initiative-cs/ua/Prototyp1"
-
 async def parse_to_datavalue(item):
     if str(item[0][1]) == "i=10":
         val = ua.Variant(float(item[1]), ua.VariantType.Float)
@@ -42,7 +37,7 @@ async def main():
 
     server.set_endpoint("opc.tcp://0.0.0.0:4840")
 
-    idx = await server.register_namespace(NAMESPACE)
+    ##################################################################################################################
 
     # Import Opc.Ua.Di.NodeSet2.xml
     try:
@@ -60,36 +55,57 @@ async def main():
 
     ma_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Machinery/")
 
-    # Import VDMA-OPC-Surface-Technology-Initiative-CS.xml
+    # Import Opc.Ua.SurfaceTechnology.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", XML_FILENAME))
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.SurfaceTechnology.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
-    st_idx = await server.get_namespace_index("http://vdma-opc-st-initiative-cs/ua")
+    st_idx = await server.get_namespace_index("http://opcfoundation.org/UA/SurfaceTechnology/")
 
-    # Import UmatiDemo.xml
+    ##################################################################################################################
+
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "UmatiDemo.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "CoatingLine-example.xml"))
     except Exception as e:
         print(e)
     
-    demo_idx = await server.get_namespace_index("http://vdma-opc-st-initiative-cs/ua/demo")
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ConveyorGunsAxes.xml"))
+    except Exception as e:
+        print(e)
+    
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Materialsupplyroom.xml"))
+    except Exception as e:
+        print(e)
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "dosingsystem.xml"))
+    except Exception as e:
+        print(e)
+    
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ovenbooth.xml"))
+    except Exception as e:
+        print(e)
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Pretreatment.xml"))
+    except Exception as e:
+        print(e)
+
+
+    ##################################################################################################################
 
     # Load TypeDefinitions    
     await server.load_data_type_definitions()
 
-    # objects = server.get_objects_node()
-    # deviceset = await objects.get_child([f"{di_idx}:DeviceSet"])
-    # base_object_type = server.get_node("ns=0;i=58")
-    # vessel_object_type = await base_object_type.get_child([f"{st_idx}:VesselObjectType"])
-    # valve_object_type = await base_object_type.get_child([f"{st_idx}:ValveObjectType"])
-    # machines_folder = await objects.get_child([f"{ma_idx}:Machines"])
 
     # read csv and generate data
-    imp = CSV_IMPORTER(server=server, nsidx=demo_idx)
+    # imp = CSV_IMPORTER(server=server, nsidx=demo_idx)
     # imp.read_csv("data.csv")
-    data = []
+    # data = []
     # data = imp.get_rows()
 
     async with server:
