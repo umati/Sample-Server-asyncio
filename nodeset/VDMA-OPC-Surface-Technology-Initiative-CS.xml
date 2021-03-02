@@ -3,6 +3,13 @@
   <NamespaceUris>
     <Uri>http://vdma-opc-st-initiative-cs/ua</Uri>
   </NamespaceUris>
+    <Models>
+      <Model ModelUri="http://opcfoundation.org/UA/ST/" Version="1.0.0" PublicationDate="2021-03-02T00:00:00Z">
+        <RequiredModel ModelUri="http://opcfoundation.org/UA/" Version="1.04.7" PublicationDate="2020-07-15T00:00:00Z" />
+        <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" Version="1.02.2" PublicationDate="2020-06-02T00:00:00Z" />
+        <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" Version="1.0.0" PublicationDate="2020-09-25T00:00:00Z"/>
+      </Model>
+    </Models>
   <Aliases>
     <Alias Alias="HasModellingRule">i=37</Alias>
     <Alias Alias="Int64">i=8</Alias>
