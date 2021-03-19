@@ -7,20 +7,33 @@
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
         <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
     </NamespaceUris>
+    <Models>
+        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/" PublicationDate="2021-03-18T15:38:28Z" Version="1.0.0">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-02-25T00:00:00Z" Version="1.01.0"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-18T15:38:47Z" Version="1.0.0"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example" PublicationDate="2021-03-18T15:38:13Z" Version="1.0.0"/>
+        </Model>
+    </Models>
     <Aliases>
+        <Alias Alias="Boolean">i=1</Alias>
         <Alias Alias="Float">i=10</Alias>
         <Alias Alias="String">i=12</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
         <Alias Alias="LocalizedText">i=21</Alias>
         <Alias Alias="Organizes">i=35</Alias>
         <Alias Alias="HasTypeDefinition">i=40</Alias>
         <Alias Alias="HasProperty">i=46</Alias>
         <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="IdType">i=256</Alias>
+        <Alias Alias="NumericRange">i=291</Alias>
         <Alias Alias="Range">i=884</Alias>
         <Alias Alias="HasAddIn">i=17604</Alias>
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="ag67cPNrfNcThXUM0jJX4w==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="eGF9uDtl+KhDqk8BwQ8oPQ==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:Oven">
@@ -970,4 +983,79 @@
             <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5162</Reference>
         </References>
     </UAObject>
+    <UAObject SymbolicName="http___opcfoundation_org_UA_SurfaceTechnology_Example_OvenBooth_" NodeId="ns=1;i=5001" BrowseName="1:http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/">
+        <DisplayName>http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty">ns=1;i=6004</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6033</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6034</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6035</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6050</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6051</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6052</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6004" BrowseName="IsNamespaceSubset">
+        <DisplayName>IsNamespaceSubset</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="DateTime" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6033" BrowseName="NamespacePublicationDate">
+        <DisplayName>NamespacePublicationDate</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2021-03-18T15:38:28Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6034" BrowseName="NamespaceUri">
+        <DisplayName>NamespaceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6035" BrowseName="NamespaceVersion">
+        <DisplayName>NamespaceVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>1.0.0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5001" ValueRank="1" NodeId="ns=1;i=6050" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
+        <DisplayName>StaticNodeIdTypes</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="NumericRange" ParentNodeId="ns=1;i=5001" ValueRank="1" NodeId="ns=1;i=6051" ArrayDimensions="0" BrowseName="StaticNumericNodeIdRange">
+        <DisplayName>StaticNumericNodeIdRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6052" BrowseName="StaticStringNodeIdPattern">
+        <DisplayName>StaticStringNodeIdPattern</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
 </UANodeSet>

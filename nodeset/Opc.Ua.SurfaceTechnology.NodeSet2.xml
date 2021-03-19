@@ -5,6 +5,13 @@
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
         <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
     </NamespaceUris>
+    <Models>
+        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-18T15:38:47Z" Version="1.0.0">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-02-25T00:00:00Z" Version="1.01.0"/>
+        </Model>
+    </Models>
     <Aliases>
         <Alias Alias="Boolean">i=1</Alias>
         <Alias Alias="UInt16">i=5</Alias>
@@ -12,24 +19,27 @@
         <Alias Alias="Float">i=10</Alias>
         <Alias Alias="Double">i=11</Alias>
         <Alias Alias="String">i=12</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
         <Alias Alias="LocalizedText">i=21</Alias>
         <Alias Alias="HasModellingRule">i=37</Alias>
         <Alias Alias="HasTypeDefinition">i=40</Alias>
         <Alias Alias="HasSubtype">i=45</Alias>
         <Alias Alias="HasProperty">i=46</Alias>
         <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="IdType">i=256</Alias>
+        <Alias Alias="NumericRange">i=291</Alias>
         <Alias Alias="Range">i=884</Alias>
         <Alias Alias="HasAddIn">i=17604</Alias>
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="je8/wUJTUU/7Nbv7R13Qew==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="N1HxYUjjIn5zKfAiV42TdA==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObjectType NodeId="ns=1;i=1009" BrowseName="1:SurfaceTechnologyCoatingSystemType">
         <DisplayName>SurfaceTechnologyCoatingSystemType</DisplayName>
         <References>
-            <Reference ReferenceType="HasAddIn">ns=1;i=5048</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5048</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5047</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5046</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
@@ -38,7 +48,7 @@
     <UAObject SymbolicName="SurfaceTechnologyObject" ParentNodeId="ns=1;i=1009" NodeId="ns=1;i=5048" BrowseName="1:&lt;SurfaceTechnologyObject>">
         <DisplayName>&lt;SurfaceTechnologyObject></DisplayName>
         <References>
-            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=1009</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5050</Reference>
             <Reference ReferenceType="HasModellingRule">i=11508</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=1;i=1006</Reference>
@@ -1423,6 +1433,81 @@
             <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5005</Reference>
+        </References>
+    </UAVariable>
+    <UAObject SymbolicName="http___opcfoundation_org_UA_SurfaceTechnology_" NodeId="ns=1;i=5051" BrowseName="1:http://opcfoundation.org/UA/SurfaceTechnology/">
+        <DisplayName>http://opcfoundation.org/UA/SurfaceTechnology/</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty">ns=1;i=6095</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6096</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6097</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6098</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6099</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6100</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6101</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5051" NodeId="ns=1;i=6095" BrowseName="IsNamespaceSubset">
+        <DisplayName>IsNamespaceSubset</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5051</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="DateTime" ParentNodeId="ns=1;i=5051" NodeId="ns=1;i=6096" BrowseName="NamespacePublicationDate">
+        <DisplayName>NamespacePublicationDate</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5051</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2021-03-18T15:38:47Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5051" NodeId="ns=1;i=6097" BrowseName="NamespaceUri">
+        <DisplayName>NamespaceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5051</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>http://opcfoundation.org/UA/SurfaceTechnology/</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5051" NodeId="ns=1;i=6098" BrowseName="NamespaceVersion">
+        <DisplayName>NamespaceVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5051</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>1.0.0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5051" ValueRank="1" NodeId="ns=1;i=6099" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
+        <DisplayName>StaticNodeIdTypes</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5051</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="NumericRange" ParentNodeId="ns=1;i=5051" ValueRank="1" NodeId="ns=1;i=6100" ArrayDimensions="0" BrowseName="StaticNumericNodeIdRange">
+        <DisplayName>StaticNumericNodeIdRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5051</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5051" NodeId="ns=1;i=6101" BrowseName="StaticStringNodeIdPattern">
+        <DisplayName>StaticStringNodeIdPattern</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5051</Reference>
         </References>
     </UAVariable>
 </UANodeSet>
