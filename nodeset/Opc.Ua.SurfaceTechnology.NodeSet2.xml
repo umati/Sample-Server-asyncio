@@ -6,7 +6,7 @@
         <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-18T15:38:47Z" Version="1.0.0">
+        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-24T13:46:29Z" Version="1.0.1">
             <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-02-25T00:00:00Z" Version="1.01.0"/>
@@ -33,7 +33,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="N1HxYUjjIn5zKfAiV42TdA==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="LLkqqbaHkFuqcUfCh2QaEw==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObjectType NodeId="ns=1;i=1009" BrowseName="1:SurfaceTechnologyCoatingSystemType">
@@ -49,7 +49,7 @@
         <DisplayName>&lt;SurfaceTechnologyObject></DisplayName>
         <References>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=5050</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5050</Reference>
             <Reference ReferenceType="HasModellingRule">i=11508</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=1;i=1006</Reference>
         </References>
@@ -57,7 +57,7 @@
     <UAObject ParentNodeId="ns=1;i=5048" NodeId="ns=1;i=5050" BrowseName="2:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5048</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5048</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=3;i=1012</Reference>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6087</Reference>
@@ -922,15 +922,15 @@
     <UAObjectType NodeId="ns=1;i=1006" BrowseName="1:SurfaceTechnologyObjectType">
         <DisplayName>SurfaceTechnologyObjectType</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5049</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=5082</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5049</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5082</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
         </References>
     </UAObjectType>
     <UAObject SymbolicName="Components" ParentNodeId="ns=1;i=1006" NodeId="ns=1;i=5049" BrowseName="3:&lt;Components>">
         <DisplayName>&lt;Components></DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1006</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=1006</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=3;i=1006</Reference>
             <Reference ReferenceType="HasModellingRule">i=11508</Reference>
         </References>
@@ -938,7 +938,7 @@
     <UAObject ParentNodeId="ns=1;i=1006" NodeId="ns=1;i=5082" BrowseName="2:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1006</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=1006</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=3;i=1012</Reference>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6114</Reference>
@@ -1466,7 +1466,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:DateTime>2021-03-18T15:38:47Z</uax:DateTime>
+            <uax:DateTime>2021-03-24T13:46:29Z</uax:DateTime>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5051" NodeId="ns=1;i=6097" BrowseName="NamespaceUri">
@@ -1486,7 +1486,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:String>1.0.0</uax:String>
+            <uax:String>1.0.1</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5051" ValueRank="1" NodeId="ns=1;i=6099" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">

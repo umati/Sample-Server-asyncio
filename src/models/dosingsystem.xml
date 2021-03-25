@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/SurfaceTechnology/Types.xsd" xmlns:s3="http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:s4="http://opcfoundation.org/UA/Machinery/Types.xsd" xmlns:s5="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/SurfaceTechnology/Types.xsd" xmlns:s3="http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:s4="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:s5="http://opcfoundation.org/UA/Machinery/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <NamespaceUris>
         <Uri>http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/</Uri>
         <Uri>http://opcfoundation.org/UA/SurfaceTechnology/</Uri>
         <Uri>http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/</Uri>
-        <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
+        <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/" PublicationDate="2021-03-18T15:38:34Z" Version="1.0.0">
+        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/" PublicationDate="2021-03-24T13:46:14Z" Version="1.0.1">
             <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-02-25T00:00:00Z" Version="1.01.0"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-18T15:38:47Z" Version="1.0.0"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example" PublicationDate="2021-03-18T15:38:13Z" Version="1.0.0"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/" PublicationDate="2021-03-18T15:38:22Z" Version="1.0.0"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-24T13:46:29Z" Version="1.0.1"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example" PublicationDate="2021-03-24T13:45:45Z" Version="1.0.1"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/" PublicationDate="2021-03-24T13:46:01Z" Version="1.0.1"/>
         </Model>
     </Models>
     <Aliases>
@@ -35,7 +35,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="VeN9A8q2Trygb9nnd1yw2A==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="f+z/n9s3I2h97uYJ1YFTkw==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5002" BrowseName="1:DosingSystem">
@@ -50,17 +50,17 @@
             <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5002</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5018" BrowseName="1:Identification">
+    <UAObject NodeId="ns=1;i=5018" BrowseName="4:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5002</Reference>
-            <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6031</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6030</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6032</Reference>
         </References>
     </UAObject>
-    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6031" BrowseName="5:Manufacturer">
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6031" BrowseName="4:Manufacturer">
         <DisplayName>Manufacturer</DisplayName>
         <Description Locale="en">A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
         <References>
@@ -73,7 +73,7 @@
             </uax:LocalizedText>
         </Value>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6030" BrowseName="5:ProductInstanceUri">
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6030" BrowseName="4:ProductInstanceUri">
         <DisplayName>ProductInstanceUri</DisplayName>
         <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the MachineryItem.</Description>
         <References>
@@ -84,7 +84,7 @@
             <uax:String>http://www.wiwa.de/mymachine/39ff6a6658d19a0bc05ea42ac3a9d7f6a30df940096cc8cd19877d09e6d502b8</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6032" BrowseName="5:SerialNumber">
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6032" BrowseName="4:SerialNumber">
         <DisplayName>SerialNumber</DisplayName>
         <Description Locale="en">A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
         <References>
@@ -483,7 +483,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:DateTime>2021-03-18T15:38:34Z</uax:DateTime>
+            <uax:DateTime>2021-03-24T13:46:14Z</uax:DateTime>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5019" NodeId="ns=1;i=6035" BrowseName="NamespaceUri">
@@ -503,7 +503,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:String>1.0.0</uax:String>
+            <uax:String>1.0.1</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5019" ValueRank="1" NodeId="ns=1;i=6037" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
