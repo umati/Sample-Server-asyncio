@@ -1,4 +1,5 @@
 aiofiles==0.6.0
+aiofile
 aiosqlite==0.16.1
 altgraph==0.17
 -e git+https://github.com/FreeOpcUa/opcua-asyncio.git@0a1cce0783d93493515ff92e55952e63909fc834#egg=asyncua
