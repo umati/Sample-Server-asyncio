@@ -34,7 +34,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="UiewJEm2hNrGdyDEMTo8Bg==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="HNp6B8DpZqm0mZB48wx0JA==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5002" BrowseName="1:ApplicationUnits">
@@ -1816,10 +1816,10 @@
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6113</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6126</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6115</Reference>
-            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5002</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6113" BrowseName="5:Manufacturer">
@@ -1897,9 +1897,9 @@
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6084</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5039</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6083</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6085</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5039</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="String" NodeId="ns=1;i=6084" BrowseName="1:Location" AccessLevel="3">
@@ -2079,10 +2079,4 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5059</Reference>
         </References>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5008" BrowseName="1:FG04_ApplicationUnit">
-        <DisplayName>FG04_ApplicationUnit</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-        </References>
-    </UAObject>
 </UANodeSet>
