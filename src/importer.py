@@ -5,10 +5,9 @@ from aiofile import AIOFile, LineReader
 from asyncua import Server, Node, ua
 
 class CSV_IMPORTER(object):
-    def __init__(self, server, nsidx):
+    def __init__(self, server):
         super().__init__()
         self.server = server
-        self.nsidx = nsidx
         self.nodes = [] # list(tuple(node,dtype))
         self.rows = [] # [list(zip(self.nodes, row_values)), list(zip(self.nodes, row_values)), ...]
 
@@ -20,15 +19,17 @@ class CSV_IMPORTER(object):
             if item == "":
                 pass
             else:
-                # path starts from root so objects is the first item
-                if item == "Objects":
-                    # add default ns idx 0
-                    item ="0:Objects"
-                else:
-                    # setup BrowseName ("ns:name")
-                    item = f"{self.nsidx}:{item}"
                 new_path.append(item)
-        return await self.server.nodes.root.get_child(new_path)
+        
+        current_node = self.server.nodes.root
+        for item in new_path:
+            current_node_children = await current_node.get_children()
+            for child in current_node_children:
+                cname = await child.read_browse_name()
+                if cname.Name == item:
+                    current_node = child
+                    break       
+        return current_node
 
     async def read_csv(self, csv):
         async with AIOFile(csv, 'r') as afp:
@@ -37,7 +38,7 @@ class CSV_IMPORTER(object):
             values = []
             async for line in LineReader(afp):
                 if linecount == 0:
-                    # first line had BrowsePaths
+                    # first line has BrowsePaths
                     line = line.replace("\n","")
                     line = line.replace("\r","")
                     bpaths = line.split(",")
@@ -49,7 +50,8 @@ class CSV_IMPORTER(object):
                                 node = await self.get_node_from_path(p)
                                 dtype = await node.read_data_type()
                                 self.nodes.append((node, dtype))
-                            except Exception:
+                            except Exception as e:
+                                # print(e)
                                 pass
                 else:
                     # following lines have values

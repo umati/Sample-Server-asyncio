@@ -1,7 +1,10 @@
 # Imports
-import os, asyncio, logging, time, datetime
-from asyncua import Server, ua, uamethod
-from asyncua.common.instantiate_util import instantiate
+import os 
+import asyncio
+import logging
+import time
+import datetime
+from asyncua import Server, ua
 
 # from examples import DemoBeschichtungsanlage
 from importer import CSV_IMPORTER
@@ -13,13 +16,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 async def parse_to_datavalue(item):
     if str(item[0][1]) == "i=10":
-        val = ua.Variant(float(item[1]), ua.VariantType.Float)
+        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float)
     elif str(item[0][1]) == "i=9":
-        val = ua.Variant(int(item[1]), ua.VariantType.Int64)
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
+    elif str(item[0][1]) == "i=12":
+        val = ua.Variant(Value=item[1], VariantType=ua.VariantType.String)
     else:
-        val = ua.Variant(item[1])
+        val = ua.Variant(Value=item[1])
         # type will be guessed by Variant-Class under the hood
-    return ua.DataValue(val, ua.StatusCode(ua.StatusCodes.Good),sourceTimestamp=datetime.datetime.utcnow(), serverTimestamp=datetime.datetime.utcnow())
+    return val #ua.DataValue(Value=val, StatusCode_=ua.StatusCode(ua.StatusCodes.Good), SourceTimestamp=datetime.datetime.utcnow(), ServerTimestamp=datetime.datetime.utcnow())
 
 async def main():
     # Serversetup
@@ -103,19 +108,20 @@ async def main():
 
 
     # read csv and generate data
-    # imp = CSV_IMPORTER(server=server, nsidx=demo_idx)
-    # imp.read_csv("data.csv")
-    # data = []
-    # data = imp.get_rows()
+    imp = CSV_IMPORTER(server=server)
+    await imp.read_csv(os.path.join(BASE_DIR, "src", "data", "data.csv"))
+    data = []
+    data = await imp.get_rows()
 
     async with server:
         while 1:
             await asyncio.sleep(1)
-            # for each in data:
-            #     for item in each:
-            #         # item = ((node, dtype), val)
-            #         await item[0][0].write_value(await parse_to_datavalue(item))
-            #     await asyncio.sleep(1)
+            for row in data:
+                for item in row:
+                    # item = ((node, dtype), val)
+                    dv = await parse_to_datavalue(item)
+                    await item[0][0].write_value(dv)
+                await asyncio.sleep(1)
 
 
 # Start Server
