@@ -15,16 +15,17 @@ _logger = logging.getLogger('asyncua')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 async def parse_to_datavalue(item):
-    if str(item[0][1]) == "i=10":
+    if item[0][1].Identifier == 10:
         val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float)
-    elif str(item[0][1]) == "i=9":
+    elif item[0][1].Identifier == 9:
         val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
-    elif str(item[0][1]) == "i=12":
+    elif item[0][1].Identifier == 12:
         val = ua.Variant(Value=item[1], VariantType=ua.VariantType.String)
-    elif str(item[0][1]) == "i=21":
-        val = ua.Variant(Value=ua.LocalizedText(text=item[1]), VariantType=ua.VariantType.LocalizedText)
+    elif item[0][1].Identifier == 21:
+        val = ua.Variant(Value=ua.LocalizedText(Text=item[1], Locale=""), VariantType=ua.VariantType.LocalizedText)
     else:
-        val = ua.Variant(Value=item[1])
+        val = ua.Variant(Value=None)
+        # val = ua.Variant(Value=item[1])
         # type will be guessed by Variant-Class under the hood
     return val #ua.DataValue(Value=val, StatusCode_=ua.StatusCode(ua.StatusCodes.Good), SourceTimestamp=datetime.datetime.utcnow(), ServerTimestamp=datetime.datetime.utcnow())
 
