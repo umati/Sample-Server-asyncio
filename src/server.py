@@ -16,18 +16,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 async def parse_to_datavalue(item):
     if item[0][1].Identifier == 10:
-        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float)
+        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float, Dimensions=[-1])
     elif item[0][1].Identifier == 9:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64, Dimensions=[-1])
     elif item[0][1].Identifier == 12:
-        val = ua.Variant(Value=item[1], VariantType=ua.VariantType.String)
+        val = ua.Variant(Value=item[1], VariantType=ua.VariantType.String, Dimensions=[-1])
     elif item[0][1].Identifier == 21:
-        val = ua.Variant(Value=ua.LocalizedText(Text=item[1], Locale=""), VariantType=ua.VariantType.LocalizedText)
+        val = ua.Variant(Value=ua.LocalizedText(Text=item[1], Locale=""), VariantType=ua.VariantType.LocalizedText, Dimensions=[-1])
     else:
         val = ua.Variant(Value=None)
         # val = ua.Variant(Value=item[1])
         # type will be guessed by Variant-Class under the hood
-    return val #ua.DataValue(Value=val, StatusCode_=ua.StatusCode(ua.StatusCodes.Good), SourceTimestamp=datetime.datetime.utcnow(), ServerTimestamp=datetime.datetime.utcnow())
+    print(val)
+    return val # ua.DataValue(Value=val, StatusCode_=ua.StatusCode(value=ua.StatusCodes.Good), SourceTimestamp=datetime.datetime.utcnow(), ServerTimestamp=datetime.datetime.utcnow())
 
 async def main():
     # Serversetup
@@ -122,7 +123,10 @@ async def main():
             for row in data:
                 for item in row:
                     # item = ((node, dtype), val)
+                    print(item[0][0])
                     dv = await parse_to_datavalue(item)
+                    print(dv)
+                    # await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
                     await item[0][0].write_value(dv)
                 await asyncio.sleep(1)
 
