@@ -3,32 +3,34 @@ import os
 import asyncio
 import logging
 import time
-import datetime
+from datetime import datetime
 from asyncua import Server, ua
+from asyncua.common.ua_utils import value_to_datavalue
 
 # from examples import DemoBeschichtungsanlage
 from importer import CSV_IMPORTER
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.CRITICAL)
 _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 async def parse_to_datavalue(item):
     if item[0][1].Identifier == 10:
-        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float, Dimensions=[-1])
+        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float)
     elif item[0][1].Identifier == 9:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64, Dimensions=[-1])
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
+    elif item[0][1].Identifier == 5:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.UInt16)
     elif item[0][1].Identifier == 12:
-        val = ua.Variant(Value=item[1], VariantType=ua.VariantType.String, Dimensions=[-1])
+        val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.String)
     elif item[0][1].Identifier == 21:
-        val = ua.Variant(Value=ua.LocalizedText(Text=item[1], Locale=""), VariantType=ua.VariantType.LocalizedText, Dimensions=[-1])
+        val = ua.Variant(Value=ua.LocalizedText(Text=f"{item[1]}", Locale=""), VariantType=ua.VariantType.LocalizedText)
     else:
         val = ua.Variant(Value=None)
         # val = ua.Variant(Value=item[1])
         # type will be guessed by Variant-Class under the hood
-    print(val)
-    return val # ua.DataValue(Value=val, StatusCode_=ua.StatusCode(value=ua.StatusCodes.Good), SourceTimestamp=datetime.datetime.utcnow(), ServerTimestamp=datetime.datetime.utcnow())
+    return value_to_datavalue(val)
 
 async def main():
     # Serversetup
@@ -41,7 +43,7 @@ async def main():
         manufacturer_name="VDMA-OPC-Surface-Technology-Initiative",
         software_version="beta",
         build_number="---",
-        build_date=datetime.datetime.utcnow(),
+        build_date=datetime.utcnow(),
     )
 
     server.set_endpoint("opc.tcp://0.0.0.0:4840")
@@ -123,11 +125,9 @@ async def main():
             for row in data:
                 for item in row:
                     # item = ((node, dtype), val)
-                    print(item[0][0])
                     dv = await parse_to_datavalue(item)
-                    print(dv)
-                    # await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
-                    await item[0][0].write_value(dv)
+                    await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
+                    # await item[0][0].write_value(dv)
                 await asyncio.sleep(1)
 
 

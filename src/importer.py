@@ -41,24 +41,30 @@ class CSV_IMPORTER(object):
                     # first line has BrowsePaths
                     line = line.replace("\n","")
                     line = line.replace("\r","")
+                    line = line.strip()
                     bpaths = line.split(",")
                     for p in bpaths:
                         if p == "":
                             pass
                         else:
+                            p = p.strip()
                             try:
                                 node = await self.get_node_from_path(p)
                                 dtype = await node.read_data_type()
                                 self.nodes.append((node, dtype))
                             except Exception as e:
-                                # print(e)
+                                print(e)
                                 pass
                 else:
                     # following lines have values
                     line = line.replace("\n","")
                     line = line.replace("\r","")
+                    line = line.strip()
                     values = line.split(",")
-                    row = list(zip(self.nodes, values))
+                    stripped_values = []
+                    for v in values:
+                        stripped_values.append(v.strip())
+                    row = list(zip(self.nodes, stripped_values))
                     self.rows.append(row)
                     await asyncio.sleep(0)
                 linecount+=1
