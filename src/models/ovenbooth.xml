@@ -8,12 +8,12 @@
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/" PublicationDate="2021-03-24T13:46:08Z" Version="1.0.1">
+        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/" PublicationDate="2021-03-31T15:15:38Z" Version="1.0.1">
             <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-02-25T00:00:00Z" Version="1.01.0"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-24T13:46:29Z" Version="1.0.1"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example" PublicationDate="2021-03-24T13:45:45Z" Version="1.0.1"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-31T15:15:20Z" Version="1.0.1"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example" PublicationDate="2021-03-31T15:15:24Z" Version="1.0.1"/>
         </Model>
     </Models>
     <Aliases>
@@ -33,7 +33,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="Km/uLs8Dz+1rlzpOPxesaw==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="NKPmdE5dyP9w3kbFBFpZtA==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:Oven">
@@ -62,25 +62,26 @@
         <References>
             <Reference ReferenceType="HasAddIn">ns=1;i=5005</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1006</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5024</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5013</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5014</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5015</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5020</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5021</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5022</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5023</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5024</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5013</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5014</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5015</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5020</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5021</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5022</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5023</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5003</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5026</Reference>
         </References>
     </UAObject>
-    <UAObject ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=5005" BrowseName="5:Identification">
+    <UAObject ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=5005" BrowseName="2:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6003</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6053</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6054</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6003" BrowseName="5:Manufacturer">
@@ -91,7 +92,15 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6053" BrowseName="5:SerialNumber">
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6053" BrowseName="5:ProductInstanceUri">
+        <DisplayName Locale="en">ProductInstanceUri</DisplayName>
+        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the machine</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5005</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6054" BrowseName="5:SerialNumber">
         <DisplayName>SerialNumber</DisplayName>
         <Description Locale="en">A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
         <References>
@@ -103,7 +112,7 @@
         <DisplayName>TA111</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5012</Reference>
         </References>
     </UAObject>
@@ -137,7 +146,7 @@
         <Description Locale="en">heat up zone TA112</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5034</Reference>
         </References>
     </UAObject>
@@ -171,7 +180,7 @@
         <Description Locale="en">holding zone TH121</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5028</Reference>
         </References>
     </UAObject>
@@ -205,7 +214,7 @@
         <Description Locale="en">holding zone TH122</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5029</Reference>
         </References>
     </UAObject>
@@ -239,7 +248,7 @@
         <Description Locale="en">circulation unit WU311</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5030</Reference>
         </References>
     </UAObject>
@@ -273,7 +282,7 @@
         <Description Locale="en">circulation unit WU312</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5031</Reference>
         </References>
     </UAObject>
@@ -307,7 +316,7 @@
         <Description Locale="en">circulation unit WU321</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5032</Reference>
         </References>
     </UAObject>
@@ -341,7 +350,7 @@
         <Description Locale="en">circulation unit WU322</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5033</Reference>
         </References>
     </UAObject>
@@ -376,27 +385,28 @@
             <Reference ReferenceType="HasAddIn">ns=1;i=5011</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5003</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1006</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5035</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5036</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5037</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5038</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5040</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5041</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5042</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5043</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5035</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5036</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5037</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5038</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5040</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5041</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5042</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5043</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5026</Reference>
         </References>
     </UAObject>
-    <UAObject ParentNodeId="ns=1;i=5004" NodeId="ns=1;i=5011" BrowseName="5:Identification">
+    <UAObject ParentNodeId="ns=1;i=5004" NodeId="ns=1;i=5011" BrowseName="2:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6057</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6058</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6059</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6060</Reference>
         </References>
     </UAObject>
-    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6057" BrowseName="5:Manufacturer">
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6058" BrowseName="5:Manufacturer">
         <DisplayName>Manufacturer</DisplayName>
         <Description Locale="en">A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
         <References>
@@ -404,7 +414,15 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6059" BrowseName="5:SerialNumber">
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6059" BrowseName="5:ProductInstanceUri">
+        <DisplayName Locale="en">ProductInstanceUri</DisplayName>
+        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the machine</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5011</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6060" BrowseName="5:SerialNumber">
         <DisplayName>SerialNumber</DisplayName>
         <Description Locale="en">A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
         <References>
@@ -417,7 +435,7 @@
         <Description Locale="en">heat up zone</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5007</Reference>
         </References>
     </UAObject>
@@ -451,7 +469,7 @@
         <Description Locale="en">heat up zone</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5008</Reference>
         </References>
     </UAObject>
@@ -485,7 +503,7 @@
         <Description Locale="en">holding zone</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5009</Reference>
         </References>
     </UAObject>
@@ -519,7 +537,7 @@
         <Description Locale="en">holding zone</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5006</Reference>
         </References>
     </UAObject>
@@ -553,7 +571,7 @@
         <Description Locale="en">air circulation unit</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5016</Reference>
         </References>
     </UAObject>
@@ -587,7 +605,7 @@
         <Description Locale="en">air circulation unit</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5017</Reference>
         </References>
     </UAObject>
@@ -621,7 +639,7 @@
         <Description Locale="en">air circulation unit</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5018</Reference>
         </References>
     </UAObject>
@@ -655,7 +673,7 @@
         <Description Locale="en">air circulation unit</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5019</Reference>
         </References>
     </UAObject>
@@ -684,17 +702,17 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAObject ParentNodeId="ns=1;i=5003" NodeId="ns=1;i=5010" BrowseName="5:Identification">
+    <UAObject ParentNodeId="ns=1;i=5003" NodeId="ns=1;i=5010" BrowseName="2:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5003</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6054</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6055</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6056</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6057</Reference>
         </References>
     </UAObject>
-    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6054" BrowseName="5:Manufacturer">
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6055" BrowseName="5:Manufacturer">
         <DisplayName>Manufacturer</DisplayName>
         <Description Locale="en">A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
         <References>
@@ -702,15 +720,15 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6055" BrowseName="5:ProductInstanceUri">
-        <DisplayName>ProductInstanceUri</DisplayName>
-        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the MachineryItem.</Description>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6056" BrowseName="5:ProductInstanceUri">
+        <DisplayName Locale="en">ProductInstanceUri</DisplayName>
+        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the machine</Description>
         <References>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5010</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6056" BrowseName="5:SerialNumber">
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6057" BrowseName="5:SerialNumber">
         <DisplayName>SerialNumber</DisplayName>
         <Description Locale="en">A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
         <References>
@@ -723,13 +741,13 @@
         <References>
             <Reference ReferenceType="HasAddIn">ns=1;i=5025</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5027</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5048</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5048</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1006</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=3;i=5019</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5047</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5046</Reference>
-            <Reference ReferenceType="Organizes">ns=1;i=5045</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5001</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5047</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5046</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5045</Reference>
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5025" BrowseName="4:Components">
@@ -901,17 +919,17 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAObject ParentNodeId="ns=1;i=5162" NodeId="ns=1;i=5027" BrowseName="5:Identification">
+    <UAObject ParentNodeId="ns=1;i=5162" NodeId="ns=1;i=5027" BrowseName="2:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6060</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6058</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6061</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6062</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6063</Reference>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5162</Reference>
         </References>
     </UAObject>
-    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5027" NodeId="ns=1;i=6060" BrowseName="5:Manufacturer">
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5027" NodeId="ns=1;i=6061" BrowseName="5:Manufacturer">
         <DisplayName>Manufacturer</DisplayName>
         <Description Locale="en">A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
         <References>
@@ -919,15 +937,15 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5027" NodeId="ns=1;i=6058" BrowseName="5:ProductInstanceUri">
-        <DisplayName>ProductInstanceUri</DisplayName>
-        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the MachineryItem.</Description>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5027" NodeId="ns=1;i=6062" BrowseName="5:ProductInstanceUri">
+        <DisplayName Locale="en">ProductInstanceUri</DisplayName>
+        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the machine</Description>
         <References>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5027</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
     </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5027" NodeId="ns=1;i=6062" BrowseName="5:SerialNumber">
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5027" NodeId="ns=1;i=6063" BrowseName="5:SerialNumber">
         <DisplayName>SerialNumber</DisplayName>
         <Description Locale="en">A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
         <References>
@@ -941,7 +959,7 @@
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5054</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5162</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5162</Reference>
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5047" BrowseName="1:WH114">
@@ -951,7 +969,7 @@
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5052</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5053</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5162</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5162</Reference>
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5046" BrowseName="1:WK113">
@@ -961,7 +979,7 @@
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5051</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5050</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5162</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5162</Reference>
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5045" BrowseName="1:WZ166">
@@ -970,7 +988,7 @@
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1005</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5049</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5162</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5162</Reference>
         </References>
     </UAObject>
     <UAObject SymbolicName="http___opcfoundation_org_UA_SurfaceTechnology_Example_OvenBooth_" NodeId="ns=1;i=5001" BrowseName="1:http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/">
@@ -1004,7 +1022,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:DateTime>2021-03-24T13:46:08Z</uax:DateTime>
+            <uax:DateTime>2021-03-31T15:15:38Z</uax:DateTime>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6034" BrowseName="NamespaceUri">
