@@ -21,6 +21,8 @@ async def parse_to_datavalue(item):
         val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
     elif str(item[0][1]) == "i=12":
         val = ua.Variant(Value=item[1], VariantType=ua.VariantType.String)
+    elif str(item[0][1]) == "i=21":
+        val = ua.Variant(Value=ua.LocalizedText(text=item[1]), VariantType=ua.VariantType.LocalizedText)
     else:
         val = ua.Variant(Value=item[1])
         # type will be guessed by Variant-Class under the hood
