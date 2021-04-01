@@ -6,30 +6,87 @@ import time
 from datetime import datetime
 from asyncua import Server, ua
 from asyncua.common.ua_utils import value_to_datavalue
-
-# from examples import DemoBeschichtungsanlage
 from importer import CSV_IMPORTER
 
-logging.basicConfig(level=logging.CRITICAL)
+logging.basicConfig(level=logging.WARNING)
 _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 async def parse_to_datavalue(item):
-    if item[0][1].Identifier == 10:
-        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float)
-    elif item[0][1].Identifier == 9:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
-    elif item[0][1].Identifier == 5:
+    '''
+    item[1] -> Value from csv -> type string (must be casted to correct type)
+    item[0] -> tuple(node, dtype)
+    item[0][0] -> Node-Instance
+    item[0][1] -> DataType
+    '''
+    if item[0][1].Identifier == ua.ObjectIds.Null:
+        val = ua.Variant(None)
+    elif item[0][1].Identifier == ua.ObjectIds.Boolean:
+        val = ua.Variant(Value=bool(item[1]), VariantType=ua.VariantType.Boolean)
+    elif item[0][1].Identifier == ua.ObjectIds.SByte:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.SByte)        
+    elif item[0][1].Identifier == ua.ObjectIds.Byte:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Byte)
+    elif item[0][1].Identifier == ua.ObjectIds.Int16:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int16)
+    elif item[0][1].Identifier == ua.ObjectIds.UInt16:
         val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.UInt16)
-    elif item[0][1].Identifier == 12:
+    elif item[0][1].Identifier == ua.ObjectIds.Int32:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int32)
+    elif item[0][1].Identifier == ua.ObjectIds.UInt32:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.UInt32)
+    elif item[0][1].Identifier == ua.ObjectIds.UInt64:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.UInt64)
+    elif item[0][1].Identifier == ua.ObjectIds.Int64:
+        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
+    elif item[0][1].Identifier == ua.ObjectIds.Float:
+        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float)
+    elif item[0][1].Identifier == ua.ObjectIds.Double:
+        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Double)
+    elif item[0][1].Identifier == ua.ObjectIds.String:
         val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.String)
-    elif item[0][1].Identifier == 21:
-        val = ua.Variant(Value=ua.LocalizedText(Text=f"{item[1]}", Locale=""), VariantType=ua.VariantType.LocalizedText)
+    elif item[0][1].Identifier == ua.ObjectIds.DateTime:
+        val = ua.Variant(Value=datetime.strptime(f"{item[1]}", '%Y-%m-%d %H:%M:%S.%f'), VariantType=ua.VariantType.DateTime)
+    elif item[0][1].Identifier == ua.ObjectIds.Guid:
+        val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.Guid)
+    elif item[0][1].Identifier == ua.ObjectIds.ByteString:
+        val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.ByteString)
+    elif item[0][1].Identifier == ua.ObjectIds.XmlElement:
+        # cant be resolved with the current csv structure!
+        val = ua.Variant(Value=None, VariantType=ua.VariantType.XmlElement)
+        return None
+    elif item[0][1].Identifier == ua.ObjectIds.NodeId:
+        val = ua.Variant(Value=ua.NodeId.from_string(f"{item[1]}"), VariantType=ua.VariantType.NodeId)
+    elif item[0][1].Identifier == ua.ObjectIds.ExpandedNodeId:
+        val = ua.Variant(Value=ua.NodeId.from_string(f"{item[1]}"), VariantType=ua.VariantType.ExpandedNodeId)
+    elif item[0][1].Identifier == ua.ObjectIds.StatusCode:
+        val = ua.Variant(Value=ua.StatusCode(int(item[1])), VariantType=ua.VariantType.StatusCode)
+    elif item[0][1].Identifier == ua.ObjectIds.QualifiedName:
+        val = ua.Variant(Value=ua.QualifiedName.from_string(f"{item[1]}"), VariantType=ua.VariantType.QualifiedName)        
+    elif item[0][1].Identifier == ua.ObjectIds.LocalizedText:
+        val = ua.Variant(Value=ua.LocalizedText(Text=f"{item[1]}", Locale="en"), VariantType=ua.VariantType.LocalizedText)
+    elif item[0][1].Identifier == ua.ObjectIds.ExtensionObject:
+        # cant be resolved with the current csv structure!
+        val = ua.Variant(Value=None, VariantType=ua.VariantType.ExtensionObject)
+        return None
+    elif item[0][1].Identifier == ua.ObjectIds.DataValue:
+        # cant be resolved with the current csv structure!
+        val = ua.Variant(Value=None, VariantType=ua.VariantType.DataValue)
+        return None
+    elif item[0][1].Identifier == ua.ObjectIds.Variant:
+        # cant be resolved with the current csv structure!
+        val = ua.Variant(Value=None, VariantType=ua.VariantType.Variant)
+        return None
+    elif item[0][1].Identifier == ua.ObjectIds.DiagnosticInfo:
+        # cant be resolved with the current csv structure!
+        val = ua.Variant(Value=None, VariantType=ua.VariantType.DiagnosticInfo)
+        return None
     else:
+        # Unknown DataType
+        # return an empty Variant to make it typesafe for companion spec. compliance
         val = ua.Variant(Value=None)
-        # val = ua.Variant(Value=item[1])
-        # type will be guessed by Variant-Class under the hood
+        print("Error:", item)
     return value_to_datavalue(val)
 
 async def main():
@@ -106,12 +163,10 @@ async def main():
     except Exception as e:
         print(e)
 
-
     ##################################################################################################################
 
     # Load TypeDefinitions    
     await server.load_data_type_definitions()
-
 
     # read csv and generate data
     imp = CSV_IMPORTER(server=server)
@@ -121,15 +176,18 @@ async def main():
 
     async with server:
         while 1:
-            await asyncio.sleep(1)
             for row in data:
+                await asyncio.sleep(1)
                 for item in row:
                     # item = ((node, dtype), val)
-                    dv = await parse_to_datavalue(item)
-                    await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
-                    # await item[0][0].write_value(dv)
-                await asyncio.sleep(1)
+                    try:
+                        dv = await parse_to_datavalue(item)
+                    except:
+                        dv = None
 
+                    if dv is not None:
+                        dv.ServerTimestamp = datetime.utcnow()
+                        await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
 
 # Start Server
 if __name__ == "__main__":

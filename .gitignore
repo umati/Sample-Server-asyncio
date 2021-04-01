@@ -5,3 +5,4 @@ server.spec
 log/
 __pycache__
 env
+.vscode
