@@ -2,7 +2,7 @@ aiofiles==0.6.0
 aiofile
 aiosqlite==0.16.1
 altgraph==0.17
--e git+https://github.com/FreeOpcUa/opcua-asyncio.git@78e8aebc0da1d833ef9e83609fe9cec99c12700c#egg=asyncua
+-e git+https://github.com/FreeOpcUa/opcua-asyncio.git#egg=asyncua
 cffi==1.14.5
 cryptography==3.4.5
 future==0.18.2

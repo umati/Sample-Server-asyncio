@@ -1,6 +1,4 @@
 import asyncio
-import datetime
-import logging
 from aiofile import AIOFile, LineReader
 from asyncua import Server, Node, ua
 
