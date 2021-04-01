@@ -33,7 +33,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="7QBmTMCp3JuS3xzddtViRw==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="TCq+WifdV27XJoTRHcrrOA==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObjectType NodeId="ns=1;i=1009" BrowseName="1:SurfaceTechnologyCoatingSystemType">
@@ -50,6 +50,7 @@
         <References>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5010</Reference>
             <Reference ReferenceType="HasModellingRule">i=11508</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=1;i=1006</Reference>
         </References>
@@ -102,6 +103,14 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5004</Reference>
         </References>
     </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5048" NodeId="ns=1;i=5010" BrowseName="1:Meta">
+        <DisplayName>Meta</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="HasModellingRule">i=80</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5048</Reference>
+        </References>
+    </UAObject>
     <UAObject ParentNodeId="ns=1;i=1009" NodeId="ns=1;i=5047" BrowseName="2:Components">
         <DisplayName>Components</DisplayName>
         <References>
@@ -226,6 +235,7 @@
         <References>
             <Reference ReferenceType="HasAddIn">ns=1;i=5049</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5007</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
         </References>
     </UAObjectType>
@@ -285,23 +295,22 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
         </References>
     </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=1006" NodeId="ns=1;i=5007" BrowseName="1:Meta">
+        <DisplayName>Meta</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=1006</Reference>
+            <Reference ReferenceType="HasModellingRule">i=80</Reference>
+        </References>
+    </UAObject>
     <UAObjectType NodeId="ns=1;i=1010" BrowseName="1:SurfaceTechnologyDosingSystemType">
         <DisplayName>SurfaceTechnologyDosingSystemType</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5055</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5020</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5021</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1006</Reference>
         </References>
     </UAObjectType>
-    <UAObject ParentNodeId="ns=1;i=1010" NodeId="ns=1;i=5055" BrowseName="1:Meta">
-        <DisplayName>Meta</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
-            <Reference ReferenceType="HasModellingRule">i=78</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1010</Reference>
-        </References>
-    </UAObject>
     <UAObject ParentNodeId="ns=1;i=1010" NodeId="ns=1;i=5020" BrowseName="1:Process">
         <DisplayName>Process</DisplayName>
         <References>
@@ -855,27 +864,27 @@
     <UAObjectType NodeId="ns=1;i=1011" BrowseName="1:SurfaceTechnologyFilterSystemType">
         <DisplayName>SurfaceTechnologyFilterSystemType</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5053</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5050</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5043</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5042</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1006</Reference>
         </References>
     </UAObjectType>
-    <UAObject ParentNodeId="ns=1;i=1011" NodeId="ns=1;i=5053" BrowseName="1:Meta">
+    <UAObject ParentNodeId="ns=1;i=1011" NodeId="ns=1;i=5050" BrowseName="1:Meta">
         <DisplayName>Meta</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1011</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6108</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=1011</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6027</Reference>
         </References>
     </UAObject>
-    <UAVariable DataType="Double" ParentNodeId="ns=1;i=5053" NodeId="ns=1;i=6108" BrowseName="1:Type" AccessLevel="3">
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=5050" NodeId="ns=1;i=6027" BrowseName="1:Type" AccessLevel="3">
         <DisplayName>Type</DisplayName>
         <References>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5053</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5050</Reference>
         </References>
     </UAVariable>
     <UAObject ParentNodeId="ns=1;i=1011" NodeId="ns=1;i=5043" BrowseName="1:Process">
@@ -942,20 +951,11 @@
     <UAObjectType NodeId="ns=1;i=1005" BrowseName="1:SurfaceTechnologyPipeType">
         <DisplayName>SurfaceTechnologyPipeType</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5056</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5012</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5011</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1006</Reference>
         </References>
     </UAObjectType>
-    <UAObject ParentNodeId="ns=1;i=1005" NodeId="ns=1;i=5056" BrowseName="1:Meta">
-        <DisplayName>Meta</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
-            <Reference ReferenceType="HasModellingRule">i=78</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1005</Reference>
-        </References>
-    </UAObject>
     <UAObject ParentNodeId="ns=1;i=1005" NodeId="ns=1;i=5012" BrowseName="1:Process">
         <DisplayName>Process</DisplayName>
         <References>
@@ -1011,20 +1011,11 @@
     <UAObjectType NodeId="ns=1;i=1008" BrowseName="1:SurfaceTechnologyPumpType">
         <DisplayName>SurfaceTechnologyPumpType</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5057</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5009</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5008</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1006</Reference>
         </References>
     </UAObjectType>
-    <UAObject ParentNodeId="ns=1;i=1008" NodeId="ns=1;i=5057" BrowseName="1:Meta">
-        <DisplayName>Meta</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
-            <Reference ReferenceType="HasModellingRule">i=78</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1008</Reference>
-        </References>
-    </UAObject>
     <UAObject ParentNodeId="ns=1;i=1008" NodeId="ns=1;i=5009" BrowseName="1:Process">
         <DisplayName>Process</DisplayName>
         <References>
@@ -1089,7 +1080,7 @@
     <UAObjectType NodeId="ns=1;i=1004" BrowseName="1:SurfaceTechnologyValveType">
         <DisplayName>SurfaceTechnologyValveType</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5019</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5019</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5003</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5002</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1006</Reference>
@@ -1098,13 +1089,13 @@
     <UAObject ParentNodeId="ns=1;i=1004" NodeId="ns=1;i=5019" BrowseName="1:Meta">
         <DisplayName>Meta</DisplayName>
         <References>
-            <Reference ReferenceType="HasProperty">ns=1;i=6104</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6021</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=1004</Reference>
         </References>
     </UAObject>
-    <UAVariable DataType="Float" ParentNodeId="ns=1;i=5019" NodeId="ns=1;i=6104" BrowseName="1:CrossSectionalSize" AccessLevel="3">
+    <UAVariable DataType="Float" ParentNodeId="ns=1;i=5019" NodeId="ns=1;i=6021" BrowseName="1:CrossSectionalSize" AccessLevel="3">
         <DisplayName>CrossSectionalSize</DisplayName>
         <References>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5019</Reference>
@@ -1176,27 +1167,27 @@
     <UAObjectType NodeId="ns=1;i=1003" BrowseName="1:SurfaceTechnologyVesselType">
         <DisplayName>SurfaceTechnologyVesselType</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5054</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5041</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5006</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5005</Reference>
             <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1006</Reference>
         </References>
     </UAObjectType>
-    <UAObject ParentNodeId="ns=1;i=1003" NodeId="ns=1;i=5054" BrowseName="1:Meta">
+    <UAObject ParentNodeId="ns=1;i=1003" NodeId="ns=1;i=5041" BrowseName="1:Meta">
         <DisplayName>Meta</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1003</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6109</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=1003</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6022</Reference>
         </References>
     </UAObject>
-    <UAVariable DataType="Float" ParentNodeId="ns=1;i=5054" NodeId="ns=1;i=6109" BrowseName="1:Volume" AccessLevel="3">
+    <UAVariable DataType="Float" ParentNodeId="ns=1;i=5041" NodeId="ns=1;i=6022" BrowseName="1:Volume" AccessLevel="3">
         <DisplayName>Volume</DisplayName>
         <References>
             <Reference ReferenceType="HasModellingRule">i=78</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5054</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5041</Reference>
         </References>
     </UAVariable>
     <UAObject ParentNodeId="ns=1;i=1003" NodeId="ns=1;i=5006" BrowseName="1:Process">
