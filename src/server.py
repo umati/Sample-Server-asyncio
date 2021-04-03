@@ -175,6 +175,7 @@ async def main():
     data = await imp.get_rows()
 
     async with server:
+        print("Server is now running!")
         while 1:
             for row in data:
                 await asyncio.sleep(1)
