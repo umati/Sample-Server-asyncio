@@ -51,7 +51,7 @@ class CSV_IMPORTER(object):
                                 dtype = await node.read_data_type()
                                 self.nodes.append((node, dtype))
                             except Exception as e:
-                                print(e)
+                                print(p, e)
                                 pass
                 else:
                     # following lines have values
