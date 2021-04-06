@@ -90,6 +90,8 @@ async def parse_to_datavalue(item):
     return value_to_datavalue(val)
 
 async def main():
+    time_value = time.time()
+    print("Start setup...")
     # Serversetup
     server = Server()
     server.name = "VDMA-OPC-ST-Prototype"
@@ -103,9 +105,20 @@ async def main():
         build_date=datetime.utcnow(),
     )
 
+    server.set_security_policy([
+            ua.SecurityPolicyType.NoSecurity,
+        ])
+    server.set_security_IDs([
+        "Anonymous",
+        ])
     server.set_endpoint("opc.tcp://0.0.0.0:4840")
 
+    print(f"Setup done! {time.time()-time_value}s")
+
     ##################################################################################################################
+
+    time_value = time.time()
+    print("Importing companion spec. XML...")
 
     # Import Opc.Ua.Di.NodeSet2.xml
     try:
@@ -132,6 +145,10 @@ async def main():
     st_idx = await server.get_namespace_index("http://opcfoundation.org/UA/SurfaceTechnology/")
 
     ##################################################################################################################
+    print(f"Import done! {time.time()-time_value}s")
+
+    time_value = time.time()
+    print("Importing models...")
 
     try:
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "CoatingLine-example.xml"))
@@ -163,22 +180,32 @@ async def main():
     except Exception as e:
         print(e)
 
+    print(f"Import done! {time.time()-time_value}s")
+
     ##################################################################################################################
 
+    time_value = time.time()
+    print("Create TypeDefinitions from XML...")
     # Load TypeDefinitions    
     await server.load_data_type_definitions()
+    print(f"TypeDefinitions created!  {time.time()-time_value}s")
 
+    time_value = time.time()
+    print("Start importing CSV-Data...")
     # read csv and generate data
     imp = CSV_IMPORTER(server=server)
     await imp.read_csv(os.path.join(BASE_DIR, "src", "data", "data.csv"))
     data = []
     data = await imp.get_rows()
+    print(f"Import done! {time.time()-time_value}s")
 
+    print("Starting Server...")
     async with server:
-        print("Server is now running!")
+        print(f"Server is now running!")
         while 1:
             for row in data:
                 await asyncio.sleep(1)
+                # time_value = time.time()
                 for item in row:
                     # item = ((node, dtype), val)
                     try:
@@ -189,6 +216,7 @@ async def main():
                     if dv is not None:
                         dv.ServerTimestamp = datetime.utcnow()
                         await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
+                # print(f"Update row took: {time.time()-time_value}s")
 
 # Start Server
 if __name__ == "__main__":
