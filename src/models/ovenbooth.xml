@@ -33,7 +33,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="NKPmdE5dyP9w3kbFBFpZtA==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="jA1aUvyBAEBstH1mDHpWIg==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:Oven">
@@ -44,8 +44,8 @@
             <Reference ReferenceType="Organizes">ns=1;i=5002</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5004</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1006</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5001</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=3;i=5019</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5001</Reference>
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5026" BrowseName="1:Components">
