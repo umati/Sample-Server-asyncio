@@ -13,13 +13,19 @@ _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-async def parse_to_datavalue(item):
+time_value = None
+
+async def parse_to_datavalue(item, start_time):
     '''
     item[1] -> Value from csv -> type string (must be casted to correct type)
-    item[0] -> tuple(node, dtype)
+    item[0] -> tuple(node, dtype, bname)
     item[0][0] -> Node-Instance
     item[0][1] -> DataType
+    item[0][2] -> BrowseName
     '''
+    if item[0] is None:
+        return None
+
     if item[0][1].Identifier == ua.ObjectIds.Null:
         val = ua.Variant(None)
     elif item[0][1].Identifier == ua.ObjectIds.Boolean:
@@ -85,8 +91,13 @@ async def parse_to_datavalue(item):
     else:
         # Unknown DataType
         # return an empty Variant to make it typesafe for companion spec. compliance
-        val = ua.Variant(Value=None)
         print("Error:", item)
+        return None
+
+    if item[0][2].Name == "PowerOnHours":
+        v = int((time.time()-start_time)/3600)
+        val = ua.Variant(Value=v, VariantType=ua.VariantType.UInt64)
+
     return value_to_datavalue(val)
 
 async def main():
@@ -202,21 +213,21 @@ async def main():
     print("Starting Server...")
     async with server:
         print(f"Server is now running!")
+        time_value = time.time()
         while 1:
             for row in data:
                 await asyncio.sleep(1)
-                # time_value = time.time()
                 for item in row:
-                    # item = ((node, dtype), val)
+                    # item = ((node, dtype, bname), val)
                     try:
-                        dv = await parse_to_datavalue(item)
-                    except:
+                        dv = await parse_to_datavalue(item, time_value)
+                    except Exception as e:
+                        print(e)
                         dv = None
 
                     if dv is not None:
                         dv.ServerTimestamp = datetime.utcnow()
                         await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
-                # print(f"Update row took: {time.time()-time_value}s")
 
 # Start Server
 if __name__ == "__main__":

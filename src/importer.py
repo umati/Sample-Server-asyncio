@@ -27,7 +27,7 @@ class CSV_IMPORTER(object):
                 if cname.Name == item:
                     current_node = child
                     break       
-        return current_node
+        return (current_node, cname)
 
     async def read_csv(self, csv):
         async with AIOFile(csv, 'r') as afp:
@@ -47,10 +47,11 @@ class CSV_IMPORTER(object):
                         else:
                             p = p.strip()
                             try:
-                                node = await self.get_node_from_path(p)
+                                node, bname = await self.get_node_from_path(p)
                                 dtype = await node.read_data_type()
-                                self.nodes.append((node, dtype))
+                                self.nodes.append((node, dtype, bname))
                             except Exception as e:
+                                self.nodes.append(None)
                                 print(p, e)
                                 pass
                 else:
