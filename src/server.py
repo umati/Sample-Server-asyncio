@@ -58,10 +58,6 @@ async def parse_to_datavalue(item, start_time):
         val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.Guid)
     elif item[0][1].Identifier == ua.ObjectIds.ByteString:
         val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.ByteString)
-    elif item[0][1].Identifier == ua.ObjectIds.XmlElement:
-        # cant be resolved with the current csv structure!
-        val = ua.Variant(Value=None, VariantType=ua.VariantType.XmlElement)
-        return None
     elif item[0][1].Identifier == ua.ObjectIds.NodeId:
         val = ua.Variant(Value=ua.NodeId.from_string(f"{item[1]}"), VariantType=ua.VariantType.NodeId)
     elif item[0][1].Identifier == ua.ObjectIds.ExpandedNodeId:
@@ -72,22 +68,14 @@ async def parse_to_datavalue(item, start_time):
         val = ua.Variant(Value=ua.QualifiedName.from_string(f"{item[1]}"), VariantType=ua.VariantType.QualifiedName)        
     elif item[0][1].Identifier == ua.ObjectIds.LocalizedText:
         val = ua.Variant(Value=ua.LocalizedText(Text=f"{item[1]}", Locale="en"), VariantType=ua.VariantType.LocalizedText)
-    elif item[0][1].Identifier == ua.ObjectIds.ExtensionObject:
-        # cant be resolved with the current csv structure!
-        val = ua.Variant(Value=None, VariantType=ua.VariantType.ExtensionObject)
-        return None
-    elif item[0][1].Identifier == ua.ObjectIds.DataValue:
-        # cant be resolved with the current csv structure!
-        val = ua.Variant(Value=None, VariantType=ua.VariantType.DataValue)
-        return None
-    elif item[0][1].Identifier == ua.ObjectIds.Variant:
-        # cant be resolved with the current csv structure!
-        val = ua.Variant(Value=None, VariantType=ua.VariantType.Variant)
-        return None
-    elif item[0][1].Identifier == ua.ObjectIds.DiagnosticInfo:
-        # cant be resolved with the current csv structure!
-        val = ua.Variant(Value=None, VariantType=ua.VariantType.DiagnosticInfo)
-        return None
+    elif item[0][1].Identifier == ua.ObjectIds.Range:
+        if not "|" in item[1]:
+            return None
+        splititem = item[1].split("|")
+        eurange = ua.uaprotocol_auto.Range()
+        eurange.Low = float(splititem[0])
+        eurange.High = float(splititem[1])
+        val = ua.Variant(Value=eurange, VariantType=ua.VariantType.ExtensionObject)
     else:
         # Unknown DataType
         # return an empty Variant to make it typesafe for companion spec. compliance
