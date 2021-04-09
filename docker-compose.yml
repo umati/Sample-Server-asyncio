@@ -1,0 +1,7 @@
+version: "3.3"
+services:
+  opcua:
+    build: .
+    ports:
+      - "4842:4840"
+
