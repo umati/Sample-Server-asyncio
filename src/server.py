@@ -13,9 +13,25 @@ _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+build_date = datetime(2021, 4, 9, 18, 00)
 time_value = None
 
-async def parse_to_datavalue(item, start_time):
+###############
+
+import pandas as pd
+import glob
+import os
+
+pattern = os.path.join(BASE_DIR, "src", "data", "datasets", "*.csv")
+
+dframes = [pd.read_csv(csv, encoding="utf-16") for csv in glob.glob(pattern)]
+all_df = pd.concat(dframes, axis=1)
+all_df.to_csv(os.path.join(BASE_DIR, "src", "data", "data.csv"), index=False)
+print("Created: data.csv")
+
+###############
+
+async def parse_to_datavalue(item, start_time, build_date):
     '''
     item[1] -> Value from csv -> type string (must be casted to correct type)
     item[0] -> tuple(node, dtype, bname)
@@ -71,10 +87,10 @@ async def parse_to_datavalue(item, start_time):
     elif item[0][1].Identifier == ua.ObjectIds.Range:
         if not "|" in item[1]:
             return None
-        splititem = item[1].split("|")
+        splititem = item[1].strip().split("|")
         eurange = ua.uaprotocol_auto.Range()
-        eurange.Low = float(splititem[0])
-        eurange.High = float(splititem[1])
+        eurange.Low = float(splititem[0].strip())
+        eurange.High = float(splititem[1].strip())
         val = ua.Variant(Value=eurange, VariantType=ua.VariantType.ExtensionObject)
     else:
         # Unknown DataType
@@ -84,6 +100,11 @@ async def parse_to_datavalue(item, start_time):
 
     if item[0][2].Name == "PowerOnHours":
         v = int((time.time()-start_time)/3600)
+        val = ua.Variant(Value=v, VariantType=ua.VariantType.UInt64)
+
+    if item[0][2].Name == "OperationalHours":
+        duration = datetime.now() - build_date
+        v = int(duration.total_seconds()/3600)
         val = ua.Variant(Value=v, VariantType=ua.VariantType.UInt64)
 
     return value_to_datavalue(val)
@@ -100,8 +121,8 @@ async def main():
         product_name="VDMA-OPC-ST-Prototype",
         manufacturer_name="VDMA-OPC-Surface-Technology-Initiative",
         software_version="beta",
-        build_number="---",
-        build_date=datetime.utcnow(),
+        build_number="202104091800",
+        build_date=build_date,
     )
 
     server.set_security_policy([
@@ -208,7 +229,7 @@ async def main():
                 for item in row:
                     # item = ((node, dtype, bname), val)
                     try:
-                        dv = await parse_to_datavalue(item, time_value)
+                        dv = await parse_to_datavalue(item, time_value, build_date)
                     except Exception as e:
                         print(e)
                         dv = None
