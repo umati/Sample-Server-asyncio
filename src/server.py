@@ -226,8 +226,13 @@ async def main():
                         dv = None
 
                     if dv is not None:
-                        dv.ServerTimestamp = datetime.utcnow()
-                        await server.write_attribute_value(item[0][0].nodeid, dv, ua.AttributeIds.Value)
+                        new_dv = ua.DataValue(
+                            Value=dv.Value,
+                            StatusCode_=dv.StatusCode_,
+                            SourceTimestamp=dv.SourceTimestamp,
+                            ServerTimestamp=datetime.utcnow()
+                        )
+                        await server.write_attribute_value(item[0][0].nodeid, new_dv, ua.AttributeIds.Value)
 
 # Start Server
 if __name__ == "__main__":
