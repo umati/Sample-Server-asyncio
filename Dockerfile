@@ -1,10 +1,10 @@
 FROM python:3.8
 
+ADD requirements.txt /
+RUN pip install -r /requirements.txt
+
 WORKDIR /opcua
 COPY . /
-
-ADD requirements.txt /opcua
-RUN pip install -r /opcua/requirements.txt
 
 EXPOSE 4840
 
