@@ -7,6 +7,7 @@ from datetime import datetime
 from asyncua import Server, ua
 from asyncua.common.ua_utils import value_to_datavalue
 from importer import CSV_IMPORTER
+from datavalue_parser import parse_to_datavalue
 
 logging.basicConfig(level=logging.WARNING)
 _logger = logging.getLogger('asyncua')
@@ -30,84 +31,6 @@ all_df.to_csv(os.path.join(BASE_DIR, "src", "data", "data.csv"), index=False)
 print("Created: data.csv")
 
 ###############
-
-async def parse_to_datavalue(item, start_time, build_date):
-    '''
-    item[1] -> Value from csv -> type string (must be casted to correct type)
-    item[0] -> tuple(node, dtype, bname)
-    item[0][0] -> Node-Instance
-    item[0][1] -> DataType
-    item[0][2] -> BrowseName
-    '''
-    if item[0] is None:
-        return None
-
-    if item[0][1].Identifier == ua.ObjectIds.Null:
-        val = ua.Variant(None)
-    elif item[0][1].Identifier == ua.ObjectIds.Boolean:
-        val = ua.Variant(Value=bool(item[1]), VariantType=ua.VariantType.Boolean)
-    elif item[0][1].Identifier == ua.ObjectIds.SByte:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.SByte)        
-    elif item[0][1].Identifier == ua.ObjectIds.Byte:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Byte)
-    elif item[0][1].Identifier == ua.ObjectIds.Int16:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int16)
-    elif item[0][1].Identifier == ua.ObjectIds.UInt16:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.UInt16)
-    elif item[0][1].Identifier == ua.ObjectIds.Int32:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int32)
-    elif item[0][1].Identifier == ua.ObjectIds.UInt32:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.UInt32)
-    elif item[0][1].Identifier == ua.ObjectIds.UInt64:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.UInt64)
-    elif item[0][1].Identifier == ua.ObjectIds.Int64:
-        val = ua.Variant(Value=int(item[1]), VariantType=ua.VariantType.Int64)
-    elif item[0][1].Identifier == ua.ObjectIds.Float:
-        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Float)
-    elif item[0][1].Identifier == ua.ObjectIds.Double:
-        val = ua.Variant(Value=float(item[1]), VariantType=ua.VariantType.Double)
-    elif item[0][1].Identifier == ua.ObjectIds.String:
-        val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.String)
-    elif item[0][1].Identifier == ua.ObjectIds.DateTime:
-        val = ua.Variant(Value=datetime.strptime(f"{item[1]}", '%Y-%m-%d %H:%M:%S.%f'), VariantType=ua.VariantType.DateTime)
-    elif item[0][1].Identifier == ua.ObjectIds.Guid:
-        val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.Guid)
-    elif item[0][1].Identifier == ua.ObjectIds.ByteString:
-        val = ua.Variant(Value=f"{item[1]}", VariantType=ua.VariantType.ByteString)
-    elif item[0][1].Identifier == ua.ObjectIds.NodeId:
-        val = ua.Variant(Value=ua.NodeId.from_string(f"{item[1]}"), VariantType=ua.VariantType.NodeId)
-    elif item[0][1].Identifier == ua.ObjectIds.ExpandedNodeId:
-        val = ua.Variant(Value=ua.NodeId.from_string(f"{item[1]}"), VariantType=ua.VariantType.ExpandedNodeId)
-    elif item[0][1].Identifier == ua.ObjectIds.StatusCode:
-        val = ua.Variant(Value=ua.StatusCode(int(item[1])), VariantType=ua.VariantType.StatusCode)
-    elif item[0][1].Identifier == ua.ObjectIds.QualifiedName:
-        val = ua.Variant(Value=ua.QualifiedName.from_string(f"{item[1]}"), VariantType=ua.VariantType.QualifiedName)        
-    elif item[0][1].Identifier == ua.ObjectIds.LocalizedText:
-        val = ua.Variant(Value=ua.LocalizedText(Text=f"{item[1]}", Locale="en"), VariantType=ua.VariantType.LocalizedText)
-    elif item[0][1].Identifier == ua.ObjectIds.Range:
-        if not "|" in item[1]:
-            return None
-        splititem = item[1].strip().split("|")
-        eurange = ua.uaprotocol_auto.Range()
-        eurange.Low = float(splititem[0].strip())
-        eurange.High = float(splititem[1].strip())
-        val = ua.Variant(Value=eurange, VariantType=ua.VariantType.ExtensionObject)
-    else:
-        # Unknown DataType
-        # return an empty Variant to make it typesafe for companion spec. compliance
-        print("Error:", item)
-        return None
-
-    if item[0][2].Name == "PowerOnHours":
-        v = int((time.time()-start_time)/3600)
-        val = ua.Variant(Value=v, VariantType=ua.VariantType.UInt64)
-
-    if item[0][2].Name == "OperationalHours":
-        duration = datetime.now() - build_date
-        v = int(duration.total_seconds()/3600)
-        val = ua.Variant(Value=v, VariantType=ua.VariantType.UInt64)
-
-    return value_to_datavalue(val)
 
 async def main():
     time_value = time.time()
