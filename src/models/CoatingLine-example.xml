@@ -7,11 +7,11 @@
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example" PublicationDate="2021-03-31T15:15:24Z" Version="1.0.1">
+        <Model ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/Example" PublicationDate="2021-04-13T14:34:59Z" Version="1.0.2">
             <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-02-25T00:00:00Z" Version="1.01.0"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-03-31T15:15:20Z" Version="1.0.1"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/SurfaceTechnology/" PublicationDate="2021-04-13T14:34:51Z" Version="1.0.2"/>
         </Model>
     </Models>
     <Aliases>
@@ -30,7 +30,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="kcd8KC2QBu8my4XISD60Gg==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="AElOjdebQAOB/JwI0E5ABQ==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5019" BrowseName="1:CoatingLine">
@@ -151,7 +151,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:DateTime>2021-03-31T15:15:24Z</uax:DateTime>
+            <uax:DateTime>2021-04-13T14:34:59Z</uax:DateTime>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6010" BrowseName="NamespaceUri">
@@ -171,7 +171,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:String>1.0.1</uax:String>
+            <uax:String>1.0.2</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5002" ValueRank="1" NodeId="ns=1;i=6012" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
