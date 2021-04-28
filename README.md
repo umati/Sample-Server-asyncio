@@ -3,4 +3,8 @@
 ### Prototyp implementierung der VDMA-OPC-Surface-Technology-Initiative 
   
 Companion Spec. XML und UaModeller-Projekt:  
-https://github.com/VDMA-OPC-Surface-Technology-Initiative/UaModeler  
+https://github.com/VDMA-OPC-Surface-Technology-Initiative/UaModeler
+
+## Modell View
+
+![Model-View](/doc/Model-View.png)
