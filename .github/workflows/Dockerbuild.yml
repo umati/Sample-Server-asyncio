@@ -3,7 +3,7 @@ name: Build Docker image
 on: [push, pull_request]
 
 env:
-  IMAGE_NAME: prototyp-ua-server
+  IMAGE_NAME: samples-server-asyncio
 
 jobs:
   # Push image to GitHub Packages.
@@ -19,11 +19,11 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into GitHub Container Registry
-        run: echo "${{ secrets.CR_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.CR_PAT }}" | docker login https://ghcr.io -u ${{ github.repository_owner }} --password-stdin
 
       - name: Push image to GitHub Container Registry
         run: |
-          IMAGE_ID=ghcr.io/VDMA-OPC-Surface-Technology-Initiative/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
