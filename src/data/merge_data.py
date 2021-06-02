@@ -1,3 +1,5 @@
+# Copyright 2020-2021 (c) Andreas Heine, AFOTEK Anlagen für Oberflächentechnik GmbH
+
 import pandas as pd
 import glob
 import os

@@ -1,3 +1,5 @@
+# Copyright 2020-2021 (c) Andreas Heine, AFOTEK Anlagen für Oberflächentechnik GmbH
+
 import time
 from datetime import datetime
 from asyncua import Server, ua
