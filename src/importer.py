@@ -1,3 +1,5 @@
+# Copyright 2020-2021 (c) Andreas Heine, AFOTEK Anlagen für Oberflächentechnik GmbH
+
 import asyncio
 from aiofile import AIOFile, LineReader
 from asyncua import Server, Node, ua

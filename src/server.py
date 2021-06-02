@@ -1,3 +1,10 @@
+# Copyright 2020-2021 (c) Andreas Heine, AFOTEK Anlagen für Oberflächentechnik GmbH
+# Copyright 2021 (c) Fabian Beitler, konzeptpark GmbH
+# Copyright 2021 (c) Moritz Walker, ISW University of Stuttagart (for umati and VDW e.V.)
+# Copyright 2021 (c) Goetz Goerisch, VDW - Verein Deutscher Werkzeugmaschinenfabriken e.V.
+
+
+
 # Imports
 import os 
 import asyncio
@@ -95,6 +102,23 @@ async def main():
         print(e)
 
     ijt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IJT/")
+
+#            # Import Opc.Ua.Ia.NodeSet2.xml
+#    try:
+#        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.IA.NodeSet2.xml"))
+#    except Exception as e:
+#        print(e)
+#
+#    ia_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IA/")
+#
+#    # Import Opc.Ua.MachineTool.NodeSet2.xml
+#    try:
+#        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.MachineTool.Nodeset2.xml"))
+#    except Exception as e:
+#        print(e)
+#
+#    mt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/MachineTool/")
+
     ##################################################################################################################
     print(f"Import done! {time.time()-time_value}s")
 
@@ -130,7 +154,7 @@ async def main():
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Pretreatment.xml"))
     except Exception as e:
         print(e)
-
+    
     try:
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ijt_tightening_server.xml"))
     except Exception as e:

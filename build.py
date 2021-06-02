@@ -1,3 +1,5 @@
+# Copyright 2020-2021 (c) Andreas Heine, AFOTEK Anlagen für Oberflächentechnik GmbH
+
 import os, datetime
 
 with open("log/buildlog.txt", "a+") as f:
