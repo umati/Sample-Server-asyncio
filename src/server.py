@@ -38,14 +38,14 @@ async def main():
     print("Start setup...")
     # Serversetup
     server = Server()
-    server.name = "VDMA-OPC-ST-Prototype"
+    server.name = "umati-Sample-Server"
     await server.init()
     await server.set_build_info(
-        product_uri="https://github.com/orgs/VDMA-OPC-Surface-Technology-Initiative",
-        product_name="VDMA-OPC-ST-Prototype",
-        manufacturer_name="VDMA-OPC-Surface-Technology-Initiative",
-        software_version="beta",
-        build_number="202104091800",
+        product_uri="https://github.com/umati/Sample-Server",
+        product_name="umati Sample Server",
+        manufacturer_name="umati community",
+        software_version="alpha",
+        build_number="202106011800",
         build_date=build_date,
     )
 
@@ -88,6 +88,13 @@ async def main():
 
     st_idx = await server.get_namespace_index("http://opcfoundation.org/UA/SurfaceTechnology/")
 
+    # Import Opc.Ua.Ijt.Tightening.NodeSet2.xml
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Ijt.Tightening.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+
+    ijt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IJT/")
     ##################################################################################################################
     print(f"Import done! {time.time()-time_value}s")
 
@@ -123,6 +130,11 @@ async def main():
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Pretreatment.xml"))
     except Exception as e:
         print(e)
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ijt_tightening_server.xml"))
+    except Exception as e:
+        print(e)    
 
     print(f"Import done! {time.time()-time_value}s")
 
