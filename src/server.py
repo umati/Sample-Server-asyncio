@@ -24,22 +24,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 build_date = datetime(2021, 4, 9, 18, 00)
 time_value = None
 
-# ###############
-
-# import pandas as pd
-# import glob
-# import os
-
-# pattern = os.path.join(BASE_DIR, "src", "data", "datasets", "*.csv")
-
-# dframes = [pd.read_csv(csv) for csv in glob.glob(pattern)]
-# # dframes = [pd.read_csv(csv, encoding="utf-16") for csv in glob.glob(pattern)]
-# all_df = pd.concat(dframes, axis=1)
-# all_df.to_csv(os.path.join(BASE_DIR, "src", "data", "data.csv"), index=False, encoding="utf-8")
-# print("Created: data.csv")
-
-# ###############
-
 async def main():
     time_value = time.time()
     print("Start setup...")
