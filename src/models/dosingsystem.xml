@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
  * Copyright (c) 2021 WIWA Wilhelm Wagner GmbH & Co. KG All rights reserved.
+* Copyright (c) 2021 konzeptpark GmbH  All rights reserved.
 -->
 <UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/SurfaceTechnology/Types.xsd" xmlns:s3="http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:s4="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:s5="http://opcfoundation.org/UA/Machinery/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <NamespaceUris>
