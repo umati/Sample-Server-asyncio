@@ -29,14 +29,14 @@ async def main():
     print("Start setup...")
     # Serversetup
     server = Server()
-    server.name = "umati-Sample-Server"
+    server.name = "umati-Sample-Server-asyncio"
     await server.init()
     await server.set_build_info(
-        product_uri="https://github.com/umati/Sample-Server",
-        product_name="umati Sample Server",
+        product_uri="https://github.com/umati/Sample-Server-asyncio",
+        product_name="umati Sample-Server-asyncio",
         manufacturer_name="umati community",
         software_version="alpha",
-        build_number="202106011800",
+        build_number="202106231800",
         build_date=build_date,
     )
 
@@ -86,6 +86,14 @@ async def main():
         print(e)
 
     ijt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IJT/")
+
+        # Import Opc.Ua.Robotics.NodeSet2.xml
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Robotics.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+
+    rob_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
 
 #            # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
@@ -143,6 +151,12 @@ async def main():
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ijt_tightening_server.xml"))
     except Exception as e:
         print(e)    
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "opcroboticstestserver.xml"))
+    except Exception as e:
+        print(e)  
+
 
     print(f"Import done! {time.time()-time_value}s")
 
