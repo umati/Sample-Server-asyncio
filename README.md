@@ -1,14 +1,16 @@
-# Prototype implementations of OPC UA Companion Specifications
+# Sample-Server-asyncio
+
+OPC UA Sample Server based on [FreeOpcUa/opcua-asyncio](https://github.com/FreeOpcUa/opcua-asyncio)
+
+## Prototype implementations of OPC UA Companion Specifications
 
 Based on the Hannover Messe 2021 demonstration of the VDMA Group OPC UA for Surface Technology.
-
-## Sample Server
 
 This Sample Server implementation should help companion specification working groups to easily implement a first running server.
 
 This repository provides a container image to be run by Docker as well as a running instance of the `main` branch at `opc.tcp://opcua2.umati.app:4840`
 
-![Build Docker image](https://github.com/VDMA-OPC-Surface-Technology-Initiative/Prototype1/workflows/Build%20Docker%20image/badge.svg?branch=master&event=push)  
+[![Build Docker image](https://github.com/umati/Sample-Server-asyncio/actions/workflows/Dockerbuild.yml/badge.svg)](https://github.com/umati/Sample-Server-asyncio/actions/workflows/Dockerbuild.yml)
 
 ## Folder Structure
 
