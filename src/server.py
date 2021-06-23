@@ -139,30 +139,30 @@ async def main():
     except Exception as e:
         print(e)
     
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ConveyorGunsAxes.xml"))
-    except Exception as e:
-        print(e)
-    
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Materialsupplyroom.xml"))
-    except Exception as e:
-        print(e)
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "dosingsystem.xml"))
-    except Exception as e:
-        print(e)
-    
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ovenbooth.xml"))
-    except Exception as e:
-        print(e)
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Pretreatment.xml"))
-    except Exception as e:
-        print(e)
+#    try:
+#        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ConveyorGunsAxes.xml"))
+#    except Exception as e:
+#        print(e)
+#    
+#    try:
+#        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Materialsupplyroom.xml"))
+#    except Exception as e:
+#        print(e)
+#
+#    try:
+#        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "dosingsystem.xml"))
+#    except Exception as e:
+#        print(e)
+#    
+#    try:
+#        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ovenbooth.xml"))
+#    except Exception as e:
+#        print(e)
+#
+#    try:
+#        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Pretreatment.xml"))
+#    except Exception as e:
+#        print(e)
     
     try:
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ijt_tightening_server.xml"))
