@@ -10,6 +10,7 @@ import os
 import asyncio
 import logging
 import time
+import random
 from datetime import datetime
 from asyncua import Server, ua
 from asyncua.common.ua_utils import value_to_datavalue
@@ -180,6 +181,10 @@ async def main():
     print("Starting Server...")
     async with server:
         print(f"Server is now running!")
+        
+        # calling fucntion that updates robotics nodes in a parallel task
+        await robotvariableupdater(server)
+
         time_value = time.time()
         while 1:
             for row in data:
@@ -201,6 +206,28 @@ async def main():
                         )
                         await server.write_attribute_value(item[0][0].nodeid, new_dv, ua.AttributeIds.Value)
 
+async def robotvariableupdater(server):
+    # prepare a list of variables to be updated 
+    nsindex= await server.get_namespace_index("http://vdma.org/OPCRoboticsTestServer/")
+    nodesToUpdate=[]
+    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6022"))
+    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6020"))
+    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6024"))
+    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6031"))
+    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6027"))
+    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6033"))
+    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6054"))
+    loop = asyncio.get_event_loop()
+    loop.create_task(randomvaluesimulator(nodesToUpdate))
+
+async def randomvaluesimulator(nodes):
+    while True:
+        await asyncio.sleep(2)
+        #print("Simulating...")
+        for node in nodes:
+            value = round(random.uniform(10,20),2)
+            await node.write_value(value)
+ 
 # Start Server
 if __name__ == "__main__":
     asyncio.run(main())
