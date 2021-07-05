@@ -210,13 +210,13 @@ async def robotvariableupdater(server):
     # prepare a list of variables to be updated 
     nsindex= await server.get_namespace_index("http://vdma.org/OPCRoboticsTestServer/")
     nodesToUpdate=[]
-    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6022"))
-    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6020"))
-    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6024"))
-    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6031"))
-    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6027"))
-    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6033"))
-    nodesToUpdate.append(server.get_node("ns="+str(nsindex)+";i=6054"))
+    nodesToUpdate.append(server.get_node(f"ns={nsindex};i=6022"))
+    nodesToUpdate.append(server.get_node(f"ns={nsindex};i=6020"))
+    nodesToUpdate.append(server.get_node(f"ns={nsindex};i=6024"))
+    nodesToUpdate.append(server.get_node(f"ns={nsindex};i=6031"))
+    nodesToUpdate.append(server.get_node(f"ns={nsindex};i=6027"))
+    nodesToUpdate.append(server.get_node(f"ns={nsindex};i=6033"))
+    nodesToUpdate.append(server.get_node(f"ns={nsindex};i=6054"))
     loop = asyncio.get_event_loop()
     loop.create_task(randomvaluesimulator(nodesToUpdate))
 
