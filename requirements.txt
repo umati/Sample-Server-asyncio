@@ -1,4 +1,4 @@
-aiofiles==0.6.0
+aiofiles==0.7.0
 aiofile
 aiosqlite==0.16.1
 altgraph==0.17
