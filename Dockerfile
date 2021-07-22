@@ -1,5 +1,5 @@
 FROM python:3.8
-LABEL org.opencontainers.image.source https://github.com/VDMA-OPC-Surface-Technology-Initiative/Prototype1
+LABEL org.opencontainers.image.source https://github.com/umati/Sample-Server-asyncio
 
 ADD requirements.txt /
 RUN pip install -r /requirements.txt
