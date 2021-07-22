@@ -1,6 +1,6 @@
 aiofiles==0.7.0
 aiofile
-aiosqlite==0.16.1
+aiosqlite==0.17.0
 altgraph==0.17
 -e git+https://github.com/FreeOpcUa/opcua-asyncio.git#egg=asyncua
 cffi==1.14.6
