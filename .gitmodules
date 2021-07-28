@@ -1,0 +1,4 @@
+[submodule "deps/UA-Nodeset"]
+	path = deps/UA-Nodeset
+	url = https://github.com/OPCFoundation/UA-Nodeset.git
+	branch = v1.04
