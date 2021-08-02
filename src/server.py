@@ -58,7 +58,7 @@ async def main():
 
     # Import Opc.Ua.Di.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps/UA-Nodeset/DI", "Opc.Ua.Di.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "DI", "Opc.Ua.Di.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
@@ -66,7 +66,7 @@ async def main():
 
     # Import Opc.Ua.Machinery.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps/UA-Nodeset/Machinery", "Opc.Ua.Machinery.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Machinery", "Opc.Ua.Machinery.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
@@ -90,7 +90,7 @@ async def main():
 
         # Import Opc.Ua.Robotics.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps/UA-Nodeset/Robotics", "Opc.Ua.Robotics.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Robotics", "Opc.Ua.Robotics.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
@@ -98,7 +98,7 @@ async def main():
 
 #            # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
-#        await server.import_xml(os.path.join(BASE_DIR, "deps/UA-Nodeset/IA", "Opc.Ua.IA.NodeSet2.xml"))
+#        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
 #    except Exception as e:
 #        print(e)
 #
@@ -106,7 +106,7 @@ async def main():
 #
 #    # Import Opc.Ua.MachineTool.NodeSet2.xml
 #    try:
-#        await server.import_xml(os.path.join(BASE_DIR, "deps/UA-Nodeset/MachineTool", "Opc.Ua.MachineTool.Nodeset2.xml"))
+#        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "MachineTool", "Opc.Ua.MachineTool.Nodeset2.xml"))
 #    except Exception as e:
 #        print(e)
 #
