@@ -16,13 +16,18 @@ This repository provides a container image to be run by Docker as well as a runn
 
 ```text
 ├──.github              GitHub Workflows
-├──doc/images           Documentation and images      
-├──nodeset              Normative NodeSet files as copy from OPC-Foundation
+├──doc/images           Documentation and images
+├──deps/UA-Nodeset      Normative NodeSet files as external deps of OPC-Foundation/UA-Nodeset repo
+├──nodeset              Normative NodeSet files
 ├──src
     |-data
         |-datasets      Datasets for update variable of the virtual coating line instance
     |-models            XML NodeSets containing the instances of machines in the server
 ```
+
+## Local development
+
+Please clone with `git clone --recurse-submodules` to resolve the external [deps/UA-Nodeset](https://github.com/OPCFoundation/UA-Nodeset).
 
 ## Modell View Surface Technology
 
