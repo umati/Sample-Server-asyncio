@@ -13,7 +13,7 @@
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2021-05-10T12:00:00Z" Version="1.03"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/IMM2MES/" PublicationDate="2020-06-01T00:00:00Z" Version="1.01"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-03-01T00:00:00Z" Version="1.01.0"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2021-02-25T00:00:00Z" Version="1.01.0"/>
         </Model>
     </Models>
     <Aliases>
@@ -48,7 +48,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="/bAJdZiwA6+x6xdc+OcKUQ==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="o+vJ3YOTVaAHVThDeSv/ew==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5002" BrowseName="1:IMM_Sample_1">
@@ -1474,8 +1474,8 @@
         <DisplayName>CardUid</DisplayName>
         <Description>Uid of the identification card used by the operator for logging in to the machine</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5025</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:String>70758f8a00000000</uax:String>
@@ -1507,8 +1507,8 @@
         <DisplayName>Language</DisplayName>
         <Description>Currently selected language on the machine control unit</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5025</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:String>eng-US</uax:String>
@@ -1677,8 +1677,8 @@
     <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6082" NodeId="ns=1;i=6069" BrowseName="EngineeringUnits">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6082</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6082</Reference>
         </References>
         <Value>
             <uax:ExtensionObject>
@@ -1711,8 +1711,8 @@
         <DisplayName>Classification</DisplayName>
         <Description>Type of the temperature zone</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5023</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:Int32>5</uax:Int32>
@@ -1778,8 +1778,8 @@
     <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6088" NodeId="ns=1;i=6070" BrowseName="EngineeringUnits">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6088</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6088</Reference>
         </References>
         <Value>
             <uax:ExtensionObject>
@@ -1854,8 +1854,8 @@
         <DisplayName>Id</DisplayName>
         <Description>Id of the PowerUnit</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:String></uax:String>
@@ -1865,8 +1865,8 @@
         <DisplayName>Index</DisplayName>
         <Description>Number of the power unit</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:UInt32>0</uax:UInt32>
@@ -1876,8 +1876,8 @@
         <DisplayName>IsPresent</DisplayName>
         <Description>Indication if the power unit is physically present and connected</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:Boolean>false</uax:Boolean>
@@ -1887,8 +1887,8 @@
         <DisplayName>PowerOn</DisplayName>
         <Description>Indication if the PowerUnit is switched on</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:Boolean>false</uax:Boolean>
