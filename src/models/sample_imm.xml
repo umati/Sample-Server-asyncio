@@ -48,7 +48,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="o+vJ3YOTVaAHVThDeSv/ew==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="vsRxqNfeMFSHu/vWj9RQlw==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5002" BrowseName="1:IMM_Sample_1">
@@ -68,7 +68,7 @@
             <Reference ReferenceType="HasComponent" IsForward="false">ns=4;i=5001</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5027" BrowseName="Identification">
+    <UAObject NodeId="ns=1;i=5027" BrowseName="4:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasProperty">ns=1;i=6104</Reference>
