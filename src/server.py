@@ -17,7 +17,7 @@ from asyncua.common.ua_utils import value_to_datavalue
 from importer import CSV_IMPORTER
 from datavalue_parser import parse_to_datavalue
 
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.DEBUG)
 _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -96,6 +96,14 @@ async def main():
 
     rob_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
 
+        # Import Opc.Ua.Woodworking.NodeSet2.xml
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Woodworking.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+
+    wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
+
 #            # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
 #        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
@@ -156,7 +164,12 @@ async def main():
     try:
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "opcroboticstestserver.xml"))
     except Exception as e:
-        print(e)  
+        print(e)
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Opc.ua.Eumabois.Nodeset2.xml"))
+    except Exception as e:
+        print(e) 
 
 
     print(f"Import done! {time.time()-time_value}s")
