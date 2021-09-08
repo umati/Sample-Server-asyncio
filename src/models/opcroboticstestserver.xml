@@ -456,6 +456,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6039</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5017</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=4;i=1001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1004</Reference>
         </References>
     </UAObject>
     <UAObject ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=5019" BrowseName="3:Axes">
