@@ -17,7 +17,7 @@ from asyncua.common.ua_utils import value_to_datavalue
 from importer import CSV_IMPORTER
 from datavalue_parser import parse_to_datavalue
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARNING)
 _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -169,7 +169,17 @@ async def main():
     try:
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Opc.ua.Eumabois.Nodeset2.xml"))
     except Exception as e:
+        print(e)
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Basic.xml"))
+    except Exception as e:
         print(e) 
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Full.xml"))
+    except Exception as e:
+        print(e)          
 
 
     print(f"Import done! {time.time()-time_value}s")

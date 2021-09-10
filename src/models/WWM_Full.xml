@@ -1,0 +1,1068 @@
+<?xml version="1.0"?>
+<!-- * Copyright 2021 (c) Christoph Ruckstetter, Weinig AG -->
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <NamespaceUris>
+    <Uri>http://example.com/FullWoodworking/</Uri>
+    <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
+    <Uri>http://opcfoundation.org/UA/Woodworking/</Uri>
+  </NamespaceUris>
+  <UAObject NodeId="ns=1;i=57031" BrowseName="2:Identification">
+    <DisplayName>Identification</DisplayName>
+    <Description>The Identification Object provides identification information of the machine.</Description>
+    <References>
+      <Reference ReferenceType="i=17604" IsForward="false">ns=1;i=66382</Reference>
+      <Reference ReferenceType="i=40">ns=2;i=1012</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57046</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57035</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57052</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57047</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57036</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57053</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57048</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57037</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57054</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57043</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57032</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57049</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57044</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57033</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57050</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57045</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57034</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57051</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57032" BrowseName="2:SerialNumber" DataType="i=12">
+    <DisplayName>SerialNumber</DisplayName>
+    <Description>A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>123456</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57033" BrowseName="2:DeviceClass" DataType="i=12">
+    <DisplayName>DeviceClass</DisplayName>
+    <Description>Indicates in which domain or for what purpose the MachineryItem is used.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>ProfilingMachine</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57034" BrowseName="2:Model" DataType="i=21">
+    <DisplayName>Model</DisplayName>
+    <Description>A human-readable, localized name of the model of the MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:LocalizedText>
+        <uax:Locale/>
+        <uax:Text>Powermat 3000</uax:Text>
+      </uax:LocalizedText>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57035" BrowseName="2:YearOfConstruction" DataType="i=5">
+    <DisplayName>YearOfConstruction</DisplayName>
+    <Description>The year (Gregorian calendar) in which the manufacturing process of the MachineryItem has been completed. It shall be a four-digit number and never change during the life-cycle of a MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:UInt16>2021</uax:UInt16>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57036" BrowseName="2:ProductInstanceUri" DataType="i=12">
+    <DisplayName>ProductInstanceUri</DisplayName>
+    <Description>A globally unique resource identifier provided by the manufacturer of the machine</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>https://www.weinig.com/en/solid-wood/planing-machines-and-moulders/powermat-series/powermat-3000.html#FullWoodworking</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57037" BrowseName="2:Manufacturer" DataType="i=21">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:LocalizedText>
+        <uax:Locale/>
+        <uax:Text>Michael Weinig AG</uax:Text>
+      </uax:LocalizedText>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57038" BrowseName="3:State">
+    <DisplayName>State</DisplayName>
+    <Description>The State Object provides information about the states of the machine.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=66382</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57039</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57121</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=57039" BrowseName="3:Machine">
+    <DisplayName>Machine</DisplayName>
+    <Description>State of the whole machine.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57038</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57040</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57082</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=57040" BrowseName="3:Overview">
+    <DisplayName>Overview</DisplayName>
+    <Description>The Overview Object provides a general overview of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57039</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57041</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57042</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57041" BrowseName="3:CurrentMode" DataType="ns=3;i=20">
+    <DisplayName>CurrentMode</DisplayName>
+    <Description>The CurrentMode Variable provides the generalized mode of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57040</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int32>1</uax:Int32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57042" BrowseName="3:CurrentState" DataType="ns=3;i=21">
+    <DisplayName>CurrentState</DisplayName>
+    <Description>The CurrentState Variable provides the generalized state of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57040</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int32>0</uax:Int32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57043" BrowseName="3:LocationPlant" DataType="i=12">
+    <DisplayName>LocationPlant</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>TBB</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57044" BrowseName="3:LocationGPS" DataType="i=12">
+    <DisplayName>LocationGPS</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>49.628661 9.654903</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57045" BrowseName="3:CustomerCompanyName" DataType="i=21">
+    <DisplayName>CustomerCompanyName</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:LocalizedText>
+        <uax:Locale/>
+        <uax:Text>Weinig Expo Center</uax:Text>
+      </uax:LocalizedText>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57046" BrowseName="2:ManufacturerUri" DataType="i=12">
+    <DisplayName>ManufacturerUri</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>https://www.weinig.com</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57047" BrowseName="2:ProductCode" DataType="i=12">
+    <DisplayName>ProductCode</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>123456</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57048" BrowseName="2:HardwareRevision" DataType="i=12">
+    <DisplayName>HardwareRevision</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>1.0</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57049" BrowseName="2:SoftwareRevision" DataType="i=12">
+    <DisplayName>SoftwareRevision</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>1.1</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57050" BrowseName="2:MonthOfConstruction" DataType="i=3">
+    <DisplayName>MonthOfConstruction</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:Byte>1</uax:Byte>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57051" BrowseName="2:InitialOperationDate" DataType="i=13">
+    <DisplayName>InitialOperationDate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:DateTime>2021-09-07T11:18:10.482Z</uax:DateTime>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57052" BrowseName="2:AssetId" DataType="i=12">
+    <DisplayName>AssetId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>123456</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57053" BrowseName="2:ComponentName" DataType="i=21">
+    <DisplayName>ComponentName</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:LocalizedText>
+        <uax:Locale/>
+        <uax:Text>Machine</uax:Text>
+      </uax:LocalizedText>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57054" BrowseName="2:Location" DataType="i=12">
+    <DisplayName>Location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>VIRTUAL 0 0 /N 49.628661 E 9.654903</uax:String>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57055" BrowseName="3:Flags">
+    <DisplayName>Flags</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57039</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=17603">ns=3;i=4</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57079</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57068</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57057</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57074</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57063</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57080</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57069</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57058</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57075</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57064</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57081</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57070</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57059</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57076</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57065</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57071</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57060</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57077</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57066</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57072</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57061</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57078</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57067</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57056</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57073</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57062</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57056" BrowseName="3:Error" DataType="i=1">
+    <DisplayName>Error</DisplayName>
+    <Description>The Error Variable is true if at least one reason exists which prevents the machine from working.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57057" BrowseName="3:MachineOn" DataType="i=1">
+    <DisplayName>MachineOn</DisplayName>
+    <Description>The MachineOn Variable is true if the machine is switched on. If the OPC UA Server runs on the machine this value is always true.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57058" BrowseName="3:Alarm" DataType="i=1">
+    <DisplayName>Alarm</DisplayName>
+    <Description>The Alarm Variable is true if at least one alarm exists.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57059" BrowseName="3:MachineInitialized" DataType="i=1">
+    <DisplayName>MachineInitialized</DisplayName>
+    <Description>The MachineInitialized Variable is true if the MachineOn is true, the plc and the control processes are running. The machine is ready for usage for the operator.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57060" BrowseName="3:Calibrated" DataType="i=1">
+    <DisplayName>Calibrated</DisplayName>
+    <Description>The Calibrated Variable is true if all devices are calibrated.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57061" BrowseName="3:Warning" DataType="i=1">
+    <DisplayName>Warning</DisplayName>
+    <Description>The Warning Variable is true if at least one warning exists.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57062" BrowseName="3:PowerPresent" DataType="i=1">
+    <DisplayName>PowerPresent</DisplayName>
+    <Description>The PowerPresent Variable is true if 400V are present (the drives are ready to move).</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57063" BrowseName="3:RecipeInRun" DataType="i=1">
+    <DisplayName>RecipeInRun</DisplayName>
+    <Description>The RecipeInRun Variable is true if the machine runs its program. This is only possible if the Error Variable is false. However, if the machine is paused by the program, the machine is considered to still be running its program, i.e. while the RecipeInHold Variable is true, the RecipeInRun cannot be false.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57064" BrowseName="3:Emergency" DataType="i=1">
+    <DisplayName>Emergency</DisplayName>
+    <Description>The Emergency Variable is true if at least one emergency button is pressed.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57065" BrowseName="3:AirPresent" DataType="i=1">
+    <DisplayName>AirPresent</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57066" BrowseName="3:DustChipSuction" DataType="i=1">
+    <DisplayName>DustChipSuction</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57067" BrowseName="3:Safety" DataType="i=1">
+    <DisplayName>Safety</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57068" BrowseName="3:Remote" DataType="i=1">
+    <DisplayName>Remote</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57069" BrowseName="3:WorkpiecePresent" DataType="i=1">
+    <DisplayName>WorkpiecePresent</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57070" BrowseName="3:Moving" DataType="i=1">
+    <DisplayName>Moving</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57071" BrowseName="3:Hold" DataType="i=1">
+    <DisplayName>Hold</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57072" BrowseName="3:RecipeInSetup" DataType="i=1">
+    <DisplayName>RecipeInSetup</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57073" BrowseName="3:RecipeInHold" DataType="i=1">
+    <DisplayName>RecipeInHold</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57074" BrowseName="3:ManualActivityRequired" DataType="i=1">
+    <DisplayName>ManualActivityRequired</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57075" BrowseName="3:LoadingEnabled" DataType="i=1">
+    <DisplayName>LoadingEnabled</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57076" BrowseName="3:WaitUnload" DataType="i=1">
+    <DisplayName>WaitUnload</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57077" BrowseName="3:WaitLoad" DataType="i=1">
+    <DisplayName>WaitLoad</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57078" BrowseName="3:EnergySaving" DataType="i=1">
+    <DisplayName>EnergySaving</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57079" BrowseName="3:ExternalEmergency" DataType="i=1">
+    <DisplayName>ExternalEmergency</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57080" BrowseName="3:MaintenanceRequired" DataType="i=1">
+    <DisplayName>MaintenanceRequired</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57081" BrowseName="3:FeedRuns" DataType="i=1">
+    <DisplayName>FeedRuns</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57055</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57082" BrowseName="3:Values">
+    <DisplayName>Values</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57039</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=17603">ns=3;i=1006</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57115</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57104</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57093</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57085</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57110</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57099</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57088</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57116</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57105</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57094</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57086</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57111</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57100</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57089</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57117</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57106</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57095</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57087</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57112</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57101</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57090</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57107</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57096</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57113</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57102</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57091</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57083</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57108</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57097</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57114</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57103</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57092</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57084</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57109</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57098</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57083" BrowseName="3:AxisOverride" DataType="i=7">
+    <DisplayName>AxisOverride</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt32>100</uax:UInt32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57084" BrowseName="3:SpindleOverride" DataType="i=7">
+    <DisplayName>SpindleOverride</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt32>100</uax:UInt32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57085" BrowseName="3:FeedSpeed" DataType="i=11">
+    <DisplayName>FeedSpeed</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:Double>0</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57086" BrowseName="3:ActualCycle" DataType="i=11">
+    <DisplayName>ActualCycle</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:Double>500</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57087" BrowseName="3:AbsoluteMachineOffTime" DataType="i=9">
+    <DisplayName>AbsoluteMachineOffTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>53223</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57088" BrowseName="3:AbsoluteStandbyTime" DataType="i=9">
+    <DisplayName>AbsoluteStandbyTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>235331</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57089" BrowseName="3:RelativeStandbyTime" DataType="i=9">
+    <DisplayName>RelativeStandbyTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>1334</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57090" BrowseName="3:AbsoluteReadyTime" DataType="i=9">
+    <DisplayName>AbsoluteReadyTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>321526</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57091" BrowseName="3:RelativeReadyTime" DataType="i=9">
+    <DisplayName>RelativeReadyTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>54422</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57092" BrowseName="3:AbsoluteWorkingTime" DataType="i=9">
+    <DisplayName>AbsoluteWorkingTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>146882</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57093" BrowseName="3:RelativeWorkingTime" DataType="i=9">
+    <DisplayName>RelativeWorkingTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>5421</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57094" BrowseName="3:AbsoluteErrorTime" DataType="i=9">
+    <DisplayName>AbsoluteErrorTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>315421</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57095" BrowseName="3:RelativeErrorTime" DataType="i=9">
+    <DisplayName>RelativeErrorTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>3315</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57096" BrowseName="3:AbsoluteMachineOnTime" DataType="i=9">
+    <DisplayName>AbsoluteMachineOnTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>55164</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57097" BrowseName="3:RelativeMachineOnTime" DataType="i=9">
+    <DisplayName>RelativeMachineOnTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>7935</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57098" BrowseName="3:AbsolutePowerPresentTime" DataType="i=9">
+    <DisplayName>AbsolutePowerPresentTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>75838</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57099" BrowseName="3:RelativePowerPresentTime" DataType="i=9">
+    <DisplayName>RelativePowerPresentTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>6757</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57100" BrowseName="3:AbsoluteProductionTime" DataType="i=9">
+    <DisplayName>AbsoluteProductionTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>342634</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57101" BrowseName="3:RelativeProductionTime" DataType="i=9">
+    <DisplayName>RelativeProductionTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>54425</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57102" BrowseName="3:AbsoluteProductionWithoutWorkpieceTime" DataType="i=9">
+    <DisplayName>AbsoluteProductionWithoutWorkpieceTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>34626</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57103" BrowseName="3:RelativeProductionWithoutWorkpieceTime" DataType="i=9">
+    <DisplayName>RelativeProductionWithoutWorkpieceTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>754</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57104" BrowseName="3:AbsoluteProductionWaitWorkpieceTime" DataType="i=9">
+    <DisplayName>AbsoluteProductionWaitWorkpieceTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>52879</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57105" BrowseName="3:RelativeProductionWaitWorkpieceTime" DataType="i=9">
+    <DisplayName>RelativeProductionWaitWorkpieceTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>325</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57106" BrowseName="3:AbsoluteRunsGood" DataType="i=9">
+    <DisplayName>AbsoluteRunsGood</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>7626</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57107" BrowseName="3:RelativeRunsGood" DataType="i=9">
+    <DisplayName>RelativeRunsGood</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>153</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57108" BrowseName="3:AbsoluteRunsTotal" DataType="i=9">
+    <DisplayName>AbsoluteRunsTotal</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>7643</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57109" BrowseName="3:RelativeRunsTotal" DataType="i=9">
+    <DisplayName>RelativeRunsTotal</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>135</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57110" BrowseName="3:AbsoluteRunsAborted" DataType="i=9">
+    <DisplayName>AbsoluteRunsAborted</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>75432</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57111" BrowseName="3:RelativeRunsAborted" DataType="i=9">
+    <DisplayName>RelativeRunsAborted</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>5</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57112" BrowseName="3:AbsoluteLength" DataType="i=9">
+    <DisplayName>AbsoluteLength</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>33042</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57113" BrowseName="3:RelativeLength" DataType="i=9">
+    <DisplayName>RelativeLength</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>943</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57114" BrowseName="3:AbsolutePiecesIn" DataType="i=9">
+    <DisplayName>AbsolutePiecesIn</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>7543</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57115" BrowseName="3:RelativePiecesIn" DataType="i=9">
+    <DisplayName>RelativePiecesIn</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>2534</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57116" BrowseName="3:AbsolutePiecesOut" DataType="i=9">
+    <DisplayName>AbsolutePiecesOut</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>7432</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57117" BrowseName="3:RelativePiecesOut" DataType="i=9">
+    <DisplayName>RelativePiecesOut</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57082</Reference>
+      <Reference ReferenceType="i=40">i=15318</Reference>
+    </References>
+    <Value>
+      <uax:UInt64>234</uax:UInt64>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57118" BrowseName="3:Events" EventNotifier="1">
+    <DisplayName>Events</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=66382</Reference>
+      <Reference ReferenceType="i=40">ns=3;i=15</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=57119" BrowseName="3:ManufacturerSpecific">
+    <DisplayName>ManufacturerSpecific</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=66382</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57120</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57120" BrowseName="3:LastProgramName" DataType="i=12">
+    <DisplayName>LastProgramName</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57119</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:String>A1234</uax:String>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57121" BrowseName="3:SubUnits">
+    <DisplayName>SubUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57038</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=17603">ns=3;i=7</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57122</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=57122" BrowseName="3:&lt;SubUnit&gt;">
+    <DisplayName>&lt;SubUnit&gt;</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57121</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=17603">ns=3;i=6</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57123</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=57123" BrowseName="3:Overview">
+    <DisplayName>Overview</DisplayName>
+    <Description>The Overview Object provides a general state of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57122</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57124</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57125</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57124" BrowseName="3:CurrentMode" DataType="ns=3;i=20">
+    <DisplayName>CurrentMode</DisplayName>
+    <Description>The CurrentMode Variable provides the generalized mode of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57123</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int32>3</uax:Int32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57125" BrowseName="3:CurrentState" DataType="ns=3;i=21">
+    <DisplayName>CurrentState</DisplayName>
+    <Description>The CurrentState Variable provides the generalized state of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57123</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int32>2</uax:Int32>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=66382" BrowseName="1:FullWoodworking" EventNotifier="1">
+    <DisplayName>FullWoodworking</DisplayName>
+    <References>
+      <Reference ReferenceType="i=35" IsForward="false">ns=2;i=1001</Reference>
+      <Reference ReferenceType="i=40">ns=3;i=2</Reference>
+      <Reference ReferenceType="i=17604">ns=1;i=57031</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57038</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57118</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57119</Reference>
+    </References>
+  </UAObject>
+</UANodeSet>
