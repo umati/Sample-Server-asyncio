@@ -96,6 +96,14 @@ async def main():
 
     rob_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
 
+        # Import Opc.Ua.Woodworking.NodeSet2.xml
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Woodworking.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+
+    wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
+
 #            # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
 #        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
@@ -156,7 +164,22 @@ async def main():
     try:
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "opcroboticstestserver.xml"))
     except Exception as e:
-        print(e)  
+        print(e)
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Opc.ua.Eumabois.Nodeset2.xml"))
+    except Exception as e:
+        print(e)
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Basic.xml"))
+    except Exception as e:
+        print(e) 
+
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Full.xml"))
+    except Exception as e:
+        print(e)          
 
 
     print(f"Import done! {time.time()-time_value}s")

@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<!-- * Copyright 2021 (c) Christoph Ruckstetter, Weinig AG -->
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <NamespaceUris>
+    <Uri>http://example.com/BasicWoodworking/</Uri>
+    <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
+    <Uri>http://opcfoundation.org/UA/Woodworking/</Uri>
+  </NamespaceUris>
+  <UAObject NodeId="ns=1;i=57008" BrowseName="2:Identification">
+    <DisplayName>Identification</DisplayName>
+    <Description>The Identification Object provides identification information of the machine.</Description>
+    <References>
+      <Reference ReferenceType="i=17604" IsForward="false">ns=1;i=66382</Reference>
+      <Reference ReferenceType="i=40">ns=2;i=1012</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57009</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57010</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57011</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57012</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57013</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=57014</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57009" BrowseName="2:SerialNumber" DataType="i=12">
+    <DisplayName>SerialNumber</DisplayName>
+    <Description>A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57008</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>123456</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57010" BrowseName="2:DeviceClass" DataType="i=12">
+    <DisplayName>DeviceClass</DisplayName>
+    <Description>Indicates in which domain or for what purpose the MachineryItem is used.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57008</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>ProfilingMachine</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57011" BrowseName="2:Model" DataType="i=21">
+    <DisplayName>Model</DisplayName>
+    <Description>A human-readable, localized name of the model of the MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57008</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:LocalizedText>
+        <uax:Locale/>
+        <uax:Text>Powermat 3000</uax:Text>
+      </uax:LocalizedText>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57012" BrowseName="2:YearOfConstruction" DataType="i=5">
+    <DisplayName>YearOfConstruction</DisplayName>
+    <Description>The year (Gregorian calendar) in which the manufacturing process of the MachineryItem has been completed. It shall be a four-digit number and never change during the life-cycle of a MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57008</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:UInt16>2021</uax:UInt16>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57013" BrowseName="2:ProductInstanceUri" DataType="i=12">
+    <DisplayName>ProductInstanceUri</DisplayName>
+    <Description>A globally unique resource identifier provided by the manufacturer of the machine</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57008</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>https://www.weinig.com/en/solid-wood/planing-machines-and-moulders/powermat-series/powermat-3000.html#BasicWoodworking</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57014" BrowseName="2:Manufacturer" DataType="i=21">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
+    <References>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=57008</Reference>
+      <Reference ReferenceType="i=40">i=68</Reference>
+    </References>
+    <Value>
+      <uax:LocalizedText>
+        <uax:Locale/>
+        <uax:Text>Michael Weinig AG</uax:Text>
+      </uax:LocalizedText>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57015" BrowseName="3:State">
+    <DisplayName>State</DisplayName>
+    <Description>The State Object provides information about the states of the machine.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=66382</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57016</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=57016" BrowseName="3:Machine">
+    <DisplayName>Machine</DisplayName>
+    <Description>State of the whole machine.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57015</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57017</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57020</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=57017" BrowseName="3:Overview">
+    <DisplayName>Overview</DisplayName>
+    <Description>The Overview Object provides a general overview of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57016</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57018</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57019</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57018" BrowseName="3:CurrentMode" DataType="ns=3;i=20">
+    <DisplayName>CurrentMode</DisplayName>
+    <Description>The CurrentMode Variable provides the generalized mode of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57017</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int32>3</uax:Int32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57019" BrowseName="3:CurrentState" DataType="ns=3;i=21">
+    <DisplayName>CurrentState</DisplayName>
+    <Description>The CurrentState Variable provides the generalized state of the unit.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57017</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int32>2</uax:Int32>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57020" BrowseName="3:Flags">
+    <DisplayName>Flags</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57016</Reference>
+      <Reference ReferenceType="i=40">i=58</Reference>
+      <Reference ReferenceType="i=17603">ns=3;i=4</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57021</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57022</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57023</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57024</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57025</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57026</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57027</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57028</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57029</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=57021" BrowseName="3:Error" DataType="i=1">
+    <DisplayName>Error</DisplayName>
+    <Description>The Error Variable is true if at least one reason exists which prevents the machine from working.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57022" BrowseName="3:MachineOn" DataType="i=1">
+    <DisplayName>MachineOn</DisplayName>
+    <Description>The MachineOn Variable is true if the machine is switched on. If the OPC UA Server runs on the machine this value is always true.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57023" BrowseName="3:Alarm" DataType="i=1">
+    <DisplayName>Alarm</DisplayName>
+    <Description>The Alarm Variable is true if at least one alarm exists.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57024" BrowseName="3:MachineInitialized" DataType="i=1">
+    <DisplayName>MachineInitialized</DisplayName>
+    <Description>The MachineInitialized Variable is true if the MachineOn is true, the plc and the control processes are running. The machine is ready for usage for the operator.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57025" BrowseName="3:Calibrated" DataType="i=1">
+    <DisplayName>Calibrated</DisplayName>
+    <Description>The Calibrated Variable is true if all devices are calibrated.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57026" BrowseName="3:Warning" DataType="i=1">
+    <DisplayName>Warning</DisplayName>
+    <Description>The Warning Variable is true if at least one warning exists.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57027" BrowseName="3:PowerPresent" DataType="i=1">
+    <DisplayName>PowerPresent</DisplayName>
+    <Description>The PowerPresent Variable is true if 400V are present (the drives are ready to move).</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57028" BrowseName="3:RecipeInRun" DataType="i=1">
+    <DisplayName>RecipeInRun</DisplayName>
+    <Description>The RecipeInRun Variable is true if the machine runs its program. This is only possible if the Error Variable is false. However, if the machine is paused by the program, the machine is considered to still be running its program, i.e. while the RecipeInHold Variable is true, the RecipeInRun cannot be false.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>true</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=57029" BrowseName="3:Emergency" DataType="i=1">
+    <DisplayName>Emergency</DisplayName>
+    <Description>The Emergency Variable is true if at least one emergency button is pressed.</Description>
+    <References>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57020</Reference>
+      <Reference ReferenceType="i=40">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Boolean>false</uax:Boolean>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=66382" BrowseName="1:BasicWoodworking" EventNotifier="1">
+    <DisplayName>BasicWoodworking</DisplayName>
+    <References>
+      <Reference ReferenceType="i=35" IsForward="false">ns=2;i=1001</Reference>
+      <Reference ReferenceType="i=40">ns=3;i=2</Reference>
+      <Reference ReferenceType="i=17604">ns=1;i=57008</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=57015</Reference>
+    </References>
+  </UAObject>
+</UANodeSet>
