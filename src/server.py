@@ -110,7 +110,7 @@ async def main():
     except Exception as e:
         print(e)
 
-    pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
+    pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
 
 #            # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
