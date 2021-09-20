@@ -22,7 +22,7 @@ _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-build_date = datetime(2021, 4, 9, 18, 00)
+build_date = datetime(2021, 9, 20, 12, 00)
 time_value = None
 
 async def main():
@@ -37,7 +37,7 @@ async def main():
         product_name="umati Sample-Server-asyncio",
         manufacturer_name="umati community",
         software_version="alpha",
-        build_number="202107180900",
+        build_number="202109201200",
         build_date=build_date,
     )
 
@@ -103,6 +103,14 @@ async def main():
         print(e)
 
     wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
+
+            # Import Opc.Ua.Pumps.NodeSet2.xml
+    try:
+        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+
+    pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
 
 #            # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
@@ -181,6 +189,10 @@ async def main():
     except Exception as e:
         print(e)          
 
+    try:
+        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
+    except Exception as e:
+        print(e)  
 
     print(f"Import done! {time.time()-time_value}s")
 
