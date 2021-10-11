@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.10
 LABEL org.opencontainers.image.source https://github.com/umati/Sample-Server-asyncio
 
 ADD requirements.txt /
