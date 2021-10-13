@@ -82,7 +82,7 @@ async def main():
 
     # Import Opc.Ua.Ijt.Tightening.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Ijt.Tightening.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "IJT", "Tightening", "Opc.Ua.Ijt.Tightening.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
