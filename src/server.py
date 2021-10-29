@@ -22,7 +22,7 @@ _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-build_date = datetime(2021, 9, 20, 12, 00)
+build_date = datetime(2021, 10, 29, 12, 00)
 time_value = None
 
 async def main():
@@ -98,7 +98,7 @@ async def main():
 
         # Import Opc.Ua.Woodworking.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Woodworking.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Woodworking.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
@@ -175,7 +175,7 @@ async def main():
         print(e)
 
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Opc.ua.Eumabois.Nodeset2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
     except Exception as e:
         print(e)
 
