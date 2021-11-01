@@ -80,13 +80,13 @@ async def main():
 
     st_idx = await server.get_namespace_index("http://opcfoundation.org/UA/SurfaceTechnology/")
 
-    # Import Opc.Ua.Ijt.Tightening.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Ijt.Tightening.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
+    # # Import Opc.Ua.Ijt.Tightening.NodeSet2.xml
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Ijt.Tightening.NodeSet2.xml"))
+    # except Exception as e:
+    #     print(e)
 
-    ijt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IJT/")
+    # ijt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IJT/")
 
         # Import Opc.Ua.Robotics.NodeSet2.xml
     try:
@@ -96,21 +96,21 @@ async def main():
 
     rob_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
 
-        # Import Opc.Ua.Woodworking.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Woodworking.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
+    #     # Import Opc.Ua.Woodworking.NodeSet2.xml
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Woodworking.NodeSet2.xml"))
+    # except Exception as e:
+    #     print(e)
 
-    wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
+    # wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
 
-            # Import Opc.Ua.Pumps.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
+    #         # Import Opc.Ua.Pumps.NodeSet2.xml
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
+    # except Exception as e:
+    #     print(e)
 
-    pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
+    # pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
 
 #            # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
@@ -164,35 +164,35 @@ async def main():
 #    except Exception as e:
 #        print(e)
     
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ijt_tightening_server.xml"))
-    except Exception as e:
-        print(e)    
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ijt_tightening_server.xml"))
+    # except Exception as e:
+    #     print(e)    
 
     try:
         await server.import_xml(os.path.join(BASE_DIR, "src", "models", "opcroboticstestserver.xml"))
     except Exception as e:
         print(e)
 
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
-    except Exception as e:
-        print(e)
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
+    # except Exception as e:
+    #     print(e)
 
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Basic.xml"))
-    except Exception as e:
-        print(e) 
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Basic.xml"))
+    # except Exception as e:
+    #     print(e) 
 
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Full.xml"))
-    except Exception as e:
-        print(e)          
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Full.xml"))
+    # except Exception as e:
+    #     print(e)          
 
-    try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
-    except Exception as e:
-        print(e)  
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
+    # except Exception as e:
+    #     print(e)  
 
     print(f"Import done! {time.time()-time_value}s")
 
