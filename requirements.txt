@@ -2,7 +2,7 @@ aiofiles==0.7.0
 aiofile==3.7.2
 aiosqlite==0.17.0
 altgraph==0.17.2
-asyncua==0.9.90
+asyncua==0.9.91
 cffi==1.15.0
 cryptography==35.0.0
 future==0.18.2
