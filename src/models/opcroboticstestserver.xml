@@ -43,10 +43,10 @@
     <UAObject NodeId="ns=1;i=5015" BrowseName="1:MotionDeviceSystem">
         <DisplayName>MotionDeviceSystem</DisplayName>
         <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1002</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5016</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5017</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=5001</Reference>
-            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1002</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5022</Reference>
         </References>
     </UAObject>
@@ -54,16 +54,16 @@
         <DisplayName>Controllers</DisplayName>
         <Description>Contains the set of controllers in the motion device system.</Description>
         <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5002</Reference>
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5002" BrowseName="1:RobotController">
         <DisplayName>RobotController</DisplayName>
         <References>
-            <Reference ReferenceType="HasAddIn">ns=1;i=5032</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=3;i=1003</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5032</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5001</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5026</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6002</Reference>
@@ -74,6 +74,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=5005</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=4;i=1001</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5032" BrowseName="4:Components">
@@ -87,9 +88,9 @@
     <UAObject NodeId="ns=1;i=5033" BrowseName="1:Drive1">
         <DisplayName>Drive1</DisplayName>
         <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=17793</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6066</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6067</Reference>
-            <Reference ReferenceType="HasTypeDefinition">ns=3;i=17793</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6068</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5030</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6069</Reference>
