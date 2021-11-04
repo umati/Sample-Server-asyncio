@@ -22,7 +22,7 @@ _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-build_date = datetime(2021, 10, 29, 12, 00)
+build_date = datetime(2022, 2, 8, 12, 00)
 time_value = None
 
 async def main():
