@@ -6,7 +6,7 @@ asyncua==0.9.92
 cffi==1.15.0
 cryptography==36.0.1
 future==0.18.2
-importlib-metadata==4.11.1
+importlib-metadata==4.11.2
 pefile==2021.9.3
 pycparser==2.21
 pyinstaller==4.9
