@@ -7,7 +7,7 @@ cffi==1.15.0
 cryptography==37.0.2
 future==0.18.2
 importlib-metadata==4.11.4
-pefile==2021.9.3
+pefile==2022.5.30
 pycparser==2.21
 pyinstaller==5.1
 pyinstaller-hooks-contrib==2022.6
