@@ -1,7 +1,7 @@
-# Copyright 2020-2021 (c) Andreas Heine, AFOTEK Anlagen für Oberflächentechnik GmbH
-# Copyright 2021 (c) Fabian Beitler, konzeptpark GmbH
-# Copyright 2021 (c) Moritz Walker, ISW University of Stuttagart (for umati and VDW e.V.)
-# Copyright 2021 (c) Goetz Goerisch, VDW - Verein Deutscher Werkzeugmaschinenfabriken e.V.
+# Copyright (c) 2020-2021 Andreas Heine, AFOTEK Anlagen für Oberflächentechnik GmbH
+# Copyright (c) 2021 Fabian Beitler, konzeptpark GmbH
+# Copyright (c) 2021 Moritz Walker, ISW University of Stuttagart (for umati and VDW e.V.)
+# Copyright (c) 2021-2022 Goetz Goerisch, VDW - Verein Deutscher Werkzeugmaschinenfabriken e.V.
 
 
 
@@ -22,7 +22,7 @@ _logger = logging.getLogger('asyncua')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-build_date = datetime(2021, 10, 29, 12, 00)
+build_date = datetime(2022, 6, 15, 17, 00)
 time_value = None
 
 async def main():
@@ -37,7 +37,7 @@ async def main():
         product_name="umati Sample-Server-asyncio",
         manufacturer_name="umati community",
         software_version="alpha",
-        build_number="202109201200",
+        build_number="202206151700",
         build_date=build_date,
     )
 
@@ -88,7 +88,7 @@ async def main():
 
     ijt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IJT/")
 
-        # Import Opc.Ua.Robotics.NodeSet2.xml
+    # Import Opc.Ua.Robotics.NodeSet2.xml
     try:
         await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Robotics", "Opc.Ua.Robotics.NodeSet2.xml"))
     except Exception as e:
@@ -96,7 +96,7 @@ async def main():
 
     rob_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
 
-        # Import Opc.Ua.Woodworking.NodeSet2.xml
+    # Import Opc.Ua.Woodworking.NodeSet2.xml
     try:
         await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Woodworking.NodeSet2.xml"))
     except Exception as e:
@@ -104,15 +104,15 @@ async def main():
 
     wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
 
-            # Import Opc.Ua.Pumps.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
+#   # Import Opc.Ua.Pumps.NodeSet2.xml TODO disables due to error while adding nodes
+#   try:
+#       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
+#   except Exception as e:
+#       print(e)
+#
+#   pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
 
-    pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
-
-#            # Import Opc.Ua.Ia.NodeSet2.xml
+#    # Import Opc.Ua.Ia.NodeSet2.xml
 #    try:
 #        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
 #    except Exception as e:
@@ -175,7 +175,9 @@ async def main():
         print(e)
 
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
+        # TODO disables until upstream is fixed
+        #await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Opc.Ua.Eumabois.Nodeset2.xml"))
     except Exception as e:
         print(e)
 
@@ -189,10 +191,10 @@ async def main():
     except Exception as e:
         print(e)          
 
-    try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
-    except Exception as e:
-        print(e)  
+    # try:
+    #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
+    # except Exception as e:
+    #     print(e)  
 
     print(f"Import done! {time.time()-time_value}s")
 
