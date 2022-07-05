@@ -96,13 +96,13 @@ async def main():
 
     rob_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
 
-    #     # Import Opc.Ua.Woodworking.NodeSet2.xml
-    # try:
-    #     await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Woodworking.NodeSet2.xml"))
-    # except Exception as e:
-    #     print(e)
+        # Import Opc.Ua.Woodworking.NodeSet2.xml
+    try:
+        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Woodworking.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
 
-    # wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
+    wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
 
     #         # Import Opc.Ua.Pumps.NodeSet2.xml
     # try:
@@ -122,9 +122,10 @@ async def main():
 
     # Import Opc.Ua.MachineTool.NodeSet2.xml
     try:
-        # TODO: revert when upstream fixed
-        # await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "MachineTool", "Opc.Ua.MachineTool.NodeSet2.xml"))
-        await server.import_xml(os.path.join(BASE_DIR,  "nodeset" , "Opc.Ua.MachineTool.NodeSet2.xml"))
+        # TODO revert as soon as v1.01.1 is in upstream repo
+        #await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "MachineTool", "Opc.Ua.MachineTool.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR,  "nodeset", "Opc.Ua.MachineTool.NodeSet2.xml"))
+
     except Exception as e:
         print(e)
 
