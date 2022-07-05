@@ -3,7 +3,7 @@ aiofile==3.7.4
 aiosqlite==0.17.0
 altgraph==0.17.2
 asyncua==0.9.94
-cffi==1.15.0
+cffi==1.15.1
 cryptography==37.0.2
 future==0.18.2
 importlib-metadata==4.12.0
