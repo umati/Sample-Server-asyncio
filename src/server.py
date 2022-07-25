@@ -2,7 +2,7 @@
 # Copyright (c) 2021 Fabian Beitler, konzeptpark GmbH
 # Copyright (c) 2021 Moritz Walker, ISW University of Stuttagart (for umati and VDW e.V.)
 # Copyright (c) 2021-2022 Goetz Goerisch, VDW - Verein Deutscher Werkzeugmaschinenfabriken e.V.
-# Copyright (c) 2021 Harald Weber, VDMA e.V.
+# Copyright (c) 2021-2022 Harald Weber, VDMA e.V.
 
 
 
@@ -128,7 +128,9 @@ async def main():
     
     # Import Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "PlasticsRubber", "IMM2MES", "1.01" , "Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml"))
+        #TODO: revert as soon as upstream nodeset is fixed
+        #await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "PlasticsRubber", "IMM2MES", "1.01" , "Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR,  "nodeset", "Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
