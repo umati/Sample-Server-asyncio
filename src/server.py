@@ -116,7 +116,9 @@ async def main():
     
     # Import Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml
     try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "PlasticsRubber", "GeneralTypes", "1.03", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
+        #TODO: revert as soon as upstream nodeset is fixed
+        #await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "PlasticsRubber", "GeneralTypes", "1.03", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
+        await server.import_xml(os.path.join(BASE_DIR,  "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
@@ -218,7 +220,7 @@ async def main():
     #     print(e)  
 
     try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "sample_imm.xml"))
+        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "umati_opc40077_sample_instance.xml"))
     except Exception as e:
         print(e)  
         
