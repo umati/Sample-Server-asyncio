@@ -1,5 +1,5 @@
 aiofiles==0.8.0
-aiofile==3.7.4
+aiofile==3.8.1
 aiosqlite==0.17.0
 altgraph==0.17.2
 asyncua==0.9.94
