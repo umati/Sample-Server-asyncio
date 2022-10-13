@@ -9,7 +9,7 @@ future==0.18.2
 importlib-metadata==5.0.0
 pefile==2022.5.30
 pycparser==2.21
-pyinstaller==5.4.1
+pyinstaller==5.5
 pyinstaller-hooks-contrib==2022.10
 python-dateutil==2.8.2
 pytz==2022.4
