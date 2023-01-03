@@ -34,7 +34,7 @@
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2022-07-13T00:00:00Z" Version="1.03.01">
+        <Model ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2022-07-13T00:00:00Z" Version="1.03.01-RC">
             <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
         </Model>
