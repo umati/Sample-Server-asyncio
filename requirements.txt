@@ -12,7 +12,7 @@ pycparser==2.21
 pyinstaller==5.9.0
 pyinstaller-hooks-contrib==2023.1
 python-dateutil==2.8.2
-pytz==2023.2
+pytz==2023.3
 pywin32-ctypes==0.2.0
 six==1.16.0
 typing-extensions==4.5.0
