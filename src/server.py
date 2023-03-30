@@ -119,7 +119,7 @@ async def main():
         #TODO: revert as soon as upstream nodeset is fixed
         #await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "PlasticsRubber", "GeneralTypes", "1.03", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
         # await server.import_xml(os.path.join(BASE_DIR,  "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"), strict_mode=False)
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
     except Exception as e:
         print(e)
 
