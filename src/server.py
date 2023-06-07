@@ -105,13 +105,13 @@ async def main():
 
     wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
 
-#   # Import Opc.Ua.Pumps.NodeSet2.xml TODO disables due to error while adding nodes
-#   try:
-#       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
-#   except Exception as e:
-#       print(e)
-#
-#   pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
+   # Import Opc.Ua.Pumps.NodeSet2.xml TODO disables due to error while adding nodes
+    try:
+        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+
+    pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
   
     
     # Import Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml
