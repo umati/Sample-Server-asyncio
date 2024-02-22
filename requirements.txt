@@ -5,7 +5,7 @@ altgraph==0.17.4
 asyncua==1.0.6
 cffi==1.16.0
 cryptography==42.0.4
-future==0.18.3
+future==1.0.0
 importlib-metadata==7.0.1
 pefile==2023.2.7
 pycparser==2.21
