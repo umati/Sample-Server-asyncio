@@ -3,6 +3,8 @@
 # Copyright (c) 2021 Moritz Walker, ISW University of Stuttagart (for umati and VDW e.V.)
 # Copyright (c) 2021-2022 Goetz Goerisch, VDW - Verein Deutscher Werkzeugmaschinenfabriken e.V.
 # Copyright (c) 2021-2022 Harald Weber, VDMA e.V.
+# Copyright (c) 2024 Sebastian Friedl, interop4X - FVA GmbH 
+
 
 
 
@@ -15,6 +17,7 @@ import random
 from datetime import datetime
 from asyncua import Server, ua
 from asyncua.common.ua_utils import value_to_datavalue
+from asyncua.common.instantiate_util import instantiate
 from importer import CSV_IMPORTER
 from datavalue_parser import parse_to_datavalue
 
@@ -25,6 +28,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 build_date = datetime(2022, 6, 15, 17, 00)
 time_value = None
+
+async def updateSimpleScale(server,scale_node):
+    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales')
+    currentWeight = await scale_node.get_child(f"{scale_idx}:CurrentWeight")
+    value = await currentWeight.read_value()
+    value.Gross = (value.Gross + 0.2) % 10
+    value.Net = value.Gross - value.Tare
+    await currentWeight.write_value(value)
+
 
 async def main():
     time_value = time.time()
@@ -227,15 +239,31 @@ async def main():
     except Exception as e:
         print(e)  
         
+    try:
+        print("Import PackML")
+        await server.import_xml(os.path.join(BASE_DIR, "deps","UA-Nodeset", "PackML", "Opc.Ua.PackML.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+
+    try:
+        print("Import Scales")
+        # use modified nodeset because stack runs with OPC UA 1.5.1 and Scales depends on OPC UA 1.5.3
+        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Scales.NodeSet2.xml"))
+    except Exception as e:
+        print(e)
+        
     print(f"Import done! {time.time()-time_value}s")
 
     ##################################################################################################################
 
     time_value = time.time()
     print("Create TypeDefinitions from XML...")
-    # Load TypeDefinitions    
+    # Load TypeDefinitions
     await server.load_data_type_definitions()
     print(f"TypeDefinitions created!  {time.time()-time_value}s")
+
+    scale_node = await createScaleInstance(server)
+    await init_scale_identification_values(scale_node, di_idx)
 
     time_value = time.time()
     print("Start importing CSV-Data...")
@@ -249,13 +277,14 @@ async def main():
     print("Starting Server...")
     async with server:
         print(f"Server is now running!")
-        
+
         # calling fucntion that updates robotics nodes in a parallel task
         await robotvariableupdater(server)
 
         time_value = time.time()
         while 1:
             for row in data:
+                await updateSimpleScale(server,scale_node)
                 await asyncio.sleep(1)
                 for item in row:
                     # item = ((node, dtype, bname), val)
@@ -295,7 +324,33 @@ async def randomvaluesimulator(nodes):
         for node in nodes:
             value = round(random.uniform(10,20),2)
             await node.write_value(value)
- 
+
+async def createScaleInstance(server):
+    print("Create Scale example")
+    idx = await server.register_namespace("http://interop4x.de/example/scale")
+    di_idx = await server.get_namespace_index('http://opcfoundation.org/UA/DI/')
+    machinery_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Machinery/')
+    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales')
+
+    simpleScale_type_nodeid = f"ns={scale_idx};i=3"
+    simpleScale_type_node = server.get_node(simpleScale_type_nodeid)
+    displayname = ua.LocalizedText("mySimpleScale")
+    machines_node = await server.nodes.objects.get_child(f"{machinery_idx}:Machines")
+
+    await instantiate(machines_node, simpleScale_type_node, bname=f"{idx}:mySimpleScale", dname=displayname)
+    scale_node = await server.nodes.objects.get_child([f"{machinery_idx}:Machines",f"{idx}:mySimpleScale"])
+    print(scale_node)
+    return scale_node
+
+async def init_scale_identification_values(scale_node,di_idx):
+    manufacturer = await scale_node.get_child([f"{di_idx}:Identification", f"{di_idx}:Manufacturer"])
+    await manufacturer.write_value(ua.LocalizedText("interop4X - FVA GmbH"))
+    serialNumber = await scale_node.get_child([f"{di_idx}:Identification", f"{di_idx}:SerialNumber"])
+    await serialNumber.write_value(("12-34-56"))
+    productInstanceUri = await scale_node.get_child([f"{di_idx}:Identification", f"{di_idx}:ProductInstanceUri"])
+    await productInstanceUri.write_value(
+    ("http://interop4x.de/12-34-56"))
+
 # Start Server
 if __name__ == "__main__":
     asyncio.run(main())
