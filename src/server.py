@@ -29,14 +29,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 build_date = datetime(2022, 6, 15, 17, 00)
 time_value = None
 
-async def updateSimpleScale(server,scale_node):
-    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales')
-    currentWeight = await scale_node.get_child(f"{scale_idx}:CurrentWeight")
-    value = await currentWeight.read_value()
-    value.Gross = (value.Gross + 0.2) % 10
-    value.Net = value.Gross - value.Tare
-    await currentWeight.write_value(value)
-
 async def import_xml_file(server, file_path, strict_mode=True):
     """
     Imports an XML file into the server.
@@ -86,6 +78,8 @@ async def import_models(server):
         ("deps/UA-Nodeset/Woodworking/Opc.Ua.Woodworking.NodeSet2.xml", True),
         ("nodeset/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml", False),
         ("nodeset/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml", False),
+        ("deps/UA-Nodeset/Mining/General/1.0.0/Opc.Ua.Mining.General.NodeSet2.xml",False),
+        ("deps/UA-Nodeset/Mining/TransportDumping/General/1.0.0/Opc.Ua.Mining.TransportDumping.General.NodeSet2.xml", False),
         ("src/models/CoatingLine-example.xml", True),
         ("src/models/ConveyorGunsAxes.xml", True),
         ("src/models/Materialsupplyroom.xml", True),
@@ -136,8 +130,12 @@ async def main():
     await server.load_data_type_definitions()
     print(f"TypeDefinitions created!  {time.time()-time_value}s")
 
-    scale_node = await createScaleInstance(server)
+    scale_node = await create_scale_instance(server)
     await init_scale_identification_values(server,scale_node)
+
+    truck_node = await create_mining_instance(server)
+    await init_truck_identification_values(server, truck_node)
+
 
     time_value = time.time()
     print("Start importing CSV-Data...")
@@ -156,9 +154,12 @@ async def main():
         await robotvariableupdater(server)
 
         time_value = time.time()
+        i = 0
         while 1:
             for row in data:
                 await updateSimpleScale(server,scale_node)
+                await update_truck_values(server, truck_node,i)
+                i = (1 + i) % 62
                 await asyncio.sleep(1)
                 for item in row:
                     # item = ((node, dtype, bname), val)
@@ -199,7 +200,7 @@ async def randomvaluesimulator(nodes):
             value = round(random.uniform(10,20),2)
             await node.write_value(value)
 
-async def createScaleInstance(server):
+async def create_scale_instance(server):
     print("Create Scale example")
     idx = await server.register_namespace("http://interop4x.de/example/scale")
     machinery_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Machinery/')
@@ -225,6 +226,75 @@ async def init_scale_identification_values(server,scale_node):
     await productInstanceUri.write_value(
     ("http://interop4x.de/12-34-56"))
 
+
+async def updateSimpleScale(server, scale_node):
+    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales')
+    currentWeight = await scale_node.get_child(f"{scale_idx}:CurrentWeight")
+    value = await currentWeight.read_value()
+    value.Gross = (value.Gross + 0.2) % 10
+    value.Net = value.Gross - value.Tare
+    await currentWeight.write_value(value)
+
+
+async def create_mining_instance(server):
+    print("Create Minng example")
+    idx = await server.register_namespace("http://interop4x.de/example/mining")
+    machinery_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Machinery/')
+    mining_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Mining/TransportDumping/General/")
+
+    HaulageMachineType_nid = f"ns={mining_idx};i=1003"
+    HaulageMachineType_node = server.get_node(HaulageMachineType_nid)
+    displayname = ua.LocalizedText("myTruck")
+    machines_node = await server.nodes.objects.get_child(f"{machinery_idx}:Machines")
+
+    await instantiate(machines_node, HaulageMachineType_node, bname=f"{idx}:myTruck", dname=displayname)
+    truck_node = await server.nodes.objects.get_child([f"{machinery_idx}:Machines", f"{idx}:myTruck"])
+    return truck_node
+
+async def init_truck_identification_values(server, truck_node):
+    di_idx = await server.get_namespace_index("http://opcfoundation.org/UA/DI/")
+    mining_general_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Mining/General/')
+    manufacturer = await truck_node.get_child([f"{mining_general_idx}:MiningEquipmentIdentification", f"{di_idx}:Manufacturer"])
+    await manufacturer.write_value(ua.LocalizedText("interop4X - FVA GmbH"))
+    serialNumber = await truck_node.get_child([f"{mining_general_idx}:MiningEquipmentIdentification", f"{di_idx}:SerialNumber"])
+    await serialNumber.write_value(("t-12-34-56"))
+    productInstanceUri = await truck_node.get_child([f"{mining_general_idx}:MiningEquipmentIdentification", f"{di_idx}:ProductInstanceUri"])
+    await productInstanceUri.write_value(
+        ("http://interop4x.de/t-12-34-56"))
+
+async def update_truck_values(server, truck_node,i):
+    di_idx = await server.get_namespace_index("http://opcfoundation.org/UA/DI/")
+    mining_general_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Mining/General/')
+    mining_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Mining/TransportDumping/General/')
+    payload = await truck_node.get_child([f"{di_idx}:ParameterSet",f"{mining_idx}:CurrentPayload"])
+    speed = await truck_node.get_child([f"{di_idx}:ParameterSet",f"{mining_idx}:MachineVelocity",f"{mining_general_idx}:Speed"])
+
+    if i < 10:
+        await payload.write_value((await payload.read_value() + 0.5))
+        await speed.write_value(0.0)
+    elif i < 15:
+        await payload.write_value(await payload.read_value())
+        await speed.write_value(await speed.read_value()+ 0.1)
+    elif i < 20:
+        await payload.write_value(await payload.read_value())
+        await speed.write_value(await speed.read_value())
+    elif i < 25:
+        await payload.write_value(await payload.read_value())
+        await speed.write_value(await speed.read_value() - 0.1)
+    elif i < 30:
+        await payload.write_value(await payload.read_value() - 0.5)
+        await speed.write_value(0.0)
+    elif i < 40:
+        await payload.write_value(0.0)
+        await speed.write_value(await speed.read_value()+ 0.2)
+    elif i < 50:
+        await payload.write_value(0.0)
+        await speed.write_value(await speed.read_value()- 0.2)
+    elif i < 60:
+        await payload.write_value(0.0)
+        await speed.write_value(0.0) 
+
 # Start Server
 if __name__ == "__main__":
     asyncio.run(main())
+    
