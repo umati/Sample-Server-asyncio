@@ -37,11 +37,23 @@ async def updateSimpleScale(server,scale_node):
     value.Net = value.Gross - value.Tare
     await currentWeight.write_value(value)
 
+async def import_xml_file(server, file_path, strict_mode=True):
+    """
+    Imports an XML file into the server.
 
-async def main():
-    time_value = time.time()
+    Args:
+        server: The OPC UA server instance.
+        file_path: The path to the XML file to import.
+        strict_mode: Specifies whether to use strict mode during import.
+    """
+    try:
+        await server.import_xml(file_path, strict_mode=strict_mode)
+        print(f"Successfully imported {file_path}")
+    except Exception as e:
+        print(f"Failed to import {file_path}: {e}")
+        
+async def setup_server():
     print("Start setup...")
-    # Serversetup
     server = Server()
     server.name = "umati-Sample-Server-asyncio"
     await server.init()
@@ -61,198 +73,60 @@ async def main():
         "Anonymous",
         ])
     server.set_endpoint("opc.tcp://0.0.0.0:4840")
+    return server
 
+async def import_models(server):
+    print("Importing companion spec. XML...")
+    xml_files = [
+        ("deps/UA-Nodeset/DI/Opc.Ua.Di.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/Machinery/Opc.Ua.Machinery.NodeSet2.xml", True),
+        ("nodeset/Opc.Ua.SurfaceTechnology.NodeSet2.xml", True),
+        ("nodeset/Opc.Ua.Ijt.Tightening.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/Robotics/Opc.Ua.Robotics.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/Woodworking/Opc.Ua.Woodworking.NodeSet2.xml", True),
+        ("nodeset/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml", False),
+        ("nodeset/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml", False),
+        ("src/models/CoatingLine-example.xml", True),
+        ("src/models/ConveyorGunsAxes.xml", True),
+        ("src/models/Materialsupplyroom.xml", True),
+        ("src/models/dosingsystem.xml", True),
+        ("src/models/ovenbooth.xml", True),
+        ("src/models/Pretreatment.xml", True),
+        ("src/models/ijt_tightening_server.xml", True),
+        ("src/models/opcroboticstestserver.xml", True),
+        ("src/models/Opc.Ua.Eumabois.Nodeset2.xml", True),
+        ("src/models/WWM_Basic.xml", True),
+        ("src/models/WWM_Full.xml", True),
+        ("src/models/umati_opc40077_sample_instance.xml", True),
+        ("deps/UA-Nodeset/PackML/Opc.Ua.PackML.NodeSet2.xml", True),
+        ("nodeset/Opc.Ua.Scales.NodeSet2.xml", True)
+    ]
+    
+    # missing namespaces
+    #       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
+    #       await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"), strict_mode=False)
+    #       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
+    #       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "MachineTool", "Opc.Ua.MachineTool.Nodeset2.xml"))
+    #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
+    # TODO disables until upstream is fixed
+    # await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
+    #
+
+    for rel_path, strict_mode in xml_files:
+        # Construct the full file path, ensuring OS compatibility
+        file_path = os.path.join(BASE_DIR, *rel_path.split('/'))
+        await import_xml_file(server, file_path, strict_mode)
+
+async def main():
+    time_value = time.time()
+
+    server = await setup_server()
     print(f"Setup done! {time.time()-time_value}s")
 
-    ##################################################################################################################
+    await import_models(server)
+    print(f"All imports completed in {time.time() - time_value} seconds.")
 
-    time_value = time.time()
-    print("Importing companion spec. XML...")
 
-    # Import Opc.Ua.Di.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "DI", "Opc.Ua.Di.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-
-    di_idx = await server.get_namespace_index("http://opcfoundation.org/UA/DI/")
-
-    # Import Opc.Ua.Machinery.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Machinery", "Opc.Ua.Machinery.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-
-    ma_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Machinery/")
-
-    # Import Opc.Ua.SurfaceTechnology.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.SurfaceTechnology.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-
-    st_idx = await server.get_namespace_index("http://opcfoundation.org/UA/SurfaceTechnology/")
-
-    # Import Opc.Ua.Ijt.Tightening.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Ijt.Tightening.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-
-    ijt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IJT/")
-
-    # Import Opc.Ua.Robotics.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Robotics", "Opc.Ua.Robotics.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-
-    rob_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Robotics/")
-
-    # Import Opc.Ua.Woodworking.NodeSet2.xml
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Woodworking.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-
-    wwm_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Woodworking/")
-
-#   # Import Opc.Ua.Pumps.NodeSet2.xml TODO disables due to error while adding nodes
-#   try:
-#       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
-#   except Exception as e:
-#       print(e)
-#
-#   pump_idx = await server.get_namespace_index("http://opcfoundation.org/UA/Pumps/")
-  
-    
-    # Import Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml
-    try:
-        #TODO: revert as soon as upstream nodeset is fixed
-        #await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "PlasticsRubber", "GeneralTypes", "1.03", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
-        # await server.import_xml(os.path.join(BASE_DIR,  "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"))
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"), strict_mode=False)
-    except Exception as e:
-        print(e)
-
-    pr_general_idx = await server.get_namespace_index("http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/")
-    
-    
-    
-    # Import Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml
-    try:
-        #TODO: revert as soon as upstream nodeset is fixed
-        #await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "PlasticsRubber", "IMM2MES", "1.01" , "Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml"))
-        await server.import_xml(os.path.join(BASE_DIR,  "nodeset", "Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml"), strict_mode=False)
-    except Exception as e:
-        print(e)
-
-    pr_imm2mes_idx = await server.get_namespace_index("http://opcfoundation.org/UA/PlasticsRubber/IMM2MES/")
-
-    
-#            # Import Opc.Ua.Ia.NodeSet2.xml
-#    try:
-#        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
-#    except Exception as e:
-#        print(e)
-#
-#    ia_idx = await server.get_namespace_index("http://opcfoundation.org/UA/IA/")
-#
-#    # Import Opc.Ua.MachineTool.NodeSet2.xml
-#    try:
-#        await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "MachineTool", "Opc.Ua.MachineTool.Nodeset2.xml"))
-#    except Exception as e:
-#        print(e)
-#
-#    mt_idx = await server.get_namespace_index("http://opcfoundation.org/UA/MachineTool/")
-
-    ##################################################################################################################
-    print(f"Import done! {time.time()-time_value}s")
-
-    time_value = time.time()
-    print("Importing models...")
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "CoatingLine-example.xml"))
-    except Exception as e:
-        print(e)
-    
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ConveyorGunsAxes.xml"))
-    except Exception as e:
-        print(e)
-    
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Materialsupplyroom.xml"))
-    except Exception as e:
-        print(e)
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "dosingsystem.xml"))
-    except Exception as e:
-        print(e)
-    
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ovenbooth.xml"))
-    except Exception as e:
-        print(e)
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Pretreatment.xml"))
-    except Exception as e:
-        print(e)
-    
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "ijt_tightening_server.xml"))
-    except Exception as e:
-        print(e)    
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "opcroboticstestserver.xml"))
-    except Exception as e:
-        print(e)
-
-    try:
-        # TODO disables until upstream is fixed
-        #await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "Opc.Ua.Eumabois.Nodeset2.xml"))
-    except Exception as e:
-        print(e)
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Basic.xml"))
-    except Exception as e:
-        print(e) 
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "WWM_Full.xml"))
-    except Exception as e:
-        print(e)          
-
-    # try:
-    #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
-    # except Exception as e:
-    #     print(e)  
-
-    try:
-        await server.import_xml(os.path.join(BASE_DIR, "src", "models", "umati_opc40077_sample_instance.xml"))
-    except Exception as e:
-        print(e)  
-        
-    try:
-        print("Import PackML")
-        await server.import_xml(os.path.join(BASE_DIR, "deps","UA-Nodeset", "PackML", "Opc.Ua.PackML.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-
-    try:
-        print("Import Scales")
-        # use modified nodeset because stack runs with OPC UA 1.5.1 and Scales depends on OPC UA 1.5.3
-        await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.Scales.NodeSet2.xml"))
-    except Exception as e:
-        print(e)
-        
-    print(f"Import done! {time.time()-time_value}s")
 
     ##################################################################################################################
 
@@ -263,7 +137,7 @@ async def main():
     print(f"TypeDefinitions created!  {time.time()-time_value}s")
 
     scale_node = await createScaleInstance(server)
-    await init_scale_identification_values(scale_node, di_idx)
+    await init_scale_identification_values(server,scale_node)
 
     time_value = time.time()
     print("Start importing CSV-Data...")
@@ -328,7 +202,6 @@ async def randomvaluesimulator(nodes):
 async def createScaleInstance(server):
     print("Create Scale example")
     idx = await server.register_namespace("http://interop4x.de/example/scale")
-    di_idx = await server.get_namespace_index('http://opcfoundation.org/UA/DI/')
     machinery_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Machinery/')
     scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales')
 
@@ -342,7 +215,8 @@ async def createScaleInstance(server):
     print(scale_node)
     return scale_node
 
-async def init_scale_identification_values(scale_node,di_idx):
+async def init_scale_identification_values(server,scale_node):
+    di_idx = await server.get_namespace_index("http://opcfoundation.org/UA/DI/")
     manufacturer = await scale_node.get_child([f"{di_idx}:Identification", f"{di_idx}:Manufacturer"])
     await manufacturer.write_value(ua.LocalizedText("interop4X - FVA GmbH"))
     serialNumber = await scale_node.get_child([f"{di_idx}:Identification", f"{di_idx}:SerialNumber"])
