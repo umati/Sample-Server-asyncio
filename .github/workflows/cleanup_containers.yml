@@ -1,0 +1,36 @@
+---
+    name: Clean up container images
+    on:
+      workflow_dispatch:
+      schedule:
+        # * is a special character in YAML so you have to quote this string
+        - cron: '0 0 1 * *'
+    
+    permissions: 
+        contents: read
+        packages: write
+    
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - uses: actions/github-script@v7.0.1
+            env:
+              PACKAGE_NAME: sample-server
+              PER_PAGE: 100
+            with:
+              github-token: ${{ secrets.DELETE_PACKAGES_TOKEN }}
+              # yamllint disable rule:line-length
+              script: |
+                const response = await github.request("GET /orgs/${{ github.repository_owner }}/packages/container/${{ env.PACKAGE_NAME }}/versions",
+                  { per_page: ${{ env.PER_PAGE }}
+                });
+                for(version of response.data) {
+                    if (version.metadata.container.tags.length == 0) {
+                        console.log("delete " + version.id)
+                        const deleteResponse = await github.request("DELETE /orgs/${{ github.repository_owner }}/packages/container/${{ env.PACKAGE_NAME }}/versions/" + version.id, { });
+                        console.log("status " + deleteResponse.status)
+                    }
+                }
+              # yamllint enable rule:line-length
