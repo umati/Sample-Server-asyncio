@@ -17,7 +17,7 @@
         steps:
           - uses: actions/github-script@v7.0.1
             env:
-              PACKAGE_NAME: sample-server
+              PACKAGE_NAME: sample-server-asyncio
               PER_PAGE: 100
             with:
               github-token: ${{ secrets.DELETE_PACKAGES_TOKEN }}
