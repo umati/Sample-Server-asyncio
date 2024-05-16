@@ -16,5 +16,5 @@ pytz==2024.1
 pywin32-ctypes==0.2.2
 six==1.16.0
 typing-extensions==4.11.0
-zipp==3.18.1
+zipp==3.18.2
 pandas==2.2.2
