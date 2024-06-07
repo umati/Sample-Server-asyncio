@@ -8,7 +8,7 @@ Based on the Hannover Messe 2021 demonstration of the VDMA Group OPC UA for Surf
 
 This Sample Server implementation should help companion specification working groups to easily implement a first running server.
 
-This repository provides a container image to be run by Docker as well as a running instance of the `main` branch at `opc.tcp://opcua2.umati.app:4840`
+This repository provides a container image to be run by Docker as well as a running instance of the `main` branch at `opc.tcp://opcua.umati.app:4842`
 
 [![Build Docker image](https://github.com/umati/Sample-Server-asyncio/actions/workflows/Dockerbuild.yml/badge.svg)](https://github.com/umati/Sample-Server-asyncio/actions/workflows/Dockerbuild.yml)
 
