@@ -13,7 +13,7 @@ pyinstaller==6.10.0
 pyinstaller-hooks-contrib==2024.8
 python-dateutil==2.9.0.post0
 pytz==2024.1
-pywin32-ctypes==0.2.2
+pywin32-ctypes==0.2.3
 six==1.16.0
 typing-extensions==4.12.2
 zipp==3.20.1
