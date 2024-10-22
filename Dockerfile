@@ -15,7 +15,6 @@ RUN \
     if [ `dpkg --print-architecture` = "armhf" ]; then \
     printf "[global]\nextra-index-url=https://www.piwheels.org/simple\n" > /etc/pip.conf ; \
     fi
-#RUN pip install --index-url=https://www.piwheels.org/simple --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir -r /requirements.txt
 
 WORKDIR /opcua
