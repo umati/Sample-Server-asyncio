@@ -15,7 +15,7 @@ pyinstaller-hooks-contrib==2024.10
 python-dateutil==2.9.0.post0
 pytz==2024.2
 pywin32-ctypes==0.2.3
-six==1.16.0
+six==1.17.0
 typing-extensions==4.12.2
 zipp==3.21.0
 pandas==2.2.3
