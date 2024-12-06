@@ -4,8 +4,8 @@ aiosqlite==0.20.0
 altgraph==0.17.4
 asyncua==1.1.5
 cffi==1.17.1
-cryptography==43.0.3 ; platform_machine == "armv7l"
-cryptography==43.0.3 ; platform_machine != "armv7l"
+cryptography==44.0.0 ; platform_machine == "armv7l"
+cryptography==44.0.0 ; platform_machine != "armv7l"
 future==1.0.0
 importlib-metadata==8.5.0
 pefile==2024.8.26
