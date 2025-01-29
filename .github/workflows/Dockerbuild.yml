@@ -1,9 +1,9 @@
 ---
-name: Build Docker image
+name: Build container image
 
 on:
   schedule:
-    - cron: '23 9 * * *'
+    - cron: "23 9 * * *"
   push:
     branches: [develop]
   pull_request:
