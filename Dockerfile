@@ -1,11 +1,11 @@
 FROM python:3.11-bookworm
-LABEL org.opencontainers.image.source https://github.com/umati/Sample-Server-asyncio
+LABEL org.opencontainers.image.source=https://github.com/umati/Sample-Server-asyncio
 
 RUN apt update && \
     apt install -yy build-essential \
+    python3-dev \
     libssl-dev \
     libffi-dev \
-    python3-dev \
     cargo \
     pkg-config \
     cmake
