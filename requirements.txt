@@ -1,6 +1,6 @@
 aiofiles==24.1.0
 aiofile==3.9.0
-aiosqlite==0.20.0
+aiosqlite==0.21.0
 altgraph==0.17.4
 asyncua==1.1.5
 cffi==1.17.1
