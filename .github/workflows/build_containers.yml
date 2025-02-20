@@ -50,7 +50,7 @@ jobs:
         with:
           images: ghcr.io/${{ env.IMAGE_REPOSITORY }}
       - name: Build Docker Release
-        uses: "docker/build-push-action@v6.13.0"
+        uses: "docker/build-push-action@v6.14.0"
         with:
           provenance: false
           file: "./Sample-Server/Dockerfile"
