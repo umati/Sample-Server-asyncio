@@ -16,6 +16,6 @@ python-dateutil==2.9.0.post0
 pytz==2025.2
 pywin32-ctypes==0.2.3
 six==1.17.0
-typing-extensions==4.12.2
+typing-extensions==4.13.0
 zipp==3.21.0
 pandas==2.2.3
