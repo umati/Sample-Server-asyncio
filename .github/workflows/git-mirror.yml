@@ -1,0 +1,26 @@
+---
+name: Git Mirror
+# Mirror git repo to other sites
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Mirror to Codeberg
+        env:
+          GIT_MIRROR_URL: ${{ secrets.CODEBERG_URL }}
+          GIT_MIRROR_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+        run: |
+          git remote add mirror ${GIT_MIRROR_URL}
+          git push --mirror mirror
