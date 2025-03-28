@@ -12,15 +12,14 @@ on:
 jobs:
   mirror:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Mirror to Codeberg
-        env:
-          GIT_MIRROR_URL: ${{ secrets.CODEBERG_URL }}
-          GIT_MIRROR_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
-        run: |
-          git remote add mirror ${GIT_MIRROR_URL}
-          git push --mirror mirror
+        with:
+          fetch-depth: 0
+      - name: "Sync repo"
+        uses: yesolutions/mirror-action@master
+        with:
+          REMOTE: ${{ secrets.CODEBERG_URL }}
+          GIT_USERNAME: goetz
+          GIT_PASSWORD: ${{ secrets.CODEBERG_TOKEN }}
