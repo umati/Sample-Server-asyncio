@@ -93,15 +93,15 @@ async def import_models(server):
         ("src/models/WWM_Full.xml", True),
         ("src/models/umati_opc40077_sample_instance.xml", True),
         ("deps/UA-Nodeset/PackML/Opc.Ua.PackML.NodeSet2.xml", True),
-        ("nodeset/Opc.Ua.Scales.NodeSet2.xml", True)
+        ("nodeset/Opc.Ua.Scales.NodeSet2.xml", True),
+        ("deps/UA-NodeSet/Pumps/Opc.Ua.Pumps.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/Pumps/instanceexample.xml", True)
     ]
     
     # missing namespaces
-    #       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "Opc.Ua.Pumps.NodeSet2.xml"))
     #       await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"), strict_mode=False)
     #       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
     #       await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "MachineTool", "Opc.Ua.MachineTool.Nodeset2.xml"))
-    #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
     # TODO disables until upstream is fixed
     # await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
     #
