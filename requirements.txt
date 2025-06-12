@@ -18,4 +18,4 @@ pywin32-ctypes==0.2.3
 six==1.17.0
 typing-extensions==4.14.0
 zipp==3.23.0
-pandas==2.2.3
+pandas==2.3.0
