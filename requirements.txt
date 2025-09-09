@@ -3,7 +3,7 @@ aiofile==3.9.0
 aiosqlite==0.21.0
 altgraph==0.17.4
 asyncua==1.1.8
-cffi==1.17.1
+cffi==2.0.0
 cryptography==45.0.7 ; platform_machine == "armv7l"
 cryptography==45.0.7 ; platform_machine != "armv7l"
 future==1.0.0
