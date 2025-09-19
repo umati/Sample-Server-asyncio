@@ -94,7 +94,7 @@ async def import_models(server):
         ("src/models/umati_opc40077_sample_instance.xml", True),
         ("deps/UA-Nodeset/PackML/Opc.Ua.PackML.NodeSet2.xml", True),
         ("nodeset/Opc.Ua.Scales.NodeSet2.xml", True),
-        ("deps/UA-NodeSet/Pumps/Opc.Ua.Pumps.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/Pumps/Opc.Ua.Pumps.NodeSet2.xml", True),
         ("deps/UA-Nodeset/Pumps/instanceexample.xml", True)
     ]
     
