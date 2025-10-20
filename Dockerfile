@@ -1,4 +1,4 @@
-FROM python:3.11-bookworm
+FROM python:3.13-bookworm
 LABEL org.opencontainers.image.source=https://github.com/umati/Sample-Server-asyncio
 
 RUN apt update && \
