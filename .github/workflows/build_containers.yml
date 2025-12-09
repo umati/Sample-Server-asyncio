@@ -21,7 +21,7 @@ jobs:
       IS_NOT_PR: "${{ !github.head_ref && true }}"
     steps:
       - name: Checkout Sample-Server
-        uses: actions/checkout@v6.0.0
+        uses: actions/checkout@v6.0.1
         with:
           path: Sample-Server
           submodules: recursive
