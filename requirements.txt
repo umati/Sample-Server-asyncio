@@ -7,7 +7,7 @@ cffi==2.0.0
 cryptography==46.0.3 ; platform_machine == "armv7l"
 cryptography==46.0.3 ; platform_machine != "armv7l"
 future==1.0.0
-importlib-metadata==8.7.0
+importlib-metadata==8.7.1
 pefile==2024.8.26
 pycparser==2.23
 pyinstaller==6.17.0
