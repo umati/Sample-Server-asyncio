@@ -174,7 +174,7 @@ async def main():
                             Value=dv.Value,
                             StatusCode_=dv.StatusCode_,
                             SourceTimestamp=dv.SourceTimestamp,
-                            ServerTimestamp=datetime.utcnow()
+                            ServerTimestamp=datetime.now(datetime.UTC)
                         )
                         await server.write_attribute_value(item[0][0].nodeid, new_dv, ua.AttributeIds.Value)
 
