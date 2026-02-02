@@ -54,7 +54,7 @@ jobs:
           provenance: false
           file: "./Sample-Server/Dockerfile"
           context: ./Sample-Server
-          platforms: linux/amd64, linux/arm64, linux/arm/v7
+          platforms: linux/amd64, linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/${{ env.IMAGE_REPOSITORY }}:${{ env.IMAGE_TAG }}
