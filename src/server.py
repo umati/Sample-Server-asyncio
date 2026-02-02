@@ -5,9 +5,6 @@
 # Copyright (c) 2021-2022 Harald Weber, VDMA e.V.
 # Copyright (c) 2024 Sebastian Friedl, interop4X - FVA GmbH 
 
-
-
-
 # Imports
 import os 
 import asyncio
@@ -85,7 +82,7 @@ async def import_models(server):
         ("deps/UA-Nodeset/PlasticsRubber/GeneralTypes/1.03/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml", True),
         ("deps/UA-Nodeset/PlasticsRubber/IMM2MES/1.01/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml", True),
         ("nodeset/Opc.Ua.SurfaceTechnology.NodeSet2.xml", True),
-        ("deps/UA-Nodeset/IA/Opc.Ua.Ia.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/IA/Opc.Ua.IA.NodeSet2.xml", True),
         ("nodeset/Opc.Ua.Ijt.Tightening.NodeSet2.xml", True),
         ("src/models/CoatingLine-example.xml", True),
         ("src/models/ConveyorGunsAxes.xml", True),
@@ -107,11 +104,10 @@ async def import_models(server):
     
     # missing namespaces
     #     await server.import_xml(os.path.join(BASE_DIR, "nodeset", "Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml"), strict_mode=False)
-    #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "IA", "Opc.Ua.IA.NodeSet2.xml"))
     #     await server.import_xml(os.path.join(BASE_DIR,  "deps", "UA-Nodeset", "Pumps", "instanceexample.xml"))
     # TODO disables until upstream is fixed
     # await server.import_xml(os.path.join(BASE_DIR, "deps", "UA-Nodeset", "Woodworking", "Opc.Ua.Eumabois.Nodeset2.xml"))
-    #
+
 
     for rel_path, strict_mode in xml_files:
         # Construct the full file path, ensuring OS compatibility
