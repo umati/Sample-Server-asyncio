@@ -71,15 +71,21 @@ async def import_models(server):
     print("Importing companion spec. XML...")
     xml_files = [
         ("deps/UA-Nodeset/DI/Opc.Ua.Di.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/IA/Opc.Ua.IA.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/AMB/Opc.Ua.AMB.NodeSet2.xml", True),
         ("deps/UA-Nodeset/Machinery/Opc.Ua.Machinery.NodeSet2.xml", True),
+        #("deps/UA-Nodeset/Machinery/Result/Opc.Ua.Machinery_Result.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/PackML/Opc.Ua.PackML.NodeSet2.xml", True), 
+        ("deps/UA-Nodeset/Robotics/Opc.Ua.Robotics.NodeSet2.xml", True),
+        #("deps/UA-Nodeset/ISA95-JOBCONTROL/opc.ua.isa95-jobcontrol.nodeset2.xml", True),
+        #("deps/UA-Nodeset/Machinery/Jobs/Opc.Ua.Machinery.Jobs.Nodeset2.xml", True),
+        ("deps/UA-Nodeset/Woodworking/Opc.Ua.Woodworking.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/Mining/General/1.0.0/Opc.Ua.Mining.General.NodeSet2.xml", False),
+        ("deps/UA-Nodeset/Mining/TransportDumping/General/1.0.0/Opc.Ua.Mining.TransportDumping.General.NodeSet2.xml", False),
+        ("deps/UA-Nodeset/PlasticsRubber/GeneralTypes/1.03/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml", True),
+        ("deps/UA-Nodeset/PlasticsRubber/IMM2MES/1.01/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml", True),
         ("nodeset/Opc.Ua.SurfaceTechnology.NodeSet2.xml", True),
         ("nodeset/Opc.Ua.Ijt.Tightening.NodeSet2.xml", True),
-        ("deps/UA-Nodeset/Robotics/Opc.Ua.Robotics.NodeSet2.xml", True),
-        ("deps/UA-Nodeset/Woodworking/Opc.Ua.Woodworking.NodeSet2.xml", True),
-        ("nodeset/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml", False),
-        ("nodeset/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml", False),
-        ("deps/UA-Nodeset/Mining/General/1.0.0/Opc.Ua.Mining.General.NodeSet2.xml",False),
-        ("deps/UA-Nodeset/Mining/TransportDumping/General/1.0.0/Opc.Ua.Mining.TransportDumping.General.NodeSet2.xml", False),
         ("src/models/CoatingLine-example.xml", True),
         ("src/models/ConveyorGunsAxes.xml", True),
         ("src/models/Materialsupplyroom.xml", True),
@@ -92,8 +98,8 @@ async def import_models(server):
         ("src/models/WWM_Basic.xml", True),
         ("src/models/WWM_Full.xml", True),
         ("src/models/umati_opc40077_sample_instance.xml", True),
-        ("deps/UA-Nodeset/PackML/Opc.Ua.PackML.NodeSet2.xml", True),
-        ("nodeset/Opc.Ua.Scales.NodeSet2.xml", True),
+       
+        ("deps/UA-Nodeset/Scales/Opc.Ua.Scales.NodeSet2.xml", True),
         ("deps/UA-Nodeset/Pumps/Opc.Ua.Pumps.NodeSet2.xml", True),
         ("deps/UA-Nodeset/Pumps/instanceexample.xml", True)
     ]
@@ -172,7 +178,7 @@ async def main():
                     if dv is not None:
                         new_dv = ua.DataValue(
                             Value=dv.Value,
-                            StatusCode_=dv.StatusCode_,
+                            StatusCode=dv.StatusCode,
                             SourceTimestamp=dv.SourceTimestamp,
                             ServerTimestamp=datetime.now(timezone.utc)
                         )
@@ -204,7 +210,7 @@ async def create_scale_instance(server):
     print("Create Scale example")
     idx = await server.register_namespace("http://interop4x.de/example/scale")
     machinery_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Machinery/')
-    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales')
+    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales/V2/')
 
     simpleScale_type_nodeid = f"ns={scale_idx};i=3"
     simpleScale_type_node = server.get_node(simpleScale_type_nodeid)
@@ -228,7 +234,7 @@ async def init_scale_identification_values(server,scale_node):
 
 
 async def updateSimpleScale(server, scale_node):
-    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales')
+    scale_idx = await server.get_namespace_index('http://opcfoundation.org/UA/Scales/V2/')
     currentWeight = await scale_node.get_child(f"{scale_idx}:CurrentWeight")
     value = await currentWeight.read_value()
     value.Gross = (value.Gross + 0.2) % 10
