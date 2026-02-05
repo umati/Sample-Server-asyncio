@@ -34,7 +34,7 @@ jobs:
           username: ${{ env.FORGEJO_ACTOR }}
           password: ${{ secrets.registry_token }}
 
-      - name: Get Meta Data
+      - name: Get Container Meta Data
         uses: docker/metadata-action@v5.10.0
         id: docker_meta
         with:
