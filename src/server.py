@@ -14,7 +14,7 @@ import asyncio
 import logging
 import time
 import random
-from datetime import datetime
+from datetime import datetime, timezone
 from asyncua import Server, ua
 from asyncua.common.ua_utils import value_to_datavalue
 from asyncua.common.instantiate_util import instantiate
@@ -174,7 +174,7 @@ async def main():
                             Value=dv.Value,
                             StatusCode_=dv.StatusCode_,
                             SourceTimestamp=dv.SourceTimestamp,
-                            ServerTimestamp=datetime.now(datetime.UTC)
+                            ServerTimestamp=datetime.now(timezone.utc)
                         )
                         await server.write_attribute_value(item[0][0].nodeid, new_dv, ua.AttributeIds.Value)
 
