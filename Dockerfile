@@ -2,7 +2,8 @@ FROM python:3.13-trixie
 LABEL org.opencontainers.image.source=https://github.com/umati/Sample-Server-asyncio
 
 RUN apt update && \
-    apt install -yy build-essential \
+    apt install -yy --no-install-recommends --no-install-suggests \
+    build-essential \
     python3-dev \
     libssl-dev \
     libffi-dev \
