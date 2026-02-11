@@ -45,14 +45,16 @@ jobs:
             type=ref,event=branch
             type=ref,event=tag
             type=ref,event=pr
+
       - name: Build and push
         uses: docker/build-push-action@v6.18.0
         with:
+          provenance: false
           file: "./Sample-Server/Dockerfile"
           context: ./Sample-Server
           platforms: linux/amd64, linux/arm64
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
             VERSION=${{ steps.docker_meta.outputs.version }}
-          push: true
