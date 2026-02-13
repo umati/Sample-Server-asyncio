@@ -1,5 +1,4 @@
-FROM python:3.14-trixie
-LABEL org.opencontainers.image.source=https://github.com/umati/Sample-Server-asyncio
+FROM python:3.14-slim-trixie
 
 RUN apt update && \
     apt install -yy --no-install-recommends --no-install-suggests \
