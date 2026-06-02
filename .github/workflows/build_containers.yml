@@ -36,7 +36,7 @@ jobs:
           password: ${{ env.REGISTRY_TOKEN }}
 
       - name: Checkout Repository
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
         with:
           path: Sample-Server
           submodules: recursive
