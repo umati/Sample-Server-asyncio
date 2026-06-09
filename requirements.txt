@@ -10,7 +10,7 @@ importlib-metadata==8.7.1
 pefile==2024.8.26
 pycparser==3.0
 pyinstaller==6.19.0
-pyinstaller-hooks-contrib==2026.2
+pyinstaller-hooks-contrib==2026.6
 python-dateutil==2.9.0.post0
 pytz==2026.1.post1
 pywin32-ctypes==0.2.3
