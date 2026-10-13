@@ -1,4 +1,4 @@
-FROM python:3.14-trixie
+FROM python:3.15-trixie
 LABEL org.opencontainers.image.source=https://github.com/umati/Sample-Server-asyncio
 
 RUN apt update && \
